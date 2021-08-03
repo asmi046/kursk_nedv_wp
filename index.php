@@ -1,9 +1,15 @@
 <?php get_header(); ?>
-	<div class="test">testnpm</div>
-	<div class="test"></div>
-	<a href="#" class="link">Link</a>
-	<ul>
-	<li>List1</li><li>List 2</li>
-	</ul> 
+
+<section>
+	<div class = "container">
+		<div class="lgozon">
+			<img src="<?php echo get_template_directory_uri();?>/img/logo.svg" alt="" class="logomain">
+			<form action="" class="search">
+				<input class = "searchstr" type = "text" name = "serchstr" placeholder = "Введите улицу или район">
+				<button class = "btn">Поиск</button>
+			</form>
+		</div>
+	</div>
+</section>
 
 <?php get_footer(); ?>
