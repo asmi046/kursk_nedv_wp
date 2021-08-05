@@ -18,9 +18,47 @@ curl_close($crl);
 if ($ret == 200) 
     $xml = simplexml_load_file($objUrl);
 
+global $wpdb;
+
+$wpdb->query('TRUNCATE `kn_objnedv`');
+
 $index = 0;    
 foreach ($xml->objects->children() as $elem)
 {
+    $insertedArray = array(
+        'row_id' => (int)$elem->row_id,
+        'lot' => (int)$elem->lot,
+        'sys_date_create' => (string)$elem->sys_date_create,
+        'sys_date_update' => (string)$elem->sys_date_update,
+        'klient_status' => (string)$elem->cat_enum,
+        'deistvie' => (string)$elem->client_enum,
+        'type' => (string)$elem->realty_enum,
+        'obmen' => (int)$elem->alt_check,
+        'rooms' => (int)$elem->rooms,
+        'studia' => (int)$elem->stidio_check,
+        'price' => (float)$elem->cost,
+        'geocode' => (string)$elem->geocode,
+        'obl' => (string)$elem->obl_auto,
+        'obl_raion' => (string)$elem->obl_rayon_auto,
+        'np' => (string)$elem->np_auto,
+        'np_raion' => (string)$elem->np_rayon_auto,
+        'street' => (string)$elem->street,
+        'dom_number' => (string)$elem->dom_conv,
+        'drob' => (string)$elem->drob,
+        'korp' => (int)$elem->korp,
+        'str' => (int)$elem->str,
+        'floor' => (int)$elem->floor,
+        'floors' => (int)$elem->floors,
+        'description' => "",
+        'photo' => (string)$elem->photo[0]
+    );
+
+    $insertedArray['description'] = empty((string)$elem->description)?(string)$elem->site_text:(string)$elem->description;
+
+    print_r( $insertedArray);
+
+    $wpdb->insert('kn_objnedv', $insertedArray);
+
     echo $index.": "; 
     echo $objName = $elem->street." ".$elem->dom_conv;
     echo "\n\r";
