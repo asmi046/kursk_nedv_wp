@@ -242,6 +242,10 @@ section{
 	.radioBlk label{ 
 		width: 100%;
 	}
+
+	form.search {
+		margin-bottom: 20px;
+	}
 }
 @media screen and (max-width:667px), handheld{ }
 @media screen and (max-width:568px), handheld{ }
