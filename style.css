@@ -362,12 +362,10 @@ section{
   margin-bottom: 25px; }
 .popup__form-btn {
   display: inline-block;
-  /* padding: 12px 28px; */
   font-size: 18px;
   font-family: Lato-Light, sans-serif;
   text-transform: uppercase;
-  color: #d3820f;
-  border: 1px solid #d3820f; 
+  color: #fff;
   cursor: pointer; }
 .popup__form-btn:hover {
   color: #fff;
