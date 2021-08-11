@@ -367,9 +367,9 @@ section{
   text-transform: uppercase;
   color: #fff;
   cursor: pointer; }
-.popup__form-btn:hover {
+/* .popup__form-btn:hover {
   color: #fff;
-  background-color: #d3820f; }
+  background-color: #d3820f; } */
 .popup__item img {
   width: 43%; }
 .SendetMsg {
