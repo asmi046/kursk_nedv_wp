@@ -48,6 +48,26 @@ function body_lock_add(delay) {
 	}
 }
 
+sendZobj.addEventListener('click', (e) => { 
+	e.preventDefault();
+
+
+
+	let requestURL = "//xn--46-6kcaio0anxtsby.xn--p1ai/modules/m_boxreg.php?get_xml=site&token=FTUYGg45r74r__rhtg75ueVGH4t3___43f&iii="+formCallbackName.value+"&tel1="+formCallbackTel.value+"&realty_id="+formLot.value;
+	const xhr = new XMLHttpRequest();
+	xhr.open("get", requestURL);
+	xhr.onload = () => {
+		console.log("Ok");
+	}
+
+	xhr.onerror = () => {
+		console.log("error");
+	}
+
+
+	xhr.send();
+});
+
 // Popup JS
 let unlock = true;
 let popup_link = document.querySelectorAll('._popup-link');
@@ -56,9 +76,8 @@ for (let index = 0; index < popup_link.length; index++) {
 	const el = popup_link[index];
 	el.addEventListener('click', function (e) {
 		if (unlock) {
-			let item = el.getAttribute('href').replace('#', '');
-			let video = el.getAttribute('data-video');
-			popup_open(item, video);
+			let lot = el.getAttribute('data-lot');
+			popup_open(lot);
 		}
 		e.preventDefault();
 	})
@@ -71,20 +90,23 @@ for (let index = 0; index < popups.length; index++) {
 		}
 	});
 }
-function popup_open(item, video = '') {
-	let activePopup = document.querySelectorAll('.popup._active');
-	if (activePopup.length > 0) {
-		popup_close('', false);
-	}
-	let curent_popup = document.querySelector('.popup_' + item);
-	if (curent_popup && unlock) {
-		if (video != '' && video != null) {
-			let popup_video = document.querySelector('.popup_video');
-			popup_video.querySelector('.popup__video').innerHTML = '<iframe src="https://www.youtube.com/embed/' + video + '?autoplay=1"  allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-		}
-		if (!document.querySelector('.menu__body._active')) {
-			body_lock_add(500);
-		}
+function popup_open(item) {
+	// let activePopup = document.querySelectorAll('.popup._active');
+	// if (activePopup.length > 0) {
+	// 	popup_close('', false);
+	// }
+	let curent_popup = document.querySelector('.popup_callback');
+	if (curent_popup) {
+		
+		// if (video != '' && video != null) {
+		// 	let popup_video = document.querySelector('.popup_video');
+		// 	popup_video.querySelector('.popup__video').innerHTML = '<iframe src="https://www.youtube.com/embed/' + video + '?autoplay=1"  allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+		// }
+		// if (!document.querySelector('.menu__body._active')) {
+		// 	body_lock_add(500);
+		// }
+
+		formLot.value = item;
 		curent_popup.classList.add('_active');
 		history.pushState('', '', '#' + item);
 	}

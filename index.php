@@ -44,7 +44,7 @@
 						</div>
 
 						<div class="btn_wrapper">
-							<a href="#callback" class="_popup-link btn">Оставить заявку</a>
+							<a data-lot="<? echo $e->lot; ?>" href="#callback" class="_popup-link btn">Оставить заявку</a>
 						</div>
 
 

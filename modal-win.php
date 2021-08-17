@@ -30,11 +30,12 @@
 					<div class="headen_form_blk">
 						<p>Оставьте заявку и мы свяжемся с вами в течении 15 минут</p>
 						<form action="#" class="popup__form">
-							<input type="text" name="name" placeholder="Имя" id="form-callback-name" class="popup__form-input input">
-							<input type="tel" name="tel" placeholder="Телефон*" id="form-callback-tel" class="popup__form-input input">
-							<!-- <input type="text" name="email" placeholder="Email" id="form-callback-email" class="popup__form-input input"> -->
+							<input type="text" name="name" placeholder="Имя" id="formCallbackName" class="popup__form-input input">
+							<input type="tel" name="tel" placeholder="Телефон*" id="formCallbackTel" class="popup__form-input input">
+							<input type="hidden" name="lot" id="formLot" value = "">
+							
 							<p>Заполняя данную форму вы соглашаетесь с <a href="<?php echo get_permalink(452); ?>">политикой конфиденциальности</a></p>
-							<button class="popup__form-btn newButton btn">Отправить заявку</button>
+							<button id = "sendZobj" class="popup__form-btn newButton btn">Отправить заявку</button>
 						</form>
 					</div>
 				</div>
