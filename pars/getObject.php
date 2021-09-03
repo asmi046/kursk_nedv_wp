@@ -25,9 +25,16 @@ $wpdb->query('TRUNCATE `kn_objnedv`');
 $index = 0;    
 foreach ($xml->objects->children() as $elem)
 {
+
+    if (
+        ($elem->status_enum == "Сделка (завершена)")||
+        ($elem->status_enum == "Архив (без сделки)")||
+        ($elem->status_enum == "Рекламный (несуществующий)")) continue;
+
     $insertedArray = array(
         'row_id' => (int)$elem->row_id,
         'lot' => (int)$elem->lot,
+        'status_enum' => (string)$elem->status_enum,
         'sys_date_create' => (string)$elem->sys_date_create,
         'sys_date_update' => (string)$elem->sys_date_update,
         'klient_status' => (string)$elem->cat_enum,
