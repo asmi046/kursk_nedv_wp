@@ -2,26 +2,13 @@
 			<div class='footer__container container'>
 
 				<div class="footer__row d-flex">
-
-					<ul class="footer__menu">
-						<li><a href="category.html" class="menu__link">Недвижимость</a></li>
-						<li><a href="category.html" class="menu__link">Новостройки</a></li>
-						<li><a href="category.html" class="menu__link">Дома, участки, дачи</a></li>
-						<li><a href="category.html" class="menu__link">Вторичная недвижимость</a></li>
-						<li><a href="category.html" class="menu__link">Коммерческая недвижимость</a></li>
-					</ul>
-
-					<ul class="footer__menu">
-						<li><a href="#" class="menu__link">Актуальные предложения</a></li>
-						<li><a href="pyatnitsky-forest.html" class="menu__link">ЖК "Пятницкий"</a></li>
-						<li><a href="promgranit.html" class="menu__link">Новостройки "Бетон комплект"</a></li>
-					</ul>
-
-					<ul class="footer__menu">
-						<li><a href="#" class="menu__link">О компании</a></li>
-						<li><a href="team.html" class="menu__link">Команда</a></li>
-						<li><a href="contacts.html" class="menu__link">Контакты</a></li>
-					</ul>
+					
+					<?php wp_nav_menu( array('theme_location' => 'menu_2','menu_class' => 'footer__menu',
+					'container_class' => 'mob-menu__list','container' => false )); ?> 
+					<?php wp_nav_menu( array('theme_location' => 'menu_3','menu_class' => 'footer__menu',
+					'container_class' => 'mob-menu__list','container' => false )); ?> 
+					<?php wp_nav_menu( array('theme_location' => 'menu_1','menu_class' => 'footer__menu',
+					'container_class' => 'mob-menu__list','container' => false )); ?> 
 
 					<div class="footer__contact">
 						<div class="header__callback d-flex">

@@ -13,7 +13,7 @@
 								<a href="#" class="soc-block-icon-link soc-icon-3"></a>
 								<a href="#" class="soc-block-icon-link soc-icon-4"></a>
 							</div>
-							<p>Мы в соцсетях</p>
+							<p>Мы в соцсетях</p> 
 						</div>
 
 						<div class="header__callback d-flex">
@@ -38,21 +38,10 @@
 		</header>
 
 		<nav class="mob-menu">
-			<ul class="mob-menu__list">
-				<li><a href="#" class="menu__link">О компании</a></li>
-				<li><a href="team.html" class="menu__link">Команда</a></li>
-				<li><a href="contacts.html" class="menu__link">Контакты</a></li>
-			</ul>
-			<ul class="mob-menu__list">
-				<li><a href="category.html" class="menu__link">Недвижимость</a></li>
-				<li><a href="category.html" class="menu__link">Новостройки</a></li>
-				<li><a href="category.html" class="menu__link">Дома, участки, дачи</a></li>
-				<li><a href="category.html" class="menu__link">Вторичная недвижимость</a></li>
-				<li><a href="category.html" class="menu__link">Коммерческая недвижимость</a></li>
-			</ul>
-			<ul class="mob-menu__list">
-				<li><a href="#" class="menu__link">Актуальные предложения</a></li>
-				<li><a href="pyatnitsky-forest.html" class="menu__link">ЖК "Пятницкий"</a></li>
-				<li><a href="promgranit.html" class="menu__link">Новостройки "Бетон комплект"</a></li>
-			</ul>
+			<?php wp_nav_menu( array('theme_location' => 'menu_1','menu_class' => 'mob-menu__list',
+			'container_class' => 'mob-menu__list','container' => false )); ?> 
+			<?php wp_nav_menu( array('theme_location' => 'menu_2','menu_class' => 'mob-menu__list',
+			'container_class' => 'mob-menu__list','container' => false )); ?> 
+			<?php wp_nav_menu( array('theme_location' => 'menu_3','menu_class' => 'mob-menu__list',
+			'container_class' => 'mob-menu__list','container' => false )); ?> 
 		</nav>
