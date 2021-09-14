@@ -24,8 +24,6 @@ get_header(); ?>
 
 			<?php get_template_part('template-parts/team-block');?> 
 
-			<button class="team__btn btn">Все сотрудники</button>
-
 		</div>
 	</section>
 

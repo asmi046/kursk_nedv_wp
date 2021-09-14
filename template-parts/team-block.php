@@ -65,3 +65,5 @@
 	</div>
 
 </div>
+
+<button class="team__btn btn">Все сотрудники</button>
