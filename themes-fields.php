@@ -17,8 +17,8 @@ Container::make( 'theme_options', __( 'Настройки темы', 'crb' ) )
       //   ->set_width(30),
       // Field::make( 'image', 'as_logo_white', 'Логотип в подвале')
       //   ->set_width(30),
-      Field::make('text', 'about_home_title', 'Заголовок на главной'),
-      Field::make('rich_text', 'about_home', 'О нашей компании')
+      Field::make('text', 'about_home_title', 'Заголовок на главной')
+      // Field::make('rich_text', 'about_home', 'О нашей компании')
     ))
     ->add_tab('Акции', array(
       Field::make('complex', 'complex_promo', 'Верхние блоки на главной')
@@ -39,7 +39,7 @@ Container::make( 'theme_options', __( 'Настройки темы', 'crb' ) )
           ->set_width(50),
         Field::make( 'text', 'as_schedule', __( 'Режим работы' ) )
           ->set_width(50),
-        Field::make( 'text', 'as_phones_1', __( 'Телефон' ) )
+        Field::make( 'text', 'as_phone_1', __( 'Телефон' ) )
           ->set_width(50),
         Field::make( 'text', 'as_phone_2', __( 'Телефон дополнительный' ) )
           ->set_width(50),

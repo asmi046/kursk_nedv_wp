@@ -12,15 +12,15 @@
 
 					<div class="footer__contact">
 						<div class="header__callback d-flex">
-							<a href="tel:84951700000">8 800 488 22 22</a>
+							<a href="tel:<? echo preg_replace('/[^0-9]/', '', $tel); ?>"><? echo $tel = carbon_get_theme_option("as_phone_1"); ?></a>
 							<a href="#callback" class="header__popup-link _popup-link">Заказать звонок</a>
 						</div>
 						<div class="footer__soc-block">
 							<div class="footer__soc-block-icon soc-block-icon">
-								<a href="#" class="soc-block-icon-link soc-icon-1"></a>
-								<a href="#" class="soc-block-icon-link soc-icon-2"></a>
-								<a href="#" class="soc-block-icon-link soc-icon-3"></a>
-								<a href="#" class="soc-block-icon-link soc-icon-4"></a>
+								<a href="<?php echo carbon_get_theme_option('as_insta'); ?>" class="soc-block-icon-link soc-icon-1"></a>
+								<a href="<?php echo carbon_get_theme_option('as_vk'); ?>" class="soc-block-icon-link soc-icon-2"></a>
+								<a href="<?php echo carbon_get_theme_option('as_telegr'); ?>" class="soc-block-icon-link soc-icon-3"></a>
+								<a href="<?php echo carbon_get_theme_option('as_whatsapp'); ?>" class="soc-block-icon-link soc-icon-4"></a>
 							</div>
 							<p>Мы в соцсетях</p>
 						</div>
