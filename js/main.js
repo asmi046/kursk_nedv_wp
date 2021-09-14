@@ -391,25 +391,15 @@ var inputmask_phone = { "mask": "+9(999)999-99-99" };
 jQuery("input[type=tel]").inputmask(inputmask_phone);
 
 
-// Открытие модального окна
-$(".popup-quest").on('click', function (e) {
-	e.preventDefault();
-	jQuery(".windows_form h2").html(jQuery(this).data("winheader"));
-	jQuery(".windows_form .subtitle").html(jQuery(this).data("winsubheader"));
-	jQuery("#question").arcticmodal();
-});
-
-
 //Валидация + Отправщик
-$('.newButton').click(function (e) {
+$('.consultBtn').click(function (e) {
 
 	e.preventDefault();
-	const name = $("#form-callback-name").val();
-	const tel = $("#form-callback-tel").val();
-	const email = $("#form-callback-email").val();
+	const name = $("#form-consult-name").val();
+	const tel = $("#form-consult-tel").val();
 
-	if (jQuery("#form-callback-tel").val() == "") {
-		jQuery("#form-callback-tel").css("border", "1px solid red");
+	if (jQuery("#form-consult-tel").val() == "") { 
+		jQuery("#form-consult-tel").css("border", "1px solid red");
 		return;
 	}
 
@@ -426,13 +416,12 @@ $('.newButton').click(function (e) {
 				nonce: allAjax.nonce,
 				name: name,
 				tel: tel,
-				email: email,
 			}
 		);
 
 		jqXHR.done(function (responce) {
-			jQuery(".headen_form_blk").hide();
-			jQuery('.SendetMsg').show();
+			jQuery(".consult-form__form .headen_form_blk").hide();
+			jQuery('.consult-form__form .SendetMsg').show();
 		});
 
 		jqXHR.fail(function (responce) {
@@ -684,13 +673,13 @@ function forms() {
 				select();
 			}
 		});
-		$(document).on('click touchstart', function (e) {
-			if (!$(e.target).is(".select *") && !$(e.target).is(".select")) {
-				$('.select').removeClass('active');
-				$('.select-options').slideUp(50, function () { });
-				searchselectreset();
-			};
-		});
+		// $(document).on('click touchstart', function (e) {
+		// 	if (!$(e.target).is(".select *") && !$(e.target).is(".select")) {
+		// 		$('.select').removeClass('active');
+		// 		$('.select-options').slideUp(50, function () { });
+		// 		searchselectreset();
+		// 	};
+		// });
 		$(document).on('keydown', function (e) {
 			if (e.which == 27) {
 				$('.select').removeClass('active');

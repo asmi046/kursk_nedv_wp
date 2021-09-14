@@ -8,10 +8,10 @@
 
 						<div class="header__soc-block">
 							<div class="header__soc-block-icon soc-block-icon">
-								<a href="#" class="soc-block-icon-link soc-icon-1"></a>
-								<a href="#" class="soc-block-icon-link soc-icon-2"></a>
-								<a href="#" class="soc-block-icon-link soc-icon-3"></a>
-								<a href="#" class="soc-block-icon-link soc-icon-4"></a>
+								<a href="<?php echo carbon_get_theme_option('as_insta'); ?>" class="soc-block-icon-link soc-icon-1"></a>
+								<a href="<?php echo carbon_get_theme_option('as_vk'); ?>" class="soc-block-icon-link soc-icon-2"></a>
+								<a href="<?php echo carbon_get_theme_option('as_telegr'); ?>" class="soc-block-icon-link soc-icon-3"></a>
+								<a href="<?php echo carbon_get_theme_option('as_whatsapp'); ?>" class="soc-block-icon-link soc-icon-4"></a>
 							</div>
 							<p>Мы в соцсетях</p> 
 						</div>

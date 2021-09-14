@@ -2892,7 +2892,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   right: 15px;
   cursor: pointer;
   z-index: 30;
-  background: url("img/close.svg") 0 0 no-repeat; }
+  background: url("img/icons/close.svg") 0 0 no-repeat; }
 .popup__form-block {
   width: 100%;
   padding: 35px; }
@@ -2921,6 +2921,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   background-color: #d3820f; }
 .popup__item img {
   width: 40%; }
+
 .SendetMsg {
   padding: 10px 0;
   text-align: center;
@@ -2939,9 +2940,11 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   margin: 10px 0; }
 /* Popup JS End*/
 
-
-
-
+.consult-form__form .SendetMsg {
+  padding: 0;
+  margin-top: 0px; }
+.consult-form__form .SendetMsg:before{
+  display: none;}
 
 
 
