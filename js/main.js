@@ -178,22 +178,22 @@ smotScrollElems.forEach(link => {
 
 
 // CRM --------------------------------------------------------------------------------------------------------------------------------------
-// sendZobj.addEventListener('click', (e) => { 
-// 	e.preventDefault();
+sendZobj.addEventListener('click', (e) => { 
+	e.preventDefault();
 
-// 	let requestURL = "//xn--46-6kcaio0anxtsby.xn--p1ai/modules/m_boxreg.php?get_xml=site&token=FTUYGg45r74r__rhtg75ueVGH4t3___43f&iii="+formCallbackName.value+"&tel1="+formCallbackTel.value+"&realty_id="+formLot.value;
-// 	const xhr = new XMLHttpRequest();
-// 	xhr.open("get", requestURL);
-// 	xhr.onload = () => {
-// 		console.log("Ok");
-// 	}
+	let requestURL = "//xn--46-6kcaio0anxtsby.xn--p1ai/modules/m_boxreg.php?get_xml=site&token=FTUYGg45r74r__rhtg75ueVGH4t3___43f&iii="+formCallbackName.value+"&tel1="+formCallbackTel.value+"&realty_id="+formLot.value;
+	const xhr = new XMLHttpRequest();
+	xhr.open("get", requestURL);
+	xhr.onload = () => {
+		console.log("Ok");
+	}
 
-// 	xhr.onerror = () => {
-// 		console.log("error");
-// 	}
+	xhr.onerror = () => {
+		console.log("error");
+	}
 
-// 	xhr.send();
-// });
+	xhr.send();
+});
 // CRM END--------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -443,224 +443,304 @@ $('.newButton').click(function (e) {
 });
 
 
+// Табы
+$('body').on('click', '.tab__navitem', function (event) {
+	var eq = $(this).index();
+	if ($(this).hasClass('parent')) {
+		var eq = $(this).parent().index();
+	}
+	if (!$(this).hasClass('active')) {
+		$(this).closest('.tabs').find('.tab__navitem').removeClass('active');
+		$(this).addClass('active');
+		$(this).closest('.tabs').find('.tab__item').removeClass('active').eq(eq).addClass('active');
+		if ($(this).closest('.tabs').find('.slick-slider').length > 0) {
+			$(this).closest('.tabs').find('.slick-slider').slick('setPosition');
+		}
+	}
+});
+
+
+// Селекты
+$(document).ready(function () {
+	var w = $(window).outerWidth();
+	var h = $(window).outerHeight();
+	var ua = window.navigator.userAgent;
+	var msie = ua.indexOf("MSIE ");
+	var isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
+	function isIE() {
+		ua = navigator.userAgent;
+		var is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
+		return is_ie;
+	}
+	if (isIE()) {
+		$('body').addClass('ie');
+	}
+	if (isMobile.any()) {
+		$('body').addClass('touch');
+	}
 //FORMS
-// function forms() {
-// 	//SELECT
-// 	if ($('select').length > 0) {
-// 		function selectscrolloptions() {
-// 			var scs = 100;
-// 			var mss = 50;
-// 			if (isMobile.any()) {
-// 				scs = 10;
-// 				mss = 1;
-// 			}
-// 			var opt = {
-// 				cursorcolor: "#9B4E7C",
-// 				cursorwidth: "12px",
-// 				background: "",
-// 				autohidemode: false,
-// 				bouncescroll: false,
-// 				cursorborderradius: "10px",
-// 				scrollspeed: scs,
-// 				mousescrollstep: mss,
-// 				directionlockdeadzone: 0,
-// 				cursorborder: "0px solid #fff",
-// 			};
-// 			return opt;
-// 		}
+function forms() {
+	//SELECT
+	if ($('select').length > 0) {
+		function selectscrolloptions() {
+			var scs = 100;
+			var mss = 50;
+			if (isMobile.any()) {
+				scs = 10;
+				mss = 1;
+			}
+			var opt = {
+				cursorcolor: "#9B4E7C",
+				cursorwidth: "12px",
+				background: "",
+				autohidemode: false,
+				bouncescroll: false,
+				cursorborderradius: "10px",
+				scrollspeed: scs,
+				mousescrollstep: mss,
+				directionlockdeadzone: 0,
+				cursorborder: "0px solid #fff",
+			};
+			return opt;
+		}
 
-// 		function select() {
-// 			$.each($('select'), function (index, val) {
-// 				var ind = index;
-// 				$(this).hide();
-// 				if ($(this).parent('.select-block').length == 0) {
-// 					$(this).wrap("<div class='select-block " + $(this).attr('class') + "-select-block'></div>");
-// 				} else {
-// 					$(this).parent('.select-block').find('.select').remove();
-// 				}
-// 				let cl = '';
-// 				var milti = '';
-// 				var check = '';
-// 				var sblock = $(this).parent('.select-block');
-// 				var soptions = "<div class='select-options'><div class='select-options-scroll'><div class='select-options-list'>";
-// 				if ($(this).attr('multiple') == 'multiple') {
-// 					milti = 'multiple';
-// 					check = 'check';
-// 				}
-// 				$.each($(this).find('option'), function (index, val) {
-// 					if ($(this).attr('class') != '' && $(this).attr('class') != null) {
-// 						let cl = $(this).attr('class');
-// 					}
-// 					if ($(this).attr('value') != '') {
-// 						if ($(this).attr('data-icon') != '' && $(this).attr('data-icon') != null) {
-// 							soptions = soptions + "<div data-value='" + $(this).attr('value') + "' class='select-options__value_" + ind + " select-options__value value_" + $(this).val() + " " + cl + " " + check + "'><div><img src=" + $(this).attr('data-icon') + " alt=\"\"></div><div>" + $(this).html() + "</div></div>";
-// 						} else {
-// 							soptions = soptions + "<div data-value='" + $(this).attr('value') + "' class='select-options__value_" + ind + " select-options__value value_" + $(this).val() + " " + cl + " " + check + "'>" + $(this).html() + "</div>";
-// 						}
-// 					} else if ($(this).parent().attr('data-label') == 'on') {
-// 						if (sblock.find('.select__label').length == 0) {
-// 							sblock.prepend('<div class="select__label">' + $(this).html() + '</div>');
-// 						}
-// 					}
-// 				});
-// 				soptions = soptions + "</div></div></div>";
-// 				if ($(this).attr('data-type') == 'search') {
-// 					sblock.append("<div data-type='search' class='select_" + ind + " select" + " " + $(this).attr('class') + "__select " + milti + "'>" +
-// 						"<div class='select-title'>" +
-// 						"<div class='select-title__arrow ion-ios-arrow-down'></div>" +
-// 						"<input data-value='" + $(this).find('option[selected="selected"]').html() + "' class='select-title__value value_" + $(this).find('option[selected="selected"]').val() + "' />" +
-// 						"</div>" +
-// 						soptions +
-// 						"</div>");
-// 					$('.select_' + ind).find('input.select-title__value').jcOnPageFilter({
-// 						parentSectionClass: 'select-options_' + ind,
-// 						parentLookupClass: 'select-options__value_' + ind,
-// 						childBlockClass: 'select-options__value_' + ind
-// 					});
-// 				} else if ($(this).attr('data-icon') == 'true') {
-// 					sblock.append("<div class='select_" + ind + " select" + " " + $(this).attr('class') + "__select icon " + milti + "'>" +
-// 						"<div class='select-title'>" +
-// 						"<div class='select-title__arrow ion-ios-arrow-down'></div>" +
-// 						"<div class='select-title__value value_" + $(this).find('option[selected="selected"]').val() + "'><div><img src=" + $(this).find('option[selected="selected"]').attr('data-icon') + " alt=\"\"></div><div>" + $(this).find('option[selected="selected"]').html() + "</div></div>" +
-// 						"</div>" +
-// 						soptions +
-// 						"</div>");
-// 				} else {
-// 					sblock.append("<div class='select_" + ind + " select" + " " + $(this).attr('class') + "__select " + milti + "'>" +
-// 						"<div class='select-title'>" +
-// 						"<div class='select-title__arrow ion-ios-arrow-down'></div>" +
-// 						"<div class='select-title__value value_" + $(this).find('option[selected="selected"]').val() + "'>" + $(this).find('option[selected="selected"]').html() + "</div>" +
-// 						"</div>" +
-// 						soptions +
-// 						"</div>");
-// 				}
-// 				if ($(this).find('option[selected="selected"]').val() != '') {
-// 					sblock.find('.select').addClass('focus');
-// 				}
+		function select() {
+			$.each($('select'), function (index, val) {
+				var ind = index;
+				$(this).hide();
+				if ($(this).parent('.select-block').length == 0) {
+					$(this).wrap("<div class='select-block " + $(this).attr('class') + "-select-block'></div>");
+				} else {
+					$(this).parent('.select-block').find('.select').remove();
+				}
+				let cl = '';
+				var milti = '';
+				var check = '';
+				var sblock = $(this).parent('.select-block');
+				var soptions = "<div class='select-options'><div class='select-options-scroll'><div class='select-options-list'>";
+				if ($(this).attr('multiple') == 'multiple') {
+					milti = 'multiple';
+					check = 'check';
+				}
+				$.each($(this).find('option'), function (index, val) {
+					if ($(this).attr('class') != '' && $(this).attr('class') != null) {
+						let cl = $(this).attr('class');
+					}
+					if ($(this).attr('value') != '') {
+						if ($(this).attr('data-icon') != '' && $(this).attr('data-icon') != null) {
+							soptions = soptions + "<div data-value='" + $(this).attr('value') + "' class='select-options__value_" + ind + " select-options__value value_" + $(this).val() + " " + cl + " " + check + "'><div><img src=" + $(this).attr('data-icon') + " alt=\"\"></div><div>" + $(this).html() + "</div></div>";
+						} else {
+							soptions = soptions + "<div data-value='" + $(this).attr('value') + "' class='select-options__value_" + ind + " select-options__value value_" + $(this).val() + " " + cl + " " + check + "'>" + $(this).html() + "</div>";
+						}
+					} else if ($(this).parent().attr('data-label') == 'on') {
+						if (sblock.find('.select__label').length == 0) {
+							sblock.prepend('<div class="select__label">' + $(this).html() + '</div>');
+						}
+					}
+				});
+				soptions = soptions + "</div></div></div>";
+				if ($(this).attr('data-type') == 'search') {
+					sblock.append("<div data-type='search' class='select_" + ind + " select" + " " + $(this).attr('class') + "__select " + milti + "'>" +
+						"<div class='select-title'>" +
+						"<div class='select-title__arrow ion-ios-arrow-down'></div>" +
+						"<input data-value='" + $(this).find('option[selected="selected"]').html() + "' class='select-title__value value_" + $(this).find('option[selected="selected"]').val() + "' />" +
+						"</div>" +
+						soptions +
+						"</div>");
+					$('.select_' + ind).find('input.select-title__value').jcOnPageFilter({
+						parentSectionClass: 'select-options_' + ind,
+						parentLookupClass: 'select-options__value_' + ind,
+						childBlockClass: 'select-options__value_' + ind
+					});
+				} else if ($(this).attr('data-icon') == 'true') {
+					sblock.append("<div class='select_" + ind + " select" + " " + $(this).attr('class') + "__select icon " + milti + "'>" +
+						"<div class='select-title'>" +
+						"<div class='select-title__arrow ion-ios-arrow-down'></div>" +
+						"<div class='select-title__value value_" + $(this).find('option[selected="selected"]').val() + "'><div><img src=" + $(this).find('option[selected="selected"]').attr('data-icon') + " alt=\"\"></div><div>" + $(this).find('option[selected="selected"]').html() + "</div></div>" +
+						"</div>" +
+						soptions +
+						"</div>");
+				} else {
+					sblock.append("<div class='select_" + ind + " select" + " " + $(this).attr('class') + "__select " + milti + "'>" +
+						"<div class='select-title'>" +
+						"<div class='select-title__arrow ion-ios-arrow-down'></div>" +
+						"<div class='select-title__value value_" + $(this).find('option[selected="selected"]').val() + "'>" + $(this).find('option[selected="selected"]').html() + "</div>" +
+						"</div>" +
+						soptions +
+						"</div>");
+				}
+				if ($(this).find('option[selected="selected"]').val() != '') {
+					sblock.find('.select').addClass('focus');
+				}
 
-// 				if (sblock.find('.select-options__value').length == 1) {
-// 					sblock.find('.select').addClass('one');
-// 				}
+				if (sblock.find('.select-options__value').length == 1) {
+					sblock.find('.select').addClass('one');
+				}
 
-// 				if ($(this).attr('data-req') == 'on') {
-// 					$(this).addClass('req');
-// 				}
-// 				$(".select_" + ind + " .select-options-scroll").niceScroll('.select-options-list', selectscrolloptions());
-// 			});
-// 		}
-// 		select();
+				if ($(this).attr('data-req') == 'on') {
+					$(this).addClass('req');
+				}
+				$(".select_" + ind + " .select-options-scroll").niceScroll('.select-options-list', selectscrolloptions());
+			});
+		}
+		select();
 
-// 		$('body').on('keyup', 'input.select-title__value', function () {
-// 			$('.select').not($(this).parents('.select')).removeClass('active').find('.select-options').slideUp(50);
-// 			$(this).parents('.select').addClass('active');
-// 			$(this).parents('.select').find('.select-options').slideDown(50, function () {
-// 				$(this).find(".select-options-scroll").getNiceScroll().resize();
-// 			});
-// 			$(this).parents('.select-block').find('select').val('');
-// 		});
-// 		$('body').on('click', '.select', function () {
-// 			if (!$(this).hasClass('disabled') && !$(this).hasClass('one')) {
-// 				$('.select').not(this).removeClass('active').find('.select-options').slideUp(50);
-// 				$(this).toggleClass('active');
-// 				$(this).find('.select-options').slideToggle(50, function () {
-// 					$(this).find(".select-options-scroll").getNiceScroll().resize();
-// 				});
+		$('body').on('keyup', 'input.select-title__value', function () {
+			$('.select').not($(this).parents('.select')).removeClass('active').find('.select-options').slideUp(50);
+			$(this).parents('.select').addClass('active');
+			$(this).parents('.select').find('.select-options').slideDown(50, function () {
+				$(this).find(".select-options-scroll").getNiceScroll().resize();
+			});
+			$(this).parents('.select-block').find('select').val('');
+		});
+		$('body').on('click', '.select', function () {
+			if (!$(this).hasClass('disabled') && !$(this).hasClass('one')) {
+				$('.select').not(this).removeClass('active').find('.select-options').slideUp(50);
+				$(this).toggleClass('active');
+				$(this).find('.select-options').slideToggle(50, function () {
+					$(this).find(".select-options-scroll").getNiceScroll().resize();
+				});
 
-// 				//	var input=$(this).parent().find('select');
-// 				//removeError(input);
+				//	var input=$(this).parent().find('select');
+				//removeError(input);
 
-// 				if ($(this).attr('data-type') == 'search') {
-// 					if (!$(this).hasClass('active')) {
-// 						searchselectreset();
-// 					}
-// 					$(this).find('.select-options__value').show();
-// 				}
-
-
-// 				var cl = $.trim($(this).find('.select-title__value').attr('class').replace('select-title__value', ''));
-// 				$(this).find('.select-options__value').show().removeClass('hide').removeClass('last');
-// 				if (cl != '') {
-// 					$(this).find('.select-options__value.' + cl).hide().addClass('hide');
-// 				}
-// 				if ($(this).find('.select-options__value').last().hasClass('hide')) {
-// 					$(this).find('.select-options__value').last().prev().addClass('last');
-// 				}
-// 			}
-// 		});
-// 		$('body').on('click', '.select-options__value', function () {
-// 			if ($(this).parents('.select').hasClass('multiple')) {
-// 				if ($(this).hasClass('active')) {
-// 					if ($(this).parents('.select').find('.select-title__value span').length > 0) {
-// 						$(this).parents('.select').find('.select-title__value').append('<span data-value="' + $(this).data('value') + '">, ' + $(this).html() + '</span>');
-// 					} else {
-// 						$(this).parents('.select').find('.select-title__value').data('label', $(this).parents('.select').find('.select-title__value').html());
-// 						$(this).parents('.select').find('.select-title__value').html('<span data-value="' + $(this).data('value') + '">' + $(this).html() + '</span>');
-// 					}
-// 					$(this).parents('.select-block').find('select').find('option').eq($(this).index() + 1).prop('selected', true);
-// 					$(this).parents('.select').addClass('focus');
-// 				} else {
-// 					$(this).parents('.select').find('.select-title__value').find('span[data-value="' + $(this).data('value') + '"]').remove();
-// 					if ($(this).parents('.select').find('.select-title__value span').length == 0) {
-// 						$(this).parents('.select').find('.select-title__value').html($(this).parents('.select').find('.select-title__value').data('label'));
-// 						$(this).parents('.select').removeClass('focus');
-// 					}
-// 					$(this).parents('.select-block').find('select').find('option').eq($(this).index() + 1).prop('selected', false);
-// 				}
-// 				return false;
-// 			}
+				if ($(this).attr('data-type') == 'search') {
+					if (!$(this).hasClass('active')) {
+						searchselectreset();
+					}
+					$(this).find('.select-options__value').show();
+				}
 
 
-// 			if ($(this).parents('.select').attr('data-type') == 'search') {
-// 				$(this).parents('.select').find('.select-title__value').val($(this).html());
-// 				$(this).parents('.select').find('.select-title__value').attr('data-value', $(this).html());
-// 			} else {
-// 				$(this).parents('.select').find('.select-title__value').attr('class', 'select-title__value value_' + $(this).data('value'));
-// 				$(this).parents('.select').find('.select-title__value').html($(this).html());
+				var cl = $.trim($(this).find('.select-title__value').attr('class').replace('select-title__value', ''));
+				$(this).find('.select-options__value').show().removeClass('hide').removeClass('last');
+				if (cl != '') {
+					$(this).find('.select-options__value.' + cl).hide().addClass('hide');
+				}
+				if ($(this).find('.select-options__value').last().hasClass('hide')) {
+					$(this).find('.select-options__value').last().prev().addClass('last');
+				}
+			}
+		});
+		$('body').on('click', '.select-options__value', function () {
+			if ($(this).parents('.select').hasClass('multiple')) {
+				if ($(this).hasClass('active')) {
+					if ($(this).parents('.select').find('.select-title__value span').length > 0) {
+						$(this).parents('.select').find('.select-title__value').append('<span data-value="' + $(this).data('value') + '">, ' + $(this).html() + '</span>');
+					} else {
+						$(this).parents('.select').find('.select-title__value').data('label', $(this).parents('.select').find('.select-title__value').html());
+						$(this).parents('.select').find('.select-title__value').html('<span data-value="' + $(this).data('value') + '">' + $(this).html() + '</span>');
+					}
+					$(this).parents('.select-block').find('select').find('option').eq($(this).index() + 1).prop('selected', true);
+					$(this).parents('.select').addClass('focus');
+				} else {
+					$(this).parents('.select').find('.select-title__value').find('span[data-value="' + $(this).data('value') + '"]').remove();
+					if ($(this).parents('.select').find('.select-title__value span').length == 0) {
+						$(this).parents('.select').find('.select-title__value').html($(this).parents('.select').find('.select-title__value').data('label'));
+						$(this).parents('.select').removeClass('focus');
+					}
+					$(this).parents('.select-block').find('select').find('option').eq($(this).index() + 1).prop('selected', false);
+				}
+				return false;
+			}
 
-// 			}
 
-// 			$(this).parents('.select-block').find('select').find('option').removeAttr("selected");
-// 			if ($.trim($(this).data('value')) != '') {
-// 				$(this).parents('.select-block').find('select').val($(this).data('value'));
-// 				$(this).parents('.select-block').find('select').find('option[value="' + $(this).data('value') + '"]').attr('selected', 'selected');
-// 			} else {
-// 				$(this).parents('.select-block').find('select').val($(this).html());
-// 				$(this).parents('.select-block').find('select').find('option[value="' + $(this).html() + '"]').attr('selected', 'selected');
-// 			}
+			if ($(this).parents('.select').attr('data-type') == 'search') {
+				$(this).parents('.select').find('.select-title__value').val($(this).html());
+				$(this).parents('.select').find('.select-title__value').attr('data-value', $(this).html());
+			} else {
+				$(this).parents('.select').find('.select-title__value').attr('class', 'select-title__value value_' + $(this).data('value'));
+				$(this).parents('.select').find('.select-title__value').html($(this).html());
+
+			}
+
+			$(this).parents('.select-block').find('select').find('option').removeAttr("selected");
+			if ($.trim($(this).data('value')) != '') {
+				$(this).parents('.select-block').find('select').val($(this).data('value'));
+				$(this).parents('.select-block').find('select').find('option[value="' + $(this).data('value') + '"]').attr('selected', 'selected');
+			} else {
+				$(this).parents('.select-block').find('select').val($(this).html());
+				$(this).parents('.select-block').find('select').find('option[value="' + $(this).html() + '"]').attr('selected', 'selected');
+			}
 
 
-// 			if ($(this).parents('.select-block').find('select').val() != '') {
-// 				$(this).parents('.select-block').find('.select').addClass('focus');
-// 			} else {
-// 				$(this).parents('.select-block').find('.select').removeClass('focus');
+			if ($(this).parents('.select-block').find('select').val() != '') {
+				$(this).parents('.select-block').find('.select').addClass('focus');
+			} else {
+				$(this).parents('.select-block').find('.select').removeClass('focus');
 
-// 				$(this).parents('.select-block').find('.select').removeClass('err');
-// 				$(this).parents('.select-block').parent().removeClass('err');
-// 				$(this).parents('.select-block').removeClass('err').find('.form__error').remove();
-// 			}
-// 			if (!$(this).parents('.select').data('tags') != "") {
-// 				if ($(this).parents('.form-tags').find('.form-tags__item[data-value="' + $(this).data('value') + '"]').length == 0) {
-// 					$(this).parents('.form-tags').find('.form-tags-items').append('<a data-value="' + $(this).data('value') + '" href="" class="form-tags__item">' + $(this).html() + '<span class="fa fa-times"></span></a>');
-// 				}
-// 			}
-// 			$(this).parents('.select-block').find('select').change();
+				$(this).parents('.select-block').find('.select').removeClass('err');
+				$(this).parents('.select-block').parent().removeClass('err');
+				$(this).parents('.select-block').removeClass('err').find('.form__error').remove();
+			}
+			if (!$(this).parents('.select').data('tags') != "") {
+				if ($(this).parents('.form-tags').find('.form-tags__item[data-value="' + $(this).data('value') + '"]').length == 0) {
+					$(this).parents('.form-tags').find('.form-tags-items').append('<a data-value="' + $(this).data('value') + '" href="" class="form-tags__item">' + $(this).html() + '<span class="fa fa-times"></span></a>');
+				}
+			}
+			$(this).parents('.select-block').find('select').change();
 
-// 			if ($(this).parents('.select-block').find('select').data('update') == 'on') {
-// 				select();
-// 			}
-// 		});
-// 		$(document).on('click touchstart', function (e) {
-// 			if (!$(e.target).is(".select *") && !$(e.target).is(".select")) {
-// 				$('.select').removeClass('active');
-// 				$('.select-options').slideUp(50, function () { });
-// 				searchselectreset();
-// 			};
-// 		});
-// 		$(document).on('keydown', function (e) {
-// 			if (e.which == 27) {
-// 				$('.select').removeClass('active');
-// 				$('.select-options').slideUp(50, function () { });
-// 				searchselectreset();
-// 			}
-// 		});
-// 	}
+			if ($(this).parents('.select-block').find('select').data('update') == 'on') {
+				select();
+			}
+		});
+		$(document).on('click touchstart', function (e) {
+			if (!$(e.target).is(".select *") && !$(e.target).is(".select")) {
+				$('.select').removeClass('active');
+				$('.select-options').slideUp(50, function () { });
+				searchselectreset();
+			};
+		});
+		$(document).on('keydown', function (e) {
+			if (e.which == 27) {
+				$('.select').removeClass('active');
+				$('.select-options').slideUp(50, function () { });
+				searchselectreset();
+			}
+		});
+	}
+
+	//CHECK
+	$.each($('.check'), function (index, val) {
+		if ($(this).find('input').prop('checked') == true) {
+			$(this).addClass('active');
+		}
+	});
+	$('body').off('click', '.check', function (event) { });
+	$('body').on('click', '.check', function (event) {
+		if (!$(this).hasClass('disable')) {
+			var target = $(event.target);
+			if (!target.is("a")) {
+				$(this).toggleClass('active');
+				if ($(this).hasClass('active')) {
+					$(this).find('input').prop('checked', true);
+				} else {
+					$(this).find('input').prop('checked', false);
+				}
+			}
+		}
+	});
+
+	//OPTION
+	$.each($('.option.active'), function (index, val) {
+		$(this).find('input').prop('checked', true);
+	});
+	$('.option').click(function (event) {
+		if (!$(this).hasClass('disable')) {
+			var target = $(event.target);
+			if (!target.is("a")) {
+				if ($(this).hasClass('active') && $(this).hasClass('order')) {
+					$(this).toggleClass('orderactive');
+				}
+				$(this).parents('.options').find('.option').removeClass('active');
+				$(this).toggleClass('active');
+				$(this).children('input').prop('checked', true);
+			}
+		}
+	});
+	
+}
+
+forms();
+
+});
