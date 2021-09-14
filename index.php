@@ -1,58 +1,615 @@
 <?php get_header(); ?>
 
-<section>
-	<div class="container">
-		<div class="lgozon">
-			<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="" class="logomain">
-			<form action="" class="search">
-				<div class="radioBlk">
-					<input type="radio" <? if (($_REQUEST["type"] === "%") || ($_REQUEST["type"] === "")) echo "checked"; ?> checked id="all" name="type" value="%" onChange="this.form.submit()"> <label for="all">Любой тип</label>
-					<input type="radio" <? if ($_REQUEST["type"] === "Квартира") echo "checked"; ?> id="kvartira" name="type" value="Квартира" onChange="this.form.submit()"> <label for="kvartira">Квартира</label>
-					<input type="radio" <? if ($_REQUEST["type"] === "Земельный участок") echo "checked"; ?> id="uhastok" name="type" value="Земельный участок" onChange="this.form.submit()"> <label for="uhastok">Земельный участок</label>
-					<input type="radio" <? if ($_REQUEST["type"] === "Дом") echo "checked"; ?> id="dom" name="type" value="Дом" onChange="this.form.submit()"> <label for="dom">Дом</label>
-				</div>
-				<input class="searchstr" type="text" name="serchstr" value="<? echo $_REQUEST["serchstr"]; ?>" placeholder="Введите улицу или район">
-				<input type="submit" class="btn" value="Поиск">
-			</form>
-			<div class="objects">
-				<?
-				$searchStr = !empty($_REQUEST["serchstr"]) ? "%" . $_REQUEST["serchstr"] . "%" : "%";
-				$type = !empty($_REQUEST["type"]) ? $_REQUEST["type"] : "%";
-				global $wpdb;
-				$rez = $wpdb->get_results('SELECT * FROM `kn_objnedv` WHERE (`street` LIKE "' . $searchStr . '" OR `np_raion` LIKE "' . $searchStr . '" OR `obl` LIKE "' . $searchStr . '" OR `obl_raion` LIKE "' . $searchStr . '") AND (`type` LIKE "' . $type . '")')
-				?>
-				<? foreach ($rez as $e) { ?>
-					<div class="obj" data-rowid="<? echo $e->row_id; ?>" data-lot="<? echo $e->lot; ?>">
+<?php get_template_part('template-parts/header-section');?>
 
-						<div class="img_wrapper">
-							<img class="<? echo empty($e->photo) ? "contain" : "cover"; ?>" src="<? echo !empty($e->photo) ? $e->photo : get_template_directory_uri() . "/img/nophoto.jpg"; ?>" alt="">
-						</div>
+<main class="page">
+	<section id="info" class="info">
+		<div class="nuar_blk"></div>
+		<div class="container">
 
-						<div class="info_wrapper">
-							<p class="price">
-								<? echo $e->price; ?> <span class="rz">₽</span>
-							</p>
+			<h1>Вся недвижимость Курска</h1>
 
-							<div class="type">
-								<? echo $e->type; ?>
-							</div>
-
-							<div class="adr">
-								<? echo $e->obl . " " . $e->street . " " . $e->np . " " . $e->street . " " . $e->dom_number; ?>
-							</div>
-
-						</div>
-
-						<div class="btn_wrapper">
-							<a data-lot="<? echo $e->lot; ?>" href="#callback" class="_popup-link btn">Оставить заявку</a>
-						</div>
-
-
-					</div>
-				<? } ?>
+			<div class="info__item d-flex">
+				<a href="#" class="info__item-link">Купить</a>
+				<a href="sell.html" class="info__item-link">Продать</a>
+				<a href="pass.html" class="info__item-link">Сдать</a>
+				<a href="#" class="info__item-link">Снять</a>
 			</div>
-		</div>
-	</div>
-</section>
 
-<?php get_footer(); ?>
+			<div class="info__block-tabs block__tabs tabs">
+				<nav class="block__nav">
+					<div class="block__navitem building-icon-01 tab__navitem active">Вторичная</div>
+					<div class="block__navitem building-icon-02 tab__navitem">Новостройки</div>
+					<div class="block__navitem building-icon-03 tab__navitem">Дома, участки, дачи</div>
+					<div class="block__navitem building-icon-04 tab__navitem">Коммерческая</div>
+				</nav>
+				<div class="block__items">
+					<div class="block__item tab__item active">
+						<form action="#" class="info__form-block">
+
+							<div class="info__form-block-col">
+								<div class="info__form-block-sel form-block__item">
+									<p class="info__form-block-sub">Количество комнат</p>
+									<select name="form[]" class="form">
+										<option value="1" selected="selected">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</div>
+
+								<div class="info__form-block-sel">
+									<p class="info__form-block-sub">Этажей в доме</p>
+									<select name="form[]" class="form">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5" selected="selected">5</option>
+									</select>
+								</div>
+
+								<div class="info__form-block-inp">
+									<p class="info__form-block-sub">Cтоимость</p>
+									<div class="info__form-block-inp-number">
+										<input type="number" placeholder="От" class="input">
+										<input type="number" placeholder="До" class="input">
+									</div>
+								</div>
+
+								<div class="info__form-block-inp">
+									<p class="info__form-block-sub">Площадь</p>
+									<div class="info__form-block-inp-number">
+										<input type="number" placeholder="От" class="input">
+										<input type="number" placeholder="До" class="input">
+									</div>
+								</div>
+
+								<div class="info__form-block-sel info__form-block-sel_last">
+									<p class="info__form-block-sub">Район</p>
+									<select name="form[]" class="form">
+										<option value="1" selected="selected">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="info__form-block-col">
+								<div class="info__form-block-inp info__form-block-inp_bottom">
+									<input type="text" placeholder="Район, улица, дом" class="input">
+								</div>
+								<button class="info__form-block-inp-btn btn">Показать 1000 Вариантов</button>
+							</div>
+
+						</form>
+					</div>
+					<div class="block__item tab__item">
+						<form action="#" class="info__form-block">
+
+							<div class="info__form-block-col">
+								<div class="info__form-block-sel form-block__item">
+									<p class="info__form-block-sub">Количество комнат</p>
+									<select name="form[]" class="form">
+										<option value="1" selected="selected">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</div>
+
+								<div class="info__form-block-sel">
+									<p class="info__form-block-sub">Этажей в доме</p>
+									<select name="form[]" class="form">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5" selected="selected">5</option>
+									</select>
+								</div>
+
+								<div class="info__form-block-inp">
+									<p class="info__form-block-sub">Cтоимость</p>
+									<div class="info__form-block-inp-number">
+										<input type="number" placeholder="От" class="input">
+										<input type="number" placeholder="До" class="input">
+									</div>
+								</div>
+
+								<div class="info__form-block-inp">
+									<p class="info__form-block-sub">Площадь</p>
+									<div class="info__form-block-inp-number">
+										<input type="number" placeholder="От" class="input">
+										<input type="number" placeholder="До" class="input">
+									</div>
+								</div>
+
+								<div class="info__form-block-sel info__form-block-sel_last">
+									<p class="info__form-block-sub">Район</p>
+									<select name="form[]" class="form">
+										<option value="1" selected="selected">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="info__form-block-col">
+								<div class="info__form-block-inp info__form-block-inp_bottom">
+									<input type="text" placeholder="Район, улица, дом" class="input">
+								</div>
+								<button class="info__form-block-inp-btn btn">Показать 1000 Вариантов</button>
+							</div>
+
+						</form>
+					</div>
+					<div class="block__item tab__item">
+						<form action="#" class="info__form-block">
+
+							<div class="info__form-block-col">
+								<div class="info__form-block-sel form-block__item">
+									<p class="info__form-block-sub">Количество комнат</p>
+									<select name="form[]" class="form">
+										<option value="1" selected="selected">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</div>
+
+								<div class="info__form-block-sel">
+									<p class="info__form-block-sub">Этажей в доме</p>
+									<select name="form[]" class="form">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5" selected="selected">5</option>
+									</select>
+								</div>
+
+								<div class="info__form-block-inp">
+									<p class="info__form-block-sub">Cтоимость</p>
+									<div class="info__form-block-inp-number">
+										<input type="number" placeholder="От" class="input">
+										<input type="number" placeholder="До" class="input">
+									</div>
+								</div>
+
+								<div class="info__form-block-inp">
+									<p class="info__form-block-sub">Площадь</p>
+									<div class="info__form-block-inp-number">
+										<input type="number" placeholder="От" class="input">
+										<input type="number" placeholder="До" class="input">
+									</div>
+								</div>
+
+								<div class="info__form-block-sel info__form-block-sel_last">
+									<p class="info__form-block-sub">Район</p>
+									<select name="form[]" class="form">
+										<option value="1" selected="selected">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="info__form-block-col">
+								<div class="info__form-block-inp info__form-block-inp_bottom">
+									<input type="text" placeholder="Район, улица, дом" class="input">
+								</div>
+								<button class="info__form-block-inp-btn btn">Показать 1000 Вариантов</button>
+							</div>
+
+						</form>
+					</div>
+					<div class="block__item tab__item">
+						<form action="#" class="info__form-block">
+
+							<div class="info__form-block-col">
+								<div class="info__form-block-sel form-block__item">
+									<p class="info__form-block-sub">Количество комнат</p>
+									<select name="form[]" class="form">
+										<option value="1" selected="selected">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</div>
+
+								<div class="info__form-block-sel">
+									<p class="info__form-block-sub">Этажей в доме</p>
+									<select name="form[]" class="form">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5" selected="selected">5</option>
+									</select>
+								</div>
+
+								<div class="info__form-block-inp">
+									<p class="info__form-block-sub">Cтоимость</p>
+									<div class="info__form-block-inp-number">
+										<input type="number" placeholder="От" class="input">
+										<input type="number" placeholder="До" class="input">
+									</div>
+								</div>
+
+								<div class="info__form-block-inp">
+									<p class="info__form-block-sub">Площадь</p>
+									<div class="info__form-block-inp-number">
+										<input type="number" placeholder="От" class="input">
+										<input type="number" placeholder="До" class="input">
+									</div>
+								</div>
+
+								<div class="info__form-block-sel info__form-block-sel_last">
+									<p class="info__form-block-sub">Район</p>
+									<select name="form[]" class="form">
+										<option value="1" selected="selected">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="info__form-block-col">
+								<div class="info__form-block-inp info__form-block-inp_bottom">
+									<input type="text" placeholder="Район, улица, дом" class="input">
+								</div>
+								<button class="info__form-block-inp-btn btn">Показать 1000 Вариантов</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<section id="topical" class="topical">
+		<div class="container">
+			<h2>Актуальные предложения</h2>
+
+			<div class="topical__slider topical__row d-flex">
+
+				<a href="#" class="topical__card">
+					<div class="topical__position">
+						<p>ЖК <br>
+						"Пятницкий"</p>
+					</div>
+					<img src="<?php echo get_template_directory_uri();?>/img/offers/01.jpg" alt="">
+				</a>
+
+				<a href="#" class="topical__card">
+					<div class="topical__position topical__position_two">
+						<p>Новостройки <br>
+						"БетонКомплект"</p>
+					</div>
+					<img src="<?php echo get_template_directory_uri();?>/img/offers/02.jpg" alt="">
+				</a>
+
+				<a href="#" class="topical__card">
+					<div class="topical__position">
+						<p>ЖК <br>
+						"Пятницкий"</p>
+					</div>
+					<img src="<?php echo get_template_directory_uri();?>/img/offers/01.jpg" alt="">
+				</a>
+
+				<a href="#" class="topical__card">
+					<div class="topical__position topical__position_two">
+						<p>Новостройки <br>
+						"БетонКомплект"</p>
+					</div>
+					<img src="<?php echo get_template_directory_uri();?>/img/offers/02.jpg" alt="">
+				</a>
+
+			</div>
+
+		</div>
+	</section>
+
+	<section id="choice" class="choice">
+		<div class="container">
+			<h2>Почему выбирают нас</h2>
+
+			<div class="advant__row d-flex">
+
+				<div class="advant__item advant-icon-01">
+					<div class="advant__item-line"></div>
+					<h3>
+						Самая большая
+						база недвижимости
+						в Курске
+					</h3>
+				</div>
+
+				<div class="advant__item advant-icon-02">
+					<div class="advant__item-line"></div>
+					<h3>
+						Только самые
+						профессиональные
+						риелторы
+					</h3>
+				</div>
+
+				<div class="advant__item advant-icon-03">
+					<div class="advant__item-line"></div>
+					<h3>
+						Индивидуальный
+						подход к каждому
+						клиенту
+					</h3>
+				</div>
+
+				<div class="advant__item advant-icon-04">
+					<div class="advant__item-line"></div>
+					<h3>
+						10 лет на рынке
+						недвижимости
+						Курска и области
+					</h3>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+	<section id="reviews" class="reviews">
+		<div class="container">
+			<h2>Отзывы довольных клиентов</h2>
+
+			<div class="reviews__row d-flex">
+
+				<div class="reviews__card d-flex">
+					<div class="reviews__image-wrap">
+						<div class="reviews__image">
+							<img src="<?php echo get_template_directory_uri();?>/img/reviews/01.jpg" alt="">
+						</div>
+					</div>
+					<h4>Алексей</h4>
+					<p class="reviews__date">18 сентября 2020</p>
+					<span class="reviews__like"></span>
+					<p class="reviews__descp">
+						Здравствуйте! Хотим отметить Венеру, как грамотного специалиста, добросовестного работника и чуткого
+						человека. Благодаря ей мы оперативно и выгодно продали одну квартиру и приобрели две новые. Венера
+						сумела найти общий язык со всеми участниками сделок, обойти всё острые углы
+					</p>
+					<a href="#" class="reviews__btn">Читать отзыв в Vk</a>
+				</div>
+
+				<div class="reviews__card d-flex">
+					<div class="reviews__image-wrap">
+						<div class="reviews__image">
+							<img src="<?php echo get_template_directory_uri();?>/img/reviews/02.jpg" alt="">
+						</div>
+					</div>
+					<h4>Маргарита</h4>
+					<p class="reviews__date">5 июля 2021</p>
+					<span class="reviews__like"></span>
+					<p class="reviews__descp">
+						Здравствуйте! Хотим отметить Венеру, как грамотного специалиста, добросовестного работника и чуткого
+						человека. Благодаря ей мы оперативно и выгодно продали одну квартиру и приобрели две новые. Венера
+						сумела найти общий язык со всеми участниками сделок, обойти всё острые углы
+					</p>
+					<a href="#" class="reviews__btn">Читать отзыв в Vk</a>
+				</div>
+
+				<div class="reviews__card d-flex">
+					<div class="reviews__image-wrap">
+						<div class="reviews__image">
+							<img src="<?php echo get_template_directory_uri();?>/img/reviews/03.jpg" alt="">
+						</div>
+					</div>
+					<h4>Ирина</h4>
+					<p class="reviews__date">18 сентября 2020</p>
+					<span class="reviews__like"></span>
+					<p class="reviews__descp">
+						Здравствуйте! Хотим отметить Венеру, как грамотного специалиста, добросовестного работника и чуткого
+						человека. Благодаря ей мы оперативно и выгодно продали одну квартиру и приобрели две новые. Венера
+						сумела найти общий язык со всеми участниками сделок, обойти всё острые углы
+					</p>
+					<a href="#" class="reviews__btn">Читать отзыв в Vk</a>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+	<section id="hot-deals" class="hot-deals">
+		<div class="container">
+			<h2>Горячие предложения</h2>
+
+			<div class="slider__hot-deals hot-deals__row d-flex">
+
+				<div class="hot-deals__card">
+					<div class="hot-deals__card-img">
+						<img src="<?php echo get_template_directory_uri();?>/img/hot-deals/01.jpg" alt="">
+					</div>
+					<div class="hot-deals__card-descp">
+						<p class="hot-deals__card-price rub">2 500 000 </p>
+						<div class="hot-deals__card-charect d-flex">
+							<p class="hot-deals__card-housing">2-х комнатная квартира </p>
+							<p class="hot-deals__card-amount">44 м² | 5 / 5 эт.</p>
+						</div>
+						<p class="hot-deals__card-address">ул. Новая д. 34</p>
+					</div>
+					<div class="hot-deals__card-btn d-flex">
+						<a href="#" class="hot-deals__card-link">Подробнее</a>
+						<a href="#" class="hot-deals__card-link">Оставить заявку</a>
+					</div>
+				</div>
+
+				<div class="hot-deals__card">
+					<div class="hot-deals__card-img">
+						<img src="<?php echo get_template_directory_uri();?>/img/hot-deals/02.jpg" alt="">
+					</div>
+					<div class="hot-deals__card-descp">
+						<p class="hot-deals__card-price rub">6 000 000 </p>
+						<div class="hot-deals__card-charect d-flex">
+							<p class="hot-deals__card-housing">3-х комнатная квартира </p>
+							<p class="hot-deals__card-amount">75 м² | 5 / 5 эт.</p>
+						</div>
+						<p class="hot-deals__card-address">ул. Новая д. 34</p>
+					</div>
+					<div class="hot-deals__card-btn d-flex">
+						<a href="#" class="hot-deals__card-link">Подробнее</a>
+						<a href="#" class="hot-deals__card-link">Оставить заявку</a>
+					</div>
+				</div>
+
+				<div class="hot-deals__card">
+					<div class="hot-deals__card-img">
+						<img src="<?php echo get_template_directory_uri();?>/img/hot-deals/03.jpg" alt="">
+					</div>
+					<div class="hot-deals__card-descp">
+						<p class="hot-deals__card-price rub">4 300 000 </p>
+						<div class="hot-deals__card-charect d-flex">
+							<p class="hot-deals__card-housing">3-х комнатная квартира </p>
+							<p class="hot-deals__card-amount">54 м² | 5 / 5 эт.</p>
+						</div>
+						<p class="hot-deals__card-address">ул. Новая д. 34</p>
+					</div>
+					<div class="hot-deals__card-btn d-flex">
+						<a href="#" class="hot-deals__card-link">Подробнее</a>
+						<a href="#" class="hot-deals__card-link">Оставить заявку</a>
+					</div>
+				</div>
+
+				<div class="hot-deals__card">
+					<div class="hot-deals__card-img">
+						<img src="<?php echo get_template_directory_uri();?>/img/hot-deals/04.jpg" alt="">
+					</div>
+					<div class="hot-deals__card-descp">
+						<p class="hot-deals__card-price rub">2 100 000 </p>
+						<div class="hot-deals__card-charect d-flex">
+							<p class="hot-deals__card-housing">2-х комнатная квартира </p>
+							<p class="hot-deals__card-amount">44 м² | 5 / 5 эт.</p>
+						</div>
+						<p class="hot-deals__card-address">ул. Новая д. 34</p>
+					</div>
+					<div class="hot-deals__card-btn d-flex">
+						<a href="#" class="hot-deals__card-link">Подробнее</a>
+						<a href="#" class="hot-deals__card-link">Оставить заявку</a>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+	<section id="consult-form" class="consult-form">
+		<div class="container">
+			<h2>Получите бесплатную консультацию</h2>
+			<p>Оставьте сои контактные данные и получите бесплатную консультацию по любым вопросам</p>
+
+			<div class="consult-form__form-block">
+				<div class="consult-form__form-block-position"></div>
+				<div class="consult-form__form-block-img">
+					<img src="<?php echo get_template_directory_uri();?>/img/consultation.png" alt="">
+				</div>
+				<form action="#" class="consult-form__form d-flex">
+					<input type="text" placeholder="Имя*" class="consult-form__form-input input">
+					<input type="tel" placeholder="Телефон*" class="consult-form__form-input input">
+					<button class="consult-form__form-btn btn">Отправить</button>
+				</form>
+				<p>* Отправляя заявку, вы соглашаетесь на обработку персональных данных</p>
+			</div>
+
+		</div>
+	</section>
+
+	<section id="team" class="team">
+		<div class="container">
+			<h2>Наша команда</h2>
+
+			<div class="team__row d-flex">
+
+				<div class="team__card">
+					<span class="team__card-sticker"></span>
+					<div class="team__card-img">
+						<img src="<?php echo get_template_directory_uri();?>/img/team/01.jpg" alt="">
+					</div>
+					<div class="team__card-descp">
+						<h4>
+							Анна <br>
+							Исаева
+						</h4>
+						<p class="team__card-experience">Стаж работы: 4 года </p>
+						<a href="tel:79009009988" class="team__card-tel">+ 7 900 900 99 88</a>
+						<a href="mailto:info@kurskaya-nedvigimost.ru" class="team__card-email">info@kurskaya-nedvigimost.ru</a>
+					</div>
+				</div>
+
+				<div class="team__card">
+					<!-- <span class="team__card-sticker"></span> -->
+					<div class="team__card-img">
+						<img src="<?php echo get_template_directory_uri();?>/img/team/02.jpg" alt="">
+					</div>
+					<div class="team__card-descp">
+						<h4>
+							Светлана <br>
+							Князева
+						</h4>
+						<p class="team__card-experience">Стаж работы: 4 года </p>
+						<a href="tel:79009009988" class="team__card-tel">+ 7 900 900 99 88</a>
+						<a href="mailto:info@kurskaya-nedvigimost.ru" class="team__card-email">info@kurskaya-nedvigimost.ru</a>
+					</div>
+				</div>
+
+				<div class="team__card">
+					<!-- <span class="team__card-sticker"></span> -->
+					<div class="team__card-img">
+						<img src="<?php echo get_template_directory_uri();?>/img/team/03.jpg" alt="">
+					</div>
+					<div class="team__card-descp">
+						<h4>
+							Инга <br>
+							Власова
+						</h4>
+						<p class="team__card-experience">Стаж работы: 4 года </p>
+						<a href="tel:79009009988" class="team__card-tel">+ 7 900 900 99 88</a>
+						<a href="mailto:info@kurskaya-nedvigimost.ru" class="team__card-email">info@kurskaya-nedvigimost.ru</a>
+					</div>
+				</div>
+
+				<div class="team__card">
+					<!-- <span class="team__card-sticker"></span> -->
+					<div class="team__card-img">
+						<img src="<?php echo get_template_directory_uri();?>/img/team/04.jpg" alt="">
+					</div>
+					<div class="team__card-descp">
+						<h4>
+							Cергей <br>
+							Иванов
+						</h4>
+						<p class="team__card-experience">Стаж работы: 4 года </p>
+						<a href="tel:79009009988" class="team__card-tel">+ 7 900 900 99 88</a>
+						<a href="mailto:info@kurskaya-nedvigimost.ru" class="team__card-email">info@kurskaya-nedvigimost.ru</a>
+					</div>
+				</div>
+
+			</div>
+
+			<button class="team__btn btn">Все сотрудники</button>
+
+		</div>
+	</section>
+</main>
+
+<?php get_footer(); ?> 

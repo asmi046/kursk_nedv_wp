@@ -1,0 +1,58 @@
+		<header id="header" class="header">
+			<div class="header__container container">
+
+				<div class="header__row d-flex">
+					<a href="index.html" class="header__logo logo-icon"></a>
+
+					<div class="header__nav-block">
+
+						<div class="header__soc-block">
+							<div class="header__soc-block-icon soc-block-icon">
+								<a href="#" class="soc-block-icon-link soc-icon-1"></a>
+								<a href="#" class="soc-block-icon-link soc-icon-2"></a>
+								<a href="#" class="soc-block-icon-link soc-icon-3"></a>
+								<a href="#" class="soc-block-icon-link soc-icon-4"></a>
+							</div>
+							<p>Мы в соцсетях</p>
+						</div>
+
+						<div class="header__callback d-flex">
+							<a href="tel:84951700000">8 800 488 22 22</a>
+							<a href="#callback" class="header__popup-link _popup-link">Заказать звонок</a>
+						</div>
+						<a href="tel:8 800 488 22 22" class="mob-callback__phone"></a>
+
+						<div class="header__menu-burg">
+							<p>Меню</p>
+							<div class="menu__icon icon-menu">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</header>
+
+		<nav class="mob-menu">
+			<ul class="mob-menu__list">
+				<li><a href="#" class="menu__link">О компании</a></li>
+				<li><a href="team.html" class="menu__link">Команда</a></li>
+				<li><a href="contacts.html" class="menu__link">Контакты</a></li>
+			</ul>
+			<ul class="mob-menu__list">
+				<li><a href="category.html" class="menu__link">Недвижимость</a></li>
+				<li><a href="category.html" class="menu__link">Новостройки</a></li>
+				<li><a href="category.html" class="menu__link">Дома, участки, дачи</a></li>
+				<li><a href="category.html" class="menu__link">Вторичная недвижимость</a></li>
+				<li><a href="category.html" class="menu__link">Коммерческая недвижимость</a></li>
+			</ul>
+			<ul class="mob-menu__list">
+				<li><a href="#" class="menu__link">Актуальные предложения</a></li>
+				<li><a href="pyatnitsky-forest.html" class="menu__link">ЖК "Пятницкий"</a></li>
+				<li><a href="promgranit.html" class="menu__link">Новостройки "Бетон комплект"</a></li>
+			</ul>
+		</nav>

@@ -1,7 +1,56 @@
-</div>
+		<footer id="footer" class="footer">
+			<div class='footer__container container'>
 
+				<div class="footer__row d-flex">
 
-<?php wp_footer(); ?>
+					<ul class="footer__menu">
+						<li><a href="category.html" class="menu__link">Недвижимость</a></li>
+						<li><a href="category.html" class="menu__link">Новостройки</a></li>
+						<li><a href="category.html" class="menu__link">Дома, участки, дачи</a></li>
+						<li><a href="category.html" class="menu__link">Вторичная недвижимость</a></li>
+						<li><a href="category.html" class="menu__link">Коммерческая недвижимость</a></li>
+					</ul>
+
+					<ul class="footer__menu">
+						<li><a href="#" class="menu__link">Актуальные предложения</a></li>
+						<li><a href="pyatnitsky-forest.html" class="menu__link">ЖК "Пятницкий"</a></li>
+						<li><a href="promgranit.html" class="menu__link">Новостройки "Бетон комплект"</a></li>
+					</ul>
+
+					<ul class="footer__menu">
+						<li><a href="#" class="menu__link">О компании</a></li>
+						<li><a href="team.html" class="menu__link">Команда</a></li>
+						<li><a href="contacts.html" class="menu__link">Контакты</a></li>
+					</ul>
+
+					<div class="footer__contact">
+						<div class="header__callback d-flex">
+							<a href="tel:84951700000">8 800 488 22 22</a>
+							<a href="#callback" class="header__popup-link _popup-link">Заказать звонок</a>
+						</div>
+						<div class="footer__soc-block">
+							<div class="footer__soc-block-icon soc-block-icon">
+								<a href="#" class="soc-block-icon-link soc-icon-1"></a>
+								<a href="#" class="soc-block-icon-link soc-icon-2"></a>
+								<a href="#" class="soc-block-icon-link soc-icon-3"></a>
+								<a href="#" class="soc-block-icon-link soc-icon-4"></a>
+							</div>
+							<p>Мы в соцсетях</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="footer__line"></div>
+
+				<p class="footer__policy">©2010-2021 Компания «Курская недвижимость ». Все права защищены. При использовании
+					материалов гиперссылка
+				обязательна.</p>
+
+			</div>
+		</footer>
+	</div>
+
+	<?php wp_footer(); ?>
 </body>
-
 </html>
