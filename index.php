@@ -12,7 +12,7 @@
 			<div class="info__item d-flex">
 				<a href="#" class="info__item-link">Купить</a>
 				<a href="sell.html" class="info__item-link">Продать</a>
-				<a href="pass.html" class="info__item-link">Сдать</a>
+				<a href="<?php echo get_permalink(24);?>" class="info__item-link">Сдать</a>
 				<a href="#" class="info__item-link">Снять</a>
 			</div>
 
@@ -520,8 +520,6 @@
 			<h2>Наша команда</h2>
 
 			<?php get_template_part('template-parts/team-block');?> 
-
-			<button class="team__btn btn">Все сотрудники</button>
 
 		</div>
 	</section>
