@@ -55,26 +55,71 @@ get_header(); ?>
 
 			<div class="how-work__row d-flex">
 
-				<div class="how-work__actions d-flex">
+				<div class="how-work__actions spollers-block d-flex" data-spollers data-one-spoller>
 
-					<div class="actions-item d-flex">
-						<div class="actions-item-number">1</div>
-						<div class="actions-item-text actions-arrow-icon d-f">Оставьте заявку на сайте</div>
+					<div class="actions-spollers-block spollers-block__item">
+						<div class="actions-item d-flex" data-spoller>
+							<div class="actions-item-number">1</div>
+							<div class="actions-item-text actions-arrow-icon d-f">Оставьте заявку на сайте</div>
+						</div>
+						<div class="actions-spollers-block__body spollers-block__body">
+							<ul>
+								<li>
+									Добавьте объявление о сдаче недвижимости или просто оставьте свой телефон и мы поможем.
+								</li>
+							</ul>
+						</div>
 					</div>
 
-					<div class="actions-item d-flex">
-						<div class="actions-item-number">2</div>
-						<div class="actions-item-text actions-arrow-icon d-f">Подготовка к сдаче</div>
+					<div class="actions-spollers-block spollers-block__item">
+						<div class="actions-item d-flex" data-spoller>
+							<div class="actions-item-number">2</div>
+							<div class="actions-item-text actions-arrow-icon d-f">Подготовка к сдаче</div>
+						</div>
+						<div class="actions-spollers-block__body spollers-block__body">
+							<ul>
+								<li>Закажите клининг со скидкой или приберитесь сами.</li>
+								<li>
+									Фотосъемка недвижимости в подарок! <br>
+									Специалист по недвижимости приедет, сделает фото и загрузит в объявление.
+								</li>
+								<li>Поможем в подготовке и оформлении документов для сделки.</li>
+								<li>Воспользуйтесь доверительным управлением, и мы проследим за состоянием квартиры, пока вас нет.</li>
+								<li>Подпишите возмездный договор, и мы сдадим вашу квартиру быстрее.</li>
+							</ul>
+						</div>
 					</div>
 
-					<div class="actions-item d-flex">
-						<div class="actions-item-number">3</div>
-						<div class="actions-item-text actions-arrow-icon d-f">Поиск арендаторов</div>
+					<div class="actions-spollers-block spollers-block__item">
+						<div class="actions-item d-flex" data-spoller>
+							<div class="actions-item-number">3</div>
+							<div class="actions-item-text actions-arrow-icon d-f">Поиск арендаторов</div>
+						</div>
+						<div class="actions-spollers-block__body spollers-block__body">
+							<ul>
+								<li>Ваше объявление увидят арендаторы на сайте etagi.com, а при заказе дополнительных услуг разместим объявление 
+									ещё на 14 площадках.
+								</li>
+								<li>Найдём для вас надёжных арендаторов и организуем показы квартиры.</li>
+							</ul>
+						</div>
 					</div>
 
-					<div class="actions-item d-flex">
-						<div class="actions-item-number">4</div>
-						<div class="actions-item-text actions-arrow-icon d-f">Заключение сделки</div>
+					<div class="actions-spollers-block spollers-block__item">
+						<div class="actions-item d-flex" data-spoller>
+							<div class="actions-item-number">4</div>
+							<div class="actions-item-text actions-arrow-icon d-f">Заключение сделки</div>
+						</div>
+						<div class="actions-spollers-block__body spollers-block__body">
+							<ul>
+								<li>
+									Оформите сделку лично или дистанционно. Познакомим с арендатором по видео связи, 
+									поможем заключить сделку и произвести оплату онлайн.
+							</li>
+								<li>Получите эксклюзивные скидки с программой лояльности «Этажи бонус».</li>
+								<li>Получите возможность участия в розыгрыше квартиры и еще 50 ценных призов.</li>
+							</ul>
+						</div>
 					</div>
 
 				</div>
