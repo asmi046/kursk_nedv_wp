@@ -2414,6 +2414,20 @@ body.ie .ibg img {
   flex: 0 1 340px;
   height: 40px; }
 
+.consult-form__form .headen_form_blk {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 340px;
+  flex: 0 1 340px;
+  margin-right: 10px;
+}
+
+.consult-form__form .SendetMsg {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 340px;
+  flex: 0 1 340px;
+  margin-right: 10px;
+}
+
 .consult-form__form-btn {
   height: 40px; }
 
