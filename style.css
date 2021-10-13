@@ -2486,8 +2486,7 @@ body.ie .ibg img {
 .team__row {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 55px; }
+  justify-content: space-between;}
 
 .team__card {
   position: relative;
@@ -2588,8 +2587,9 @@ body.ie .ibg img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 249px;
   height: 40px;
-  margin: 0 auto;
+  margin: 55px auto 0 auto;
   background: #003C8C; }
 
 .nicescroll-cursors {
@@ -3407,8 +3407,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     width: auto;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    overflow-x: auto;
-    margin-bottom: 30px; }
+    overflow-x: auto; }
   .team__row::-webkit-scrollbar {
     display: none; }
   .team__card {
@@ -3440,7 +3439,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     padding: 20px 25px; }
   .team__btn {
     min-height: 33px;
-    height: 33px; }
+    height: 33px; 
+    margin-top: 30px;}
   .hot-deals__card {
     max-width: 280px;
     margin-right: 15px; }
@@ -3919,8 +3919,6 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   .team__card-descp {
     padding: 15px 25px 35px 25px; }
   .footer__contact .header__callback {
-    margin-bottom: 15px; }
-  .team__row {
     margin-bottom: 15px; }
   .reviews__card {
     -webkit-box-flex: 0;

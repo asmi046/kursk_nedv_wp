@@ -9,7 +9,7 @@
 				<div class="team__card-img">
 					<img src="<?php echo wp_get_attachment_image_src($item['img_team'], 'large')[0]; ?>" alt="">
 				</div>
-				<div class="team__card-descp">
+				<div class="team__card-descp"> 
 					<h4>
 						<? echo $item['name_team']; ?> <br>
 						<? echo $item['surname_team']; ?>
@@ -26,4 +26,3 @@
 	?>
 </div>
 
-<button class="team__btn btn">Все сотрудники</button>
