@@ -4,7 +4,7 @@
 
 <main class="page">
 	<section id="info" class="info">
-		<div class="nuar_blk"></div>
+		<div class="nuar_blk"></div> 
 		<div class="container">
 
 			<h1><?php echo carbon_get_theme_option('about_home_title'); ?></h1>
@@ -373,58 +373,28 @@
 			<h2>Отзывы довольных клиентов</h2>
 
 			<div class="reviews__row d-flex">
-
-				<div class="reviews__card d-flex">
-					<div class="reviews__image-wrap">
-						<div class="reviews__image">
-							<img src="<?php echo get_template_directory_uri();?>/img/reviews/01.jpg" alt="">
+				<? $reviews = carbon_get_theme_option('complex_reviews');
+				if ($reviews) {
+					$reviewsIndex = 0;
+					foreach ($reviews as $item) {
+						?>
+						<div class="reviews__card d-flex">
+							<div class="reviews__image-wrap">
+								<div class="reviews__image">
+									<img src="<?php echo wp_get_attachment_image_src($item['img_reviews'], 'large')[0]; ?>" alt="">
+								</div>
+							</div>
+							<h4><? echo $item['name_reviews']; ?></h4>
+							<p class="reviews__date"><? echo $item['data_reviews']; ?></p>
+							<span class="reviews__like"></span>
+							<p class="reviews__descp"><? echo $item['descp_reviews']; ?></p>
+							<a href="#" class="reviews__btn"><? echo $item['link_reviews']; ?></a>
 						</div>
-					</div>
-					<h4>Алексей</h4>
-					<p class="reviews__date">18 сентября 2020</p>
-					<span class="reviews__like"></span>
-					<p class="reviews__descp">
-						Здравствуйте! Хотим отметить Венеру, как грамотного специалиста, добросовестного работника и чуткого
-						человека. Благодаря ей мы оперативно и выгодно продали одну квартиру и приобрели две новые. Венера
-						сумела найти общий язык со всеми участниками сделок, обойти всё острые углы
-					</p>
-					<a href="#" class="reviews__btn">Читать отзыв в Vk</a>
-				</div>
-
-				<div class="reviews__card d-flex">
-					<div class="reviews__image-wrap">
-						<div class="reviews__image">
-							<img src="<?php echo get_template_directory_uri();?>/img/reviews/02.jpg" alt="">
-						</div>
-					</div>
-					<h4>Маргарита</h4>
-					<p class="reviews__date">5 июля 2021</p>
-					<span class="reviews__like"></span>
-					<p class="reviews__descp">
-						Здравствуйте! Хотим отметить Венеру, как грамотного специалиста, добросовестного работника и чуткого
-						человека. Благодаря ей мы оперативно и выгодно продали одну квартиру и приобрели две новые. Венера
-						сумела найти общий язык со всеми участниками сделок, обойти всё острые углы
-					</p>
-					<a href="#" class="reviews__btn">Читать отзыв в Vk</a>
-				</div>
-
-				<div class="reviews__card d-flex">
-					<div class="reviews__image-wrap">
-						<div class="reviews__image">
-							<img src="<?php echo get_template_directory_uri();?>/img/reviews/03.jpg" alt="">
-						</div>
-					</div>
-					<h4>Ирина</h4>
-					<p class="reviews__date">18 сентября 2020</p>
-					<span class="reviews__like"></span>
-					<p class="reviews__descp">
-						Здравствуйте! Хотим отметить Венеру, как грамотного специалиста, добросовестного работника и чуткого
-						человека. Благодаря ей мы оперативно и выгодно продали одну квартиру и приобрели две новые. Венера
-						сумела найти общий язык со всеми участниками сделок, обойти всё острые углы
-					</p>
-					<a href="#" class="reviews__btn">Читать отзыв в Vk</a>
-				</div>
-
+						<?
+						$reviewsIndex++; 
+					}
+				}
+				?>
 			</div>
 
 		</div>

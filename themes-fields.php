@@ -20,19 +20,51 @@ Container::make( 'theme_options', __( 'Настройки темы', 'crb' ) )
       Field::make('text', 'about_home_title', 'Заголовок на главной')
       // Field::make('rich_text', 'about_home', 'О нашей компании')
     ))
-    ->add_tab('Акции', array(
-      Field::make('complex', 'complex_promo', 'Верхние блоки на главной')
+    ->add_tab('Актуальные предложения', array(
+      Field::make('complex', 'complex_suggest', 'Выводим Актуальные предложения')
       // ->set_max(3) // Можно будет выбрать только 5 постов
       ->add_fields(array(
-        Field::make('image', 'img_promo', 'Фото')
-        ->set_width(30),
-        Field::make('text', 'text_promo', 'Текст')   
-        ->set_width(30),
-        Field::make('text', 'sticker_promo', 'Стикер')   
-        ->set_width(30),
-        Field::make('text', 'link_promo', 'Ссылка')   
+        Field::make('image', 'img_suggest', 'Фото')
+        ->set_width(10),
+        Field::make('text', 'title_suggest', 'Заголовок')   
+        ->set_width(45),
+        Field::make('text', 'link_suggest', 'Ссылка')   
         ->set_width(30),
         ))
+    ))
+      ->add_tab('Команда', array(
+      Field::make('complex', 'complex_team', 'Выводим карточки Команды')
+      // ->set_max(3) // Можно будет выбрать только 5 постов
+      ->add_fields(array(
+        Field::make('image', 'img_team', 'Фото')
+        ->set_width(10),
+        Field::make('text', 'surname_team', 'Фамилия')   
+        ->set_width(15),
+        Field::make('text', 'name_team', 'Имя')   
+        ->set_width(15),
+        Field::make('text', 'special_team', 'Стаж работы')   
+        ->set_width(10),
+        Field::make('text', 'phone_team', 'Телефон')   
+        ->set_width(20),
+        Field::make('text', 'e-mail_team', 'E-mail')   
+        ->set_width(20),
+        )) 
+    ))
+      ->add_tab('Отзывы', array(
+      Field::make('complex', 'complex_reviews', 'Выводим Отзывы')
+      // ->set_max(3) // Можно будет выбрать только 5 постов
+      ->add_fields(array(
+        Field::make('image', 'img_reviews', 'Фото')
+        ->set_width(10),
+        Field::make('text', 'name_reviews', 'Имя')   
+        ->set_width(10),
+        Field::make('text', 'data_reviews', 'Дата')   
+        ->set_width(10),
+        Field::make('text', 'descp_reviews', 'Текст')   
+        ->set_width(30),
+        Field::make('text', 'link_reviews', 'Ссылка')   
+        ->set_width(10),
+        )) 
     ))
     ->add_tab('Контакты', array(
         Field::make( 'text', 'as_company', __( 'Название' ) )
