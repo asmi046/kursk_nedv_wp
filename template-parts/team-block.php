@@ -1,69 +1,29 @@
 <div class="team__row d-flex">
-
-	<div class="team__card">
-		<span class="team__card-sticker"></span>
-		<div class="team__card-img">
-			<img src="<?php echo get_template_directory_uri();?>/img/team/01.jpg" alt="">
-		</div>
-		<div class="team__card-descp">
-			<h4>
-				Анна <br>
-				Исаева
-			</h4>
-			<p class="team__card-experience">Стаж работы: 4 года </p>
-			<a href="tel:79009009988" class="team__card-tel">+ 7 900 900 99 88</a>
-			<a href="mailto:info@kurskaya-nedvigimost.ru" class="team__card-email">info@kurskaya-nedvigimost.ru</a>
-		</div>
-	</div>
-
-	<div class="team__card">
-		<!-- <span class="team__card-sticker"></span> -->
-		<div class="team__card-img">
-			<img src="<?php echo get_template_directory_uri();?>/img/team/02.jpg" alt="">
-		</div>
-		<div class="team__card-descp">
-			<h4>
-				Светлана <br>
-				Князева
-			</h4>
-			<p class="team__card-experience">Стаж работы: 4 года </p>
-			<a href="tel:79009009988" class="team__card-tel">+ 7 900 900 99 88</a>
-			<a href="mailto:info@kurskaya-nedvigimost.ru" class="team__card-email">info@kurskaya-nedvigimost.ru</a>
-		</div>
-	</div>
-
-	<div class="team__card">
-		<!-- <span class="team__card-sticker"></span> -->
-		<div class="team__card-img">
-			<img src="<?php echo get_template_directory_uri();?>/img/team/03.jpg" alt="">
-		</div>
-		<div class="team__card-descp">
-			<h4>
-				Инга <br>
-				Власова
-			</h4>
-			<p class="team__card-experience">Стаж работы: 4 года </p>
-			<a href="tel:79009009988" class="team__card-tel">+ 7 900 900 99 88</a>
-			<a href="mailto:info@kurskaya-nedvigimost.ru" class="team__card-email">info@kurskaya-nedvigimost.ru</a>
-		</div>
-	</div>
-
-	<div class="team__card">
-		<!-- <span class="team__card-sticker"></span> -->
-		<div class="team__card-img">
-			<img src="<?php echo get_template_directory_uri();?>/img/team/04.jpg" alt="">
-		</div>
-		<div class="team__card-descp">
-			<h4>
-				Cергей <br>
-				Иванов
-			</h4>
-			<p class="team__card-experience">Стаж работы: 4 года </p>
-			<a href="tel:79009009988" class="team__card-tel">+ 7 900 900 99 88</a>
-			<a href="mailto:info@kurskaya-nedvigimost.ru" class="team__card-email">info@kurskaya-nedvigimost.ru</a>
-		</div>
-	</div>
-
+	<? $team = carbon_get_theme_option('complex_team');
+	if ($team) {
+		$teamIndex = 0;
+		foreach ($team as $item) {
+			?>
+			<div class="team__card">
+				<span class="team__card-sticker"></span>
+				<div class="team__card-img">
+					<img src="<?php echo wp_get_attachment_image_src($item['img_team'], 'large')[0]; ?>" alt="">
+				</div>
+				<div class="team__card-descp">
+					<h4>
+						<? echo $item['name_team']; ?> <br>
+						<? echo $item['surname_team']; ?>
+					</h4>
+					<p class="team__card-experience">Стаж работы: <? echo $item['special_team']; ?></p>
+					<a href="tel:<? echo preg_replace('/[^0-9]/', '', $item['phone_team']); ?>" class="team__card-tel"><? echo $item['phone_team']; ?></a>
+					<a href="mailto:<? echo $item['e-mail_team']; ?>" class="team__card-email"><? echo $item['e-mail_team']; ?></a>
+				</div>
+			</div>
+			<?
+			$teamIndex++; 
+		}
+	}
+	?>
 </div>
 
 <button class="team__btn btn">Все сотрудники</button>

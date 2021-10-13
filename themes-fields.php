@@ -38,9 +38,9 @@ Container::make( 'theme_options', __( 'Настройки темы', 'crb' ) )
       ->add_fields(array(
         Field::make('image', 'img_team', 'Фото')
         ->set_width(10),
-        Field::make('text', 'surname_team', 'Фамилия')   
-        ->set_width(15),
         Field::make('text', 'name_team', 'Имя')   
+        ->set_width(15),
+        Field::make('text', 'surname_team', 'Фамилия')   
         ->set_width(15),
         Field::make('text', 'special_team', 'Стаж работы')   
         ->set_width(10),
