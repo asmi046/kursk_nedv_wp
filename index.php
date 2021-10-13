@@ -281,43 +281,24 @@
 	<section id="topical" class="topical">
 		<div class="container">
 			<h2>Актуальные предложения</h2>
-
 			<div class="topical__slider topical__row d-flex">
-
-				<a href="#" class="topical__card">
-					<div class="topical__position">
-						<p>ЖК <br>
-						"Пятницкий"</p>
-					</div>
-					<img src="<?php echo get_template_directory_uri();?>/img/offers/01.jpg" alt="">
-				</a>
-
-				<a href="#" class="topical__card">
-					<div class="topical__position topical__position_two">
-						<p>Новостройки <br>
-						"БетонКомплект"</p>
-					</div>
-					<img src="<?php echo get_template_directory_uri();?>/img/offers/02.jpg" alt="">
-				</a>
-
-				<a href="#" class="topical__card">
-					<div class="topical__position">
-						<p>ЖК <br>
-						"Пятницкий"</p>
-					</div>
-					<img src="<?php echo get_template_directory_uri();?>/img/offers/01.jpg" alt="">
-				</a>
-
-				<a href="#" class="topical__card">
-					<div class="topical__position topical__position_two">
-						<p>Новостройки <br>
-						"БетонКомплект"</p>
-					</div>
-					<img src="<?php echo get_template_directory_uri();?>/img/offers/02.jpg" alt="">
-				</a>
-
+				<? $suggest = carbon_get_theme_option('complex_suggest');
+				if ($suggest) {
+					$suggestIndex = 0;
+					foreach ($suggest as $item) {
+						?>
+						<a href="<? echo $item['link_suggest']; ?>" class="topical__card">
+							<div class="topical__position">
+								<p><? echo $item['title_suggest']; ?></p>
+							</div>
+							<img src="<?php echo wp_get_attachment_image_src($item['img_suggest'], 'large')[0]; ?>" alt="">
+						</a>
+						<?
+						$suggestIndex++; 
+					}
+				}
+				?>
 			</div>
-
 		</div>
 	</section>
 

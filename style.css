@@ -2002,7 +2002,7 @@ body.ie .ibg img {
   object-fit: cover;}
 
 .topical__position {
-  position: absolute;
+  position: absolute; 
   top: 0;
   left: 0;
   z-index: 50;
@@ -2019,7 +2019,7 @@ body.ie .ibg img {
   background-position: 0 0;
   background-image: url("img/offers/03.png"); }
 
-.topical__position_two {
+.topical__position:nth-child(2) {
   background-image: url("img/offers/04.png"); }
 
 .topical__position p {
