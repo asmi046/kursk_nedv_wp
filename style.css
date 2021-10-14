@@ -2083,10 +2083,12 @@ body.ie .ibg img {
   padding: 35px 48px;
   background-repeat: no-repeat;
   background-position: 0 0;
-  background-image: url("img/offers/03.png"); }
+  background-image: url("img/offers/03.png"); 
+}
 
-.topical__position:nth-child(2) {
-  background-image: url("img/offers/04.png"); }
+.topical__card:nth-child(2n) .topical__position {
+  background-image: url("img/offers/04.png"); 
+}
 
 .topical__position p {
   font-size: 28px;
