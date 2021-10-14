@@ -601,6 +601,33 @@ $('.slider__hot-deals').slick({
 	]
 });
 
+// Slider Квартира
+$('.apartment__slider').slick({
+	arrows: false,
+	dots: false,
+	infinite: true,
+	speed: 2000,
+	slidesToShow: 1,
+	autoplay: true,
+	autoplaySpeed: 2000,
+	adaptiveHeight: true,
+	// variableWidth: true,
+	responsive: [
+		{
+			breakpoint: 770,
+			settings: {
+				arrows: false,
+			}
+		}, {
+			breakpoint: 613,
+			settings: {
+				slidesToShow: 1,
+				arrows: false,
+				autoplay: true
+			}
+		}
+	]
+});
 
 // Маска телефона
 var inputmask_phone = { "mask": "+9(999)999-99-99" };
