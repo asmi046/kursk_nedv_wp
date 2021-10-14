@@ -3791,10 +3791,16 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     flex-wrap: wrap; }
   .consult-form__form-input {
     -webkit-box-flex: 0;
-    -ms-flex: 0 1 48%;
-    flex: 0 1 48%;
+    -ms-flex: 0 1 55%;
+    flex: 0 1 55%;
     margin-right: 0;
     margin-bottom: 10px; }
+  .consult-form__form .SendetMsg,
+  .consult-form__form .headen_form_blk {
+    -ms-flex: 0 1 55%;
+    flex: 0 1 55%;}
+  .consult-form__form-btn {
+    width: 55%;}
   .footer__menu {
     width: 100%; }
   .reviews__card {
@@ -3978,7 +3984,19 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   .location__row .actions-spollers-block {
     -webkit-box-flex: 0;
     -ms-flex: 0 1 100%;
-    flex: 0 1 100%; } }
+    flex: 0 1 100%; } 
+  .consult-form__form-input {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%; }
+  .consult-form__form .SendetMsg,
+  .consult-form__form .headen_form_blk {
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    margin-right: 0;}
+  .consult-form__form-btn {
+    width: 100%;}
+}
 
 @media (max-width: 480px) {
   .consult-form__form-input {
