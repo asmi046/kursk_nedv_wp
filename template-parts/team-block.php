@@ -29,4 +29,6 @@
 	}
 	?>
 </div>
+<a href="<?php echo get_permalink(18);?>" class="team__btn btn">Все сотрудники</a>
+
 

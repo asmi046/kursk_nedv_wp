@@ -2506,6 +2506,7 @@ body.ie .ibg img {
   margin-bottom: 50px; }
 
 .team__row {
+  flex-wrap: wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;}
@@ -2524,7 +2525,8 @@ body.ie .ibg img {
   flex: 0 1 23.4%;
   background: #fff;
   border-radius: 43px;
-  overflow: hidden; }
+  overflow: hidden; 
+  margin-bottom: 25px;}
 
 .team__card-sticker {
   position: absolute;
@@ -2611,7 +2613,7 @@ body.ie .ibg img {
   display: flex;
   width: 249px;
   height: 40px;
-  margin: 55px auto 0 auto;
+  margin: 25px auto 0 auto;
   background: #003C8C; }
 
 .nicescroll-cursors {
