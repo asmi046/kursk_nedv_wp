@@ -38,7 +38,14 @@ get_header(); ?>
 				<div class="product-info__column">
 
 					<div class="product-info__wrap-card d-flex">
-						<div class="hot-deals__card">
+						
+                        <?
+                            global $wpdb;
+
+                            $object = $wpdb->get_results( "SELECT id FROM `kn_objnedv`" );
+                        ?>
+                        
+                        <div class="hot-deals__card">
 							<div class="hot-deals__card-img">
 								<img src="<?php echo get_template_directory_uri();?>/img/product/01.jpg" alt="">
 							</div>
