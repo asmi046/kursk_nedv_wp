@@ -1515,10 +1515,16 @@ body.ie .ibg img {
   -ms-flex: 0 0 41.18px;
   flex: 0 0 41.18px;
   height: 41.19px;
+  transition: .3s ease-out;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 100%;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MS4xODQiIGhlaWdodD0iNDEuMTg1IiB2aWV3Qm94PSIwIDAgNDEuMTg0IDQxLjE4NSI+DQogIDxnIGlkPSLQodCz0YDRg9C/0L/QuNGA0L7QstCw0YLRjF8yODEiIGRhdGEtbmFtZT0i0KHQs9GA0YPQv9C/0LjRgNC+0LLQsNGC0YwgMjgxIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzExNy41NDUgLTUxOTguNTIpIj4NCiAgICA8cGF0aCBpZD0i0JrQvtC90YLRg9GAXzIxNiIgZGF0YS1uYW1lPSLQmtC+0L3RgtGD0YAgMjE2IiBkPSJNMzE0NC45ODQsNTIxOC41OTFsLTUuNzk1LDUuOHYtMTQuMzk0YTEuMDUyLDEuMDUyLDAsMSwwLTIuMSwwdjE0LjM5NGwtNS43OTUtNS44YTEuMDQ3LDEuMDQ3LDAsMCwwLS43NDQtLjMxaDBhMS4wNTMsMS4wNTMsMCwwLDAtLjc0MywxLjhsNy4zNjksNy4zNjlhMS4wMTgsMS4wMTgsMCwwLDAsLjkyNi4yNjhsLjA0My0uMDA4LjA0NC4wMDhhMS4wMjksMS4wMjksMCwwLDAsLjkyNC0uMjY5bDcuMzY5LTcuMzY4YTEuMDUzLDEuMDUzLDAsMCwwLDAtMS40ODhBMS4wNjIsMS4wNjIsMCwwLDAsMzE0NC45ODQsNTIxOC41OTFaIiBmaWxsPSIjY2NjIi8+DQogICAgPHBhdGggaWQ9ItCa0L7QvdGC0YPRgF8yMTciIGRhdGEtbmFtZT0i0JrQvtC90YLRg9GAIDIxNyIgZD0iTTMxMzguMTM3LDUxOTguNTJhMjAuNTkzLDIwLjU5MywwLDEsMCwyMC41OTIsMjAuNTkyQTIwLjYxNSwyMC42MTUsMCwwLDAsMzEzOC4xMzcsNTE5OC41MlptMCwzOS4wOGExOC40ODcsMTguNDg3LDAsMSwxLDE4LjQ4Ny0xOC40ODhBMTguNTA4LDE4LjUwOCwwLDAsMSwzMTM4LjEzNyw1MjM3LjZaIiBmaWxsPSIjY2NjIi8+DQogIDwvZz4NCjwvc3ZnPg0K"); }
+
+.actions-item._active .actions-round-arrow-icon::after {
+  transform: rotate(180deg);
+  transition: .3s ease-out;
+}
 
 .how-work__img {
   -webkit-box-flex: 0;
@@ -1658,17 +1664,23 @@ body.ie .ibg img {
   margin-bottom: 43px; }
 
 .location__row {
+  align-items: start;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
 
-.location__row .actions-item {
+.location__row .actions-spollers-block {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 49%;
   flex: 0 1 49%;
   margin-bottom: 23.5px; }
+
+.location__row .actions-spollers-block {
+  background: #fff;
+  border-radius: 25px 30px 30px 25px;
+}
 
 .location__row .actions-item-text {
   border: none; }
@@ -3696,8 +3708,11 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     padding: 25px 0; }
   .location h2 {
     margin-bottom: 25px; }
-  .location__row .actions-item {
+  .location__row .actions-spollers-block {
+    border-radius: 23px;
     margin-bottom: 10px; }
+  .location__row .actions-spollers-block:last-child {
+    margin-bottom: 0; }
   .location__row .actions-item-number {
     font-size: 20px;
     line-height: 1;
@@ -3958,7 +3973,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     background-size: 80%; }
   .promgranit-about {
     padding-bottom: 25px; }
-  .location__row .actions-item {
+  .location__row .actions-spollers-block {
     -webkit-box-flex: 0;
     -ms-flex: 0 1 100%;
     flex: 0 1 100%; } }
