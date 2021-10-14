@@ -28,20 +28,7 @@ get_header(); ?>
 						Вами в течении 15 минут
 					</p>
 				</div>
-				<div class="sell-pass-info__form-block">
-					<p>Тип недвижимости</p>
-					<form action="#" class="sell-pass-info__form">
-						<select class="sell-pass-info__form-select">
-							<option value="1" selected="selected">Квартира</option>
-							<option value="2">Дом</option>
-							<option value="3">Участок</option>
-							<option value="4">Дача</option>
-						</select>
-						<input type="tel" placeholder="Телефон" class="sell-pass-info__form-input input">
-						<button class="sell-pass-info__form-btn btn">Получить бесплатную консультацию</button>
-					</form>
-					<p>* Отправляя заявку, вы соглашаетесь на обработку персональных данных</p>
-				</div>
+				<?php get_template_part('template-parts/form-real-estate');?> 
 			</div>
 
 		</div>
@@ -120,7 +107,7 @@ get_header(); ?>
 								<li>
 									Оформите сделку лично или дистанционно. Познакомим с арендатором по видео связи, 
 									поможем заключить сделку и произвести оплату онлайн.
-							</li>
+								</li>
 								<li>Получите эксклюзивные скидки с программой лояльности «Этажи бонус».</li>
 								<li>Получите возможность участия в розыгрыше квартиры и еще 50 ценных призов.</li>
 							</ul>
