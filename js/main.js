@@ -325,25 +325,25 @@ document.addEventListener('keydown', function (e) {
 
 
 //Tabs
-let tabs = document.querySelectorAll("._tabs");
-for (let index = 0; index < tabs.length; index++) {
-	let tab = tabs[index];
-	let tabs_items = tab.querySelectorAll("._tabs-item");
-	let tabs_blocks = tab.querySelectorAll("._tabs-block");
-	for (let index = 0; index < tabs_items.length; index++) {
-		let tabs_item = tabs_items[index];
-		tabs_item.addEventListener("click", function (e) {
-			for (let index = 0; index < tabs_items.length; index++) {
-				let tabs_item = tabs_items[index];
-				tabs_item.classList.remove('_active');
-				tabs_blocks[index].classList.remove('_active');
-			}
-			tabs_item.classList.add('_active');
-			tabs_blocks[index].classList.add('_active');
-			e.preventDefault();
-		});
-	}
-}
+// let tabs = document.querySelectorAll("._tabs");
+// for (let index = 0; index < tabs.length; index++) {
+// 	let tab = tabs[index];
+// 	let tabs_items = tab.querySelectorAll("._tabs-item");
+// 	let tabs_blocks = tab.querySelectorAll("._tabs-block");
+// 	for (let index = 0; index < tabs_items.length; index++) {
+// 		let tabs_item = tabs_items[index];
+// 		tabs_item.addEventListener("click", function (e) {
+// 			for (let index = 0; index < tabs_items.length; index++) {
+// 				let tabs_item = tabs_items[index];
+// 				tabs_item.classList.remove('_active');
+// 				tabs_blocks[index].classList.remove('_active');
+// 			}
+// 			tabs_item.classList.add('_active');
+// 			tabs_blocks[index].classList.add('_active');
+// 			e.preventDefault();
+// 		});
+// 	}
+// }
 
 
 // SPOLLERS
@@ -671,6 +671,23 @@ $('.consultBtn').click(function (e) {
 			alert("Произошла ошибка. Попробуйте позднее.");
 		});
 
+	}
+});
+
+
+// Табы
+$('body').on('click', '.tab__navitem', function (event) {
+	var eq = $(this).index();
+	if ($(this).hasClass('parent')) {
+		var eq = $(this).parent().index();
+	}
+	if (!$(this).hasClass('active')) {
+		$(this).closest('.tabs').find('.tab__navitem').removeClass('active');
+		$(this).addClass('active');
+		$(this).closest('.tabs').find('.tab__item').removeClass('active').eq(eq).addClass('active');
+		if ($(this).closest('.tabs').find('.slick-slider').length > 0) {
+			$(this).closest('.tabs').find('.slick-slider').slick('setPosition');
+		}
 	}
 });
 
