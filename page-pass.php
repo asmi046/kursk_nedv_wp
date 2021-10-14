@@ -11,6 +11,8 @@ get_header(); ?>
 
 <main class="page page-recurring">
 
+	<a href="#" class="callback-widget blink"></a>
+
 	<section id="sell-pass-info" class="sell-pass-info pass-info">
 		<div class="nuar_blk"></div>
 		<div class="container">

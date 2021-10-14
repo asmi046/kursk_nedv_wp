@@ -11,6 +11,8 @@ get_header(); ?>
 
 <main class="page page-recurring">
 
+	<a href="#" class="callback-widget blink"></a>
+
 	<section id="team" class="team recurring">
 		<div class="container">
 

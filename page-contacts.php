@@ -10,6 +10,9 @@ get_header(); ?>
 <?php get_template_part('template-parts/header-section');?>
 
 <main class="page page-recurring">
+
+	<a href="#" class="callback-widget blink"></a>
+	
 	<section id="contacts" class="contacts recurring">
 		<div class="container">
 			<?php

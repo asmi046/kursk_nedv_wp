@@ -3,6 +3,9 @@
 <?php get_template_part('template-parts/header-section');?>
 
 <main class="page">
+
+	<a href="#" class="callback-widget blink"></a>
+	
 	<section id="category-info" class="info category-info">
 		<div class="nuar_blk"></div>
 		<div class="container">

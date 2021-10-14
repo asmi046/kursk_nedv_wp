@@ -12,6 +12,8 @@ get_header(); ?>
 
 <main id="primary" class="page site-main"> 
 
+	<a href="#" class="callback-widget blink"></a>
+	
 	<section class="content"> 
 		<div class="container">
 

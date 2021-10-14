@@ -11,6 +11,8 @@ get_header(); ?>
 
 <main class="page page-recurring">
 
+	<a href="#" class="callback-widget blink"></a>
+
 	<section id="sell-pass-info" class="sell-pass-info sell-info">
 		<!-- <div class="nuar_blk"></div> -->
 		<div class="container">
@@ -68,7 +70,7 @@ get_header(); ?>
 							<ul>
 								<li>
 									Добавьте объявление о сдаче недвижимости или просто оставьте свой телефон и мы поможем.
-								</li>
+								</li> 
 							</ul>
 						</div>
 					</div>

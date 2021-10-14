@@ -3,6 +3,9 @@
 <?php get_template_part('template-parts/header-section');?>
 
 <main class="page">
+
+	<a href="#" class="callback-widget blink"></a>
+	
 	<section id="info" class="info">
 		<div class="nuar_blk"></div> 
 		<div class="container">
@@ -469,13 +472,11 @@
 	<section id="team" class="team">
 		<div class="container">
 			<h2>Наша команда</h2>
-
 			<?php get_template_part('template-parts/team-block');?> 
-
 			<a href="<?php echo get_permalink(18);?>" class="team__btn btn">Все сотрудники</a>
-
 		</div>
 	</section>
+
 </main>
 
 <?php get_footer(); ?> 
