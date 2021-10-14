@@ -5,7 +5,11 @@
 		foreach ($team as $item) {
 			?>
 			<div class="team__card">
-				<span class="team__card-sticker"></span>
+				<?
+				$sticker = $item["offer_sticker"];
+				if (!empty($sticker)) { ?>
+					<span class="team__card-sticker"></span>
+				<? } ?>
 				<div class="team__card-img">
 					<img src="<?php echo wp_get_attachment_image_src($item['img_team'], 'large')[0]; ?>" alt="">
 				</div>

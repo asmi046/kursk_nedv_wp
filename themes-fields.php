@@ -39,15 +39,18 @@ Container::make( 'theme_options', __( 'Настройки темы', 'crb' ) )
         Field::make('image', 'img_team', 'Фото')
         ->set_width(10),
         Field::make('text', 'name_team', 'Имя')   
-        ->set_width(15),
+        ->set_width(10),
         Field::make('text', 'surname_team', 'Фамилия')   
-        ->set_width(15),
+        ->set_width(10),
         Field::make('text', 'special_team', 'Стаж работы')   
         ->set_width(10),
         Field::make('text', 'phone_team', 'Телефон')   
-        ->set_width(20),
+        ->set_width(15),
         Field::make('text', 'e-mail_team', 'E-mail')   
-        ->set_width(20),
+        ->set_width(15),
+        Field::make("checkbox", "offer_sticker", "Стикер") 
+        ->help_text('Выводим Стикер"')
+        ->set_width( 5 ),
         )) 
     ))
       ->add_tab('Отзывы', array(
