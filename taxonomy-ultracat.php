@@ -4,7 +4,8 @@
 
 <main class="page">
 
-	<a href="#" class="callback-widget blink"></a>
+	<a href="#callback" class="callback-widget blink _popup-link"></a>
+	<a href="tel:<? echo preg_replace('/[^0-9]/', '', $tel = carbon_get_theme_option("as_phone_1")); ?>" class="callback-widget callback-widget-mob blink"></a>
 
 	<section class="category">  
 		<div class="container">
