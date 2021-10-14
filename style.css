@@ -2920,16 +2920,14 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 
 .apartment__gallery {
   justify-content: space-between;
-  max-height: 530px;
   margin-bottom: 25px;
 }
 
 .apartment__slider {
   flex:  0 1 860px;
-  /*height: 450px;*/
+  max-height: 530px;
   overflow: hidden;
   margin-right: 15px;
-  border: 1px solid #000;
 }
 
 .apartment__slider-img img {
@@ -2942,7 +2940,6 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 .apartment__charact {
   padding: 15px 25px;
   flex: 1 1 auto;
-  border: 1px solid #000;
 }
 
 .apartment__charact h3 {
@@ -3016,6 +3013,10 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   font-size: 23px;
 }
 
+.apartment__info-price-buyer span {
+  line-height: 1.3;
+}
+
 .apartment__descp {
   margin-bottom: 30px;
 }
@@ -3071,7 +3072,10 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   .info__block-tabs .tab__navitem {
     -webkit-box-flex: 0;
     -ms-flex: 0 1 25%;
-    flex: 0 1 25%; } }
+    flex: 0 1 25%; } 
+  .apartment__slider {
+    flex: 0 1 50%;}
+  }
 
 @media (max-width: 1300px) {
   .promgranit-about__descp-icons-item {
@@ -3151,7 +3155,18 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     background-size: 85%;
     margin-right: 10px; }
   .location__row .actions-item-text {
-    padding: 10px 23px; } }
+    padding: 10px 23px; } 
+  .apartment__charact {
+    padding: 0px 25px 15px 25px;}
+  .apartment__charact h3 {
+    font-size: 24px;
+    line-height: 1;
+    margin-bottom: 15px;}
+  .info__charact-row {
+    margin-bottom: 10px;}
+  .apartment__info-descp h1 {
+    font-size: 38px;}
+}
 
 @media (max-width: 1150px) {
   .advant__row {
@@ -3241,7 +3256,25 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   .callback-widget {
     right: 2%;
     width: 65px;
-    height: 65px; } }
+    height: 65px; } 
+  .apartment__charact {
+    padding: 0px 15px 10px 15px;}
+  .apartment__charact h3 {
+    font-size: 23px;
+    line-height: 1;
+    margin-bottom: 10px;}
+  .info__charact-row {
+    font-size: 16px;
+    line-height: 1;
+    margin-bottom: 8px;}
+  .apartment__info-descp h1 {
+    font-size: 36px;
+    line-height: 1.2;}
+  .apartment__info-price {
+    font-size: 30px;}
+  .apartment__info-price-buyer {
+    font-size: 20px;}
+}
 
 @media (max-width: 1000px) {
   .info__form-block-col {
@@ -3859,7 +3892,42 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   .general-plan {
     padding: 25px 0; }
   .general-plan__map {
-    height: 328px; } }
+    height: 328px; } 
+  .apartment__slider {
+    margin-right: 0px;}
+  .apartment__charact h3 {
+    font-size: 18px;
+    line-height: 1;
+    margin-bottom: 8px;}
+  .apartment__charact {
+    padding: 0px 10px 10px 10px;}
+  .info__charact-row {
+    font-size: 14px;
+    margin-bottom: 5px;}
+  .apartment__gallery {
+    margin-bottom: 15px;}
+  .apartment__info-descp h1 {
+    font-size: 24px !important;
+    margin-bottom: 10px !important;}
+  .apartment__subtitle {
+    font-size: 14px;}
+  .apartment__info-price {
+    font-size: 22px;
+    margin-bottom: 5px}
+  .apartment__info-price-square {
+    font-size: 18px;
+    margin-bottom: 5px;}
+  .apartment__info-price-buyer {
+    font-size: 18px;}
+  .apartment__info-block {
+    margin-bottom: 15px;}
+  .apartment__descp h3 {
+    font-size: 20px;
+    line-height: 1;}
+  .apartment__descp p {
+    font-size: 14px;
+    line-height: 1.3;}
+}
 
 @media (max-width: 700px) {
   .mob-menu {
@@ -3979,7 +4047,14 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     flex: 0 0 28%; }
   .promgranit-about__descp-icons-item-text {
     font-size: 13px;
-    line-height: 1.3; } }
+    line-height: 1.3; } 
+  .apartment__gallery {
+    flex-wrap: wrap;}
+  .apartment__slider {
+    flex: 0 1 100%;
+    margin-bottom: 15px}
+
+}
 
 @media (max-width: 600px) {
   .footer__contact .header__soc-block {
@@ -4017,7 +4092,21 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     -ms-flex: 0 0 65%;
     flex: 0 0 65%; }
   .floor-plan__img img {
-    max-width: 100%; } }
+    max-width: 100%; } 
+  .apartment__info-block {
+    flex-wrap: wrap;}
+  .apartment__info-descp {
+    flex: 0 1 100%;
+    margin-right: 0;
+    margin-bottom: 15px;}
+  .apartment__info-charact {
+    flex: 0 1 100%;
+    text-align: left;}
+  .apartment__info-price {
+    margin-bottom: 8px;}
+  .apartment__info-price-buyer br {
+    display: none;}
+}
 
 @media (max-width: 515px) {
   .info {
@@ -4113,6 +4202,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     margin-right: 0;}
   .consult-form__form-btn {
     width: 100%;}
+  .apartment__charact {
+    padding: 0;}
 }
 
 @media (max-width: 480px) {
