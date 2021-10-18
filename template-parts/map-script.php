@@ -16,17 +16,22 @@
       var myGeoObjects = [];
 
     // Указываем координаты метки
-    myGeoObjects = new ymaps.Placemark([<?php echo carbon_get_theme_option('map_point') ?>],{
-    								// hintContent: '<div class="map-hint">Авто профи, Курск, ул.Комарова, 16</div>',
-    								balloonContent: '<div class="map-hint"><?php echo carbon_get_theme_option('text_map') ?>', },{
-    									iconLayout: 'default#image',
-                    // Путь до нашей картинки
-                    iconImageHref:  '<?php bloginfo("template_url"); ?>/img/icons/map-marke.svg',  
-                    // Размеры иконки
-                    iconImageSize: [65, 65],
-                    // Смещение верхнего угла относительно основания иконки
-                    iconImageOffset: [-25, -100]
-                });
+    
+    for (let i = 0; i<mapPin.length; i++ )
+    { 
+      let pin = new ymaps.Placemark([parseFloat(mapPin[i].coord.split(",")[1]), parseFloat(mapPin[i].coord.split(",")[0])], {
+    								balloonContent: mapPin[i].name, 
+                  },
+                  {
+    								iconLayout: 'default#image',
+                    iconImageHref:  '<?php bloginfo("template_url"); ?>/img/icons/map-marker.svg',  
+                    iconImageSize: [36, 36],
+                    iconImageOffset: [-18, -36]
+                  }
+      );
+
+      myGeoObjects.push(pin);
+    }
 
     var clusterer = new ymaps.Clusterer({
     	clusterDisableClickZoom: false,

@@ -2308,7 +2308,6 @@ body.ie .ibg img {
   background: #fff;
   border-radius: 28px;
   border: 2px solid #E8E8E8;
-  border-top: none;
   margin-right: 26px;
   overflow: hidden; }
 
@@ -2347,6 +2346,7 @@ body.ie .ibg img {
   margin-bottom: 13px; }
 
 .hot-deals__card-housing {
+  width: 100%;
   font-size: 16px;
   font-weight: 700;
   color: #003C8C; }

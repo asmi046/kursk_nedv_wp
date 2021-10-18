@@ -57,7 +57,10 @@ foreach ($xml->objects->children() as $elem)
         'floor' => (int)$elem->floor,
         'floors' => (int)$elem->floors,
         'description' => "",
-        'photo' => (string)$elem->photo[0]
+        'photo' => (string)$elem->photo[0],
+        'site_name' => (string)$elem->site_name,
+        'area1' => (string)$elem->area1,
+        'area2' => (string)$elem->area2,
     );
 
     $insertedArray['description'] = empty((string)$elem->description)?(string)$elem->site_text:(string)$elem->description;

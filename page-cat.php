@@ -43,19 +43,24 @@ get_header(); ?>
                             global $wpdb;
 
                             $object = $wpdb->get_results( "SELECT * FROM `kn_objnedv`" );
-                        ?>
-                        
 
+							$mapPin = array();
 
-
-                        <?
                             foreach ($object as $elem) {
                                 get_template_part('template-parts/objec', 'elem', ["elem" => $elem]);
-                            }
+								
+								if (!empty($elem->geocode))
+								$mapPin[] = ["coord" => $elem->geocode, "name" => empty($elem->site_name)?$elem->type." ".$elem->street:$elem->site_name];
+							}
                         ?>
 
 					</div>
 
+					<script>
+						let mapPin = <?echo json_encode($mapPin);?>;
+						console.log(mapPin)
+					</script>
+					
 					<div class="pagging">
 						<ul class="pagging-list">
 							<li><a href="" class="pagging__link active">1</a></li>
