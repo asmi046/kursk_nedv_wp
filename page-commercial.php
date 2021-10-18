@@ -1,25 +1,32 @@
 
 <?php
 /*
-Template Name: Страница категрии недвижимости
+Template Name: Страница Коммерческая
 Template Post Type: page
 */
 
 get_header(); ?>
 
-<?php get_template_part('template-parts/header-section');?>
+<?php get_template_part('template-parts/header-section');?> 
 
 <main class="page">
 
 	<a href="#callback" class="callback-widget blink _popup-link"></a>
 	<a href="tel:<? echo preg_replace('/[^0-9]/', '', $tel = carbon_get_theme_option("as_phone_1")); ?>" class="callback-widget callback-widget-mob blink"></a>
 	
-	<section id="category-info" class="info category-info">
+	<section class="info category-info">
 		<div class="nuar_blk"></div>
 		<div class="container">
-
-			<?php get_template_part('template-parts/tabs-form-block');?>
-
+			<div class="info__block-tabs block__tabs tabs">
+				<nav class="block__nav block__nav_title">
+					<div class="block__navitem building-icon-04 tab__navitem active"><? the_title();?></div>
+				</nav>
+				<div class="block__items">
+					<div class="block__item tab__item active">
+						<?php get_template_part('template-parts/commercial-form-block');?> 
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 

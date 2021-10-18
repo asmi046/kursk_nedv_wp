@@ -1912,6 +1912,10 @@ body.ie .ibg img {
   justify-content: space-between;
   border-bottom: 2.5px solid #BABABA; }
 
+.info__block-tabs .block__nav_title {
+  justify-content: center;
+}
+
 .info__block-tabs .tab__navitem {
   position: relative;
   -webkit-box-flex: 0;

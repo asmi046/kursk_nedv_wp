@@ -1,25 +1,32 @@
 
 <?php
 /*
-Template Name: Страница категрии недвижимости
+Template Name: Страница Новостройки
 Template Post Type: page
 */
 
 get_header(); ?>
 
-<?php get_template_part('template-parts/header-section');?>
+<?php get_template_part('template-parts/header-section');?> 
 
 <main class="page">
 
 	<a href="#callback" class="callback-widget blink _popup-link"></a>
 	<a href="tel:<? echo preg_replace('/[^0-9]/', '', $tel = carbon_get_theme_option("as_phone_1")); ?>" class="callback-widget callback-widget-mob blink"></a>
 	
-	<section id="category-info" class="info category-info">
+	<section class="info category-info">
 		<div class="nuar_blk"></div>
 		<div class="container">
-
-			<?php get_template_part('template-parts/tabs-form-block');?>
-
+			<div class="info__block-tabs block__tabs tabs">
+				<nav class="block__nav block__nav_title">
+					<div class="block__navitem building-icon-02 tab__navitem active"><? the_title();?></div>
+				</nav>
+				<div class="block__items">
+					<div class="block__item tab__item active">
+						<?php get_template_part('template-parts/novostroyki-form-block');?> 
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -40,20 +47,20 @@ get_header(); ?>
 
 					<div class="product-info__wrap-card d-flex">
 						
-                        <?
-                            global $wpdb;
+						<?
+						global $wpdb;
 
-                            $object = $wpdb->get_results( "SELECT * FROM `kn_objnedv`" );
+						$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv`" );
 
-							$mapPin = array();
+						$mapPin = array();
 
-                            foreach ($object as $elem) {
-                                get_template_part('template-parts/objec', 'elem', ["elem" => $elem]);
-								
-								if (!empty($elem->geocode))
+						foreach ($object as $elem) {
+							get_template_part('template-parts/objec', 'elem', ["elem" => $elem]);
+
+							if (!empty($elem->geocode))
 								$mapPin[] = ["coord" => $elem->geocode, "name" => empty($elem->site_name)?$elem->type." ".$elem->street:$elem->site_name];
-							}
-                        ?>
+						}
+						?>
 
 					</div>
 

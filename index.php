@@ -23,7 +23,7 @@
 			<?php get_template_part('template-parts/tabs-form-block');?>
 
 		</div>
-	</section>
+	</section> 
 
 	<section id="topical" class="topical">
 		<div class="container">
