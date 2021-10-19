@@ -24,7 +24,7 @@
 		<p class="hot-deals__card-address"><?echo $adres; ?></p>
 	</div>
 	<div class="hot-deals__card-btn d-flex">
-		<a href="#" class="hot-deals__card-link">Подробнее</a>
+		<a href="<?bloginfo("url")?>/obekt/<?echo $args['elem']->row_id;?>" class="hot-deals__card-link">Подробнее</a>
 		<a href="#" class="hot-deals__card-link">Оставить заявку</a>
 	</div>
 </div>

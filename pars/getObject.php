@@ -21,6 +21,7 @@ if ($ret == 200)
 global $wpdb;
 
 $wpdb->query('TRUNCATE `kn_objnedv`');
+$wpdb->query('TRUNCATE `kn_obj_img`');
 
 $index = 0;    
 foreach ($xml->objects->children() as $elem)
@@ -68,6 +69,12 @@ foreach ($xml->objects->children() as $elem)
     print_r( $insertedArray);
 
     $wpdb->insert('kn_objnedv', $insertedArray);
+
+    foreach ($elem->photo as $imgn1) {
+        $wpdb->insert('kn_obj_img', array ("row_id" => (int)$elem->row_id, "img_lnk" => (string)$imgn1));
+        echo (string)$imgn1;
+        echo "\n\r";
+    }
 
     echo $index.": "; 
     echo $objName = $elem->street." ".$elem->dom_conv;
