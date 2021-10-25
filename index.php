@@ -116,7 +116,7 @@
 							<p class="reviews__date"><? echo $item['data_reviews']; ?></p>
 							<span class="reviews__like"></span>
 							<p class="reviews__descp"><? echo $item['descp_reviews']; ?></p>
-							<a href="#" class="reviews__btn"><? echo $item['link_reviews']; ?></a>
+							<a href="<? echo $item['link_reviews']; ?>" class="reviews__btn">Читать отзыв в Vk</a>
 						</div>
 						<?
 						$reviewsIndex++; 
