@@ -50,7 +50,7 @@ get_header(); ?>
                         <?
                             global $wpdb;
 
-                            $object = $wpdb->get_results( "SELECT * FROM `kn_objnedv`" );
+                            $object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE  `type` = 'Коммерческая' OR `type` = 'Земля (коммерческая)'" );
 
 							$mapPin = array();
 

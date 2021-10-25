@@ -50,7 +50,7 @@ get_header(); ?>
 						<?
 						global $wpdb;
 
-						$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv`" );
+						$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv`  WHERE `type` = 'Часть дома' OR `type` = 'Земельный участок' OR `type` = 'Дом' OR `type` = 'Дача'  OR `type` = 'Гараж'" );
 
 						$mapPin = array();
 
