@@ -1062,7 +1062,7 @@ body.ie .ibg img {
 
 .mob-menu li a {
   display: inline-block;
-  font-size: 23px;
+  font-size: 20px;
   padding-bottom: 13px; }
 
 .mob-callback__phone {
@@ -3049,7 +3049,9 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     height: 328px;
 }
 
-
+.mob-menu__title {
+  margin-bottom: 10px;
+}
 
 
 
@@ -4309,7 +4311,10 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     -ms-flex: 0 0 43%;
     flex: 0 0 43%; }
   .mosaic__img {
-    border-radius: 20px; } }
+    border-radius: 20px; }
+  .mob-menu__title {
+    font-size: 20px;} 
+}
 
 @media (max-width: 380px) {
   .reviews__card {

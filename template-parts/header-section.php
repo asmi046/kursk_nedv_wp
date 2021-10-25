@@ -38,10 +38,13 @@
 </header>
 
 <nav class="mob-menu">
+	<h3 class="mob-menu__title">Информация</h3>
 	<?php wp_nav_menu( array('theme_location' => 'menu_1','menu_class' => 'mob-menu__list',
 	'container_class' => 'mob-menu__list','container' => false )); ?> 
+	<h3 class="mob-menu__title">Вся недвижимость</h3>
 	<?php wp_nav_menu( array('theme_location' => 'menu_2','menu_class' => 'mob-menu__list',
 	'container_class' => 'mob-menu__list','container' => false )); ?> 
+	<h3 class="mob-menu__title">Актуальные предложения</h3>
 	<?php wp_nav_menu( array('theme_location' => 'menu_3','menu_class' => 'mob-menu__list',
 	'container_class' => 'mob-menu__list','container' => false )); ?> 
 </nav>
