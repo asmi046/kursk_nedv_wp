@@ -583,6 +583,7 @@ $('.slider-reviews').slick({
 	// autoplay: true,
 	autoplaySpeed: 1800,
 	adaptiveHeight: true,
+	waitForAnimate: true,
 	// variableWidth: true,
 	responsive: [
 		{
