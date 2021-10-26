@@ -2224,10 +2224,9 @@ body.ie .ibg img {
 .reviews h2 {
   margin-bottom: 95px; }
 
-.reviews__row {
+/*.reviews__row {
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between; }
+  -ms-flex-pack: justify; }*/
 
 .reviews__col {
   padding: 55px 15px 0 15px;
