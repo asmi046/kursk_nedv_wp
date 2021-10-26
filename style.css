@@ -3365,7 +3365,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   .topical__position {
     left: 0;
     padding: 35px 48px;
-    background-image: none;
+    background-image: none !important;
     background-color: #00000035; }
   .topical__position p {
     font-size: 28px; }
