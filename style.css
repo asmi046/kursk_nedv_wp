@@ -2245,6 +2245,7 @@ body.ie .ibg img {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 31%;
   flex: 0 1 31%;
+  height: 373px;
   padding: 0 38px 26px 38px;
   background: #fff;
   border: 1px solid #CCCCCC;
@@ -2272,6 +2273,7 @@ body.ie .ibg img {
   height: 100%; }
 
 .reviews__card h4 {
+  text-align: center;
   color: #003C8C;
   margin-bottom: 3px; }
 
@@ -2299,6 +2301,7 @@ body.ie .ibg img {
   font-size: 16px;
   line-height: 19.2px;
   text-align: center;
+  flex: 1 1 auto;
   margin-bottom: 10px; 
   overflow: hidden;}
 
@@ -3306,6 +3309,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     font-size: 30px;}
   .apartment__info-price-buyer {
     font-size: 20px;}
+  .reviews__col {
+    padding: 55px 5px 0 5px;}
 }
 
 @media (max-width: 1000px) {
@@ -3415,7 +3420,12 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     flex: 0 1 33%; }
   .promgranit-about__img img {
     -o-object-position: right;
-    object-position: right; } }
+    object-position: right; } 
+  .reviews h2 {
+    margin-bottom: 45px}
+  .reviews__col {
+    padding: 0px 5px 0 5px;}
+}
 
 @media (max-width: 768px) {
   .header {
@@ -4144,6 +4154,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     display: block !important;}
   .callback-widget {
     display: none;}
+  .reviews__col {
+    padding: 0;}
 }
 
 @media (max-width: 515px) {

@@ -589,13 +589,19 @@ $('.slider-reviews').slick({
 			breakpoint: 770,
 			settings: {
 				arrows: false,
+				slidesToShow: 2,
 			}
 		}, {
 			breakpoint: 613,
 			settings: {
+				slidesToShow: 2,
+				arrows: false,
+			}
+		}, {
+			breakpoint: 541,
+			settings: {
 				slidesToShow: 1,
 				arrows: false,
-				autoplay: true
 			}
 		}
 	]
