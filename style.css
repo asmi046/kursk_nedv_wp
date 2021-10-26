@@ -797,7 +797,8 @@ body.ie .ibg img {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    font-size: 0; }
+    /*font-size: 0; */
+}
   .slick-slider .slick-slide {
     position: relative; }
 
@@ -2228,7 +2229,12 @@ body.ie .ibg img {
   -ms-flex-pack: justify;
   justify-content: space-between; }
 
+.reviews__col {
+  padding: 55px 15px 0 15px;
+}
+
 .reviews__card {
+  display: flex !important;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -2242,9 +2248,12 @@ body.ie .ibg img {
   padding: 0 38px 26px 38px;
   background: #fff;
   border: 1px solid #CCCCCC;
-  border-radius: 35px; }
+  border-radius: 35px; 
+}
 
 .reviews__image-wrap {
+  display: flex;
+  justify-content: center;
   padding: 6px;
   background: #fff;
   margin: -60px 0 10px 0; }

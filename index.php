@@ -100,23 +100,25 @@
 		<div class="container">
 			<h2>Отзывы довольных клиентов</h2>
 
-			<div class="reviews__row d-flex">
+			<div class="slider-reviews reviews__row d-flex">
 				<? $reviews = carbon_get_theme_option('complex_reviews');
 				if ($reviews) {
 					$reviewsIndex = 0;
 					foreach ($reviews as $item) {
 						?>
-						<div class="reviews__card d-flex">
-							<div class="reviews__image-wrap">
-								<div class="reviews__image">
-									<img src="<?php echo wp_get_attachment_image_src($item['img_reviews'], 'large')[0]; ?>" alt="">
+						<div class="reviews__col">
+							<div class="reviews__card d-flex">
+								<div class="reviews__image-wrap">
+									<div class="reviews__image">
+										<img src="<?php echo wp_get_attachment_image_src($item['img_reviews'], 'large')[0]; ?>" alt="">
+									</div>
 								</div>
+								<h4><? echo $item['name_reviews']; ?></h4>
+								<p class="reviews__date"><? echo $item['data_reviews']; ?></p>
+								<span class="reviews__like"></span>
+								<p class="reviews__descp"><? echo $item['descp_reviews']; ?></p>
+								<a href="<? echo $item['link_reviews']; ?>" class="reviews__btn">Читать отзыв в Vk</a>
 							</div>
-							<h4><? echo $item['name_reviews']; ?></h4>
-							<p class="reviews__date"><? echo $item['data_reviews']; ?></p>
-							<span class="reviews__like"></span>
-							<p class="reviews__descp"><? echo $item['descp_reviews']; ?></p>
-							<a href="<? echo $item['link_reviews']; ?>" class="reviews__btn">Читать отзыв в Vk</a>
 						</div>
 						<?
 						$reviewsIndex++; 

@@ -573,6 +573,34 @@ $('.topical__slider').slick({
 	]
 });
 
+// Slider Отзывы
+$('.slider-reviews').slick({
+	arrows: false,
+	dots: false,
+	infinite: true,
+	speed: 1000,
+	slidesToShow: 3,
+	// autoplay: true,
+	autoplaySpeed: 1800,
+	adaptiveHeight: true,
+	// variableWidth: true,
+	responsive: [
+		{
+			breakpoint: 770,
+			settings: {
+				arrows: false,
+			}
+		}, {
+			breakpoint: 613,
+			settings: {
+				slidesToShow: 1,
+				arrows: false,
+				autoplay: true
+			}
+		}
+	]
+});
+
 // Slider Горячие предложения
 $('.slider__hot-deals').slick({
 	arrows: true,
