@@ -30,6 +30,23 @@ get_header(); ?>
 		</div>
 	</section>
 
+	<? 
+		$countInPage = 6;
+		$curentPage = get_query_var("onpage");
+		$curentPage = !empty($curentPage)?$curentPage:1;
+
+		global $wpdb;
+		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира' LIMIT 6" );
+		$objectUl = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира'" );
+		
+
+		$totalCount = count($objectUl);
+
+		$pageCount = intdiv($totalCount, $countInPage);
+		if ($totalCount % $countInPage > 0)
+			$pageCount++;
+	?>
+
 	<section id="product-info" class="product-info recurring">
 		<div class="container">
 
@@ -37,6 +54,7 @@ get_header(); ?>
 			if ( function_exists('yoast_breadcrumb') ) {
 				yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
 			}
+
 			?> 
 
 			<h1><?php single_cat_title( '', true );?></h1> 
@@ -48,9 +66,7 @@ get_header(); ?>
 					<div class="product-info__wrap-card d-flex">
 						
 						<?
-						global $wpdb;
-
-						$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира'" );
+						
 
 						$mapPin = array();
 
@@ -65,15 +81,19 @@ get_header(); ?>
 					</div>
 
 					<script>
-						let mapPin = <?echo json_encode($mapPin);?>;
-						console.log(mapPin)
+						//let mapPin = <?echo json_encode($mapPin);?>;
+						//console.log(mapPin)
 					</script>
 					
 					<div class="pagging">
 						<ul class="pagging-list">
-							<li><a href="" class="pagging__link active">1</a></li>
-							<li><a href="" class="pagging__link">2</a></li>
-							<li><a href="" class="pagging__link">3</a></li>
+							<?
+								for ($i = 0; $i<$6; $i++) {
+							?>
+								<li><a href="" class="pagging__link <? if ($i == $curentPage) echo "active" ?>"><? echo $i; ?></a></li>
+							<?
+								}
+							?>
 						</ul>
 					</div>
 

@@ -578,12 +578,14 @@ add_action('init', 'do_rewrite');
 function do_rewrite(){
 	// Правило перезаписи
 	add_rewrite_rule( '^(obekt)/([^/]*)/?', 'index.php?pagename=$matches[1]&objnedv=$matches[2]', 'top' );
-	// нужно указать ?p=123 если такое правило создается для записи 123
-	// первый параметр для записей: p или name, для страниц: page_id или pagename
+	
+	add_rewrite_rule( '^(vtorichnaya)/([^/]*)/?', 'index.php?pagename=$matches[1]&onpage=$matches[2]', 'top' );
+	
 
 	// скажем WP, что есть новые параметры запроса
 	add_filter( 'query_vars', function( $vars ){
 		$vars[] = 'objnedv';
+		$vars[] = 'onpage';
 		return $vars;
 	} );
 }
