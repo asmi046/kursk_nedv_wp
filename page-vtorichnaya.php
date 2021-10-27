@@ -55,7 +55,7 @@ get_header(); ?>
 
 			?> 
 
-			<h1><?php single_cat_title( '', true );?></h1> 
+			<h2><?php single_cat_title( '', true );?></h2> 
 
 			<div class="product-info__row d-flex">
 
