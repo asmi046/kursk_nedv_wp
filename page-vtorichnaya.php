@@ -88,7 +88,7 @@ get_header(); ?>
 					<div class="pagging">
 						<ul class="pagging-list">
 							<?
-								for ($i = 0; $i<$6; $i++) {
+								for ($i = 0; $i<6; $i++) {
 							?>
 								<li><a href="" class="pagging__link <? if ($i == $curentPage) echo "active" ?>"><? echo $i; ?></a></li>
 							<?
