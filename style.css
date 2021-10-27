@@ -3076,7 +3076,12 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   margin-bottom: 10px;
 }
 
-
+.category-info-object {
+  padding-top: 25px !important;
+}
+.category-info-object h1 {
+  margin-bottom: 25px;
+}
 
 
 
