@@ -17,10 +17,8 @@ get_header(); ?>
 	<section class="info category-info">
 		<div class="nuar_blk"></div>
 		<div class="container">
+			<h1><? the_title();?></h1>
 			<div class="info__block-tabs block__tabs tabs">
-				<nav class="block__nav block__nav_title">
-					<div class="block__navitem building-icon-03 tab__navitem active"><? the_title();?></div>
-				</nav>
 				<div class="block__items">
 					<div class="block__item tab__item active">
 						<?php get_template_part('template-parts/home-form-block');?> 

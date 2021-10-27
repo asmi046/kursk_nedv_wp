@@ -14,13 +14,11 @@ get_header(); ?>
 	<a href="#callback" class="callback-widget blink _popup-link"></a>
 	<a href="tel:<? echo preg_replace('/[^0-9]/', '', $tel = carbon_get_theme_option("as_phone_1")); ?>" class="callback-widget callback-widget-mob blink"></a>
 	
-	<section class="info category-info">
+	<section class="info category-info"> 
 		<div class="nuar_blk"></div>
 		<div class="container">
+			<h1><? the_title();?></h1>
 			<div class="info__block-tabs block__tabs tabs">
-				<nav class="block__nav block__nav_title">
-					<div class="block__navitem building-icon-01 tab__navitem active"><? the_title();?></div>
-				</nav>
 				<div class="block__items">
 					<div class="block__item tab__item active">
 						<?php get_template_part('template-parts/vtorichnaya-form-block');?> 
@@ -88,7 +86,7 @@ get_header(); ?>
 					<div class="pagging">
 						<ul class="pagging-list">
 							<?
-								for ($i = 0; $i<$6; $i++) {
+								for ($i = 0; $i<6; $i++) {
 							?>
 								<li><a href="" class="pagging__link <? if ($i == $curentPage) echo "active" ?>"><? echo $i; ?></a></li>
 							<?
