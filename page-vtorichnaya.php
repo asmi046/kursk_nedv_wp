@@ -33,8 +33,10 @@ get_header(); ?>
 		$curentPage = get_query_var("onpage");
 		$curentPage = !empty($curentPage)?$curentPage:1;
 
+		$ofset = ($curentPage - 1) * $countInPage;
+
 		global $wpdb;
-		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира' LIMIT 6" );
+		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира' LIMIT ".$ofset.", ".$countInPage );
 		$objectUl = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира'" );
 		
 
@@ -79,16 +81,40 @@ get_header(); ?>
 					</div>
 
 					<script>
-						//let mapPin = <?echo json_encode($mapPin);?>;
-						//console.log(mapPin)
+						let mapPin = <?echo json_encode($mapPin);?>;
 					</script>
 					
 					<div class="pagging">
 						<ul class="pagging-list">
 							<?
-								for ($i = 0; $i<6; $i++) {
+								$start = 1;
+								$end = 5;
+
+								$prefix = "vtorichnaya";
+
+								if ($curentPage >= 5)
+								{
+									$start = $curentPage - 2;
+									$end = ($curentPage + 2 < $totalCount)?$curentPage + 2:$totalCount;	
+								}
+
+								if ($start > 1) {
 							?>
-								<li><a href="" class="pagging__link <? if ($i == $curentPage) echo "active" ?>"><? echo $i; ?></a></li>
+								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/" ?>" class="pagging__link <? if ($totalCount == $curentPage) echo "active" ?>">1</a></li>
+								<li class = "empty">...</li>
+							<?
+								}
+
+								for ($i = $start; $i<=$end; $i++) {
+							?>
+								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/".$i."/" ?>" class="pagging__link <? if ($i == $curentPage) echo "active" ?>"><? echo $i; ?></a></li>
+							<?
+								}
+
+								if ($end+3 < $totalCount) {
+							?>
+								<li class = "empty">...</li>
+								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/".$totalCount."/" ?>" class="pagging__link <? if ($totalCount == $curentPage) echo "active" ?>"><? echo $totalCount; ?></a></li>
 							<?
 								}
 							?>
