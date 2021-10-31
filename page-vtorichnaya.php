@@ -36,8 +36,25 @@ get_header(); ?>
 		$ofset = ($curentPage - 1) * $countInPage;
 
 		global $wpdb;
-		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира' LIMIT ".$ofset.", ".$countInPage );
-		$objectUl = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира'" );
+
+		$raion = empty($_REQUEST["raion"])?"%":$_REQUEST["raion"];
+		$rooms = empty($_REQUEST["rooms"])?"%":$_REQUEST["rooms"];
+		
+		$areaot = empty($_REQUEST["areaot"])?PHP_INT_MIN:$_REQUEST["areaot"];
+		$areado = empty($_REQUEST["areado"])?PHP_INT_MAX:$_REQUEST["areado"];
+		
+		$priceot = empty($_REQUEST["priceot"])?PHP_INT_MIN:$_REQUEST["priceot"];
+		$pricedo = empty($_REQUEST["pricedo"])?PHP_INT_MAX:$_REQUEST["pricedo"];
+
+
+
+		$etazgey = empty($_REQUEST["etazgei"])?"%":$_REQUEST["etazgei"];
+		$sparam = "AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
+
+		//echo "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage;
+	
+		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage );
+		$objectUl = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam.";" );
 		
 
 		$totalCount = count($objectUl);
@@ -88,33 +105,35 @@ get_header(); ?>
 						<ul class="pagging-list">
 							<?
 								$start = 1;
-								$end = 5;
+								$end = $pageCount;
 
 								$prefix = "vtorichnaya";
 
 								if ($curentPage >= 5)
 								{
 									$start = $curentPage - 2;
-									$end = ($curentPage + 2 < $totalCount)?$curentPage + 2:$totalCount;	
+									$end = ($curentPage + 2 < $pageCount)?$curentPage + 2:$pageCount;	
 								}
+
+								$query = !empty($_GET)?"?".http_build_query($_GET):"";
 
 								if ($start > 1) {
 							?>
-								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/" ?>" class="pagging__link <? if ($totalCount == $curentPage) echo "active" ?>">1</a></li>
+								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/".$query ?>" class="pagging__link <? if ($pageCount == $curentPage) echo "active" ?>">1</a></li>
 								<li class = "empty">...</li>
 							<?
 								}
 
 								for ($i = $start; $i<=$end; $i++) {
 							?>
-								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/".$i."/" ?>" class="pagging__link <? if ($i == $curentPage) echo "active" ?>"><? echo $i; ?></a></li>
+								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/".$i."/".$query ?>" class="pagging__link <? if ($i == $curentPage) echo "active" ?>"><? echo $i; ?></a></li>
 							<?
 								}
 
-								if ($end+3 < $totalCount) {
+								if ($end+3 < $pageCount) {
 							?>
 								<li class = "empty">...</li>
-								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/".$totalCount."/" ?>" class="pagging__link <? if ($totalCount == $curentPage) echo "active" ?>"><? echo $totalCount; ?></a></li>
+								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/".$pageCount."/".$query ?>" class="pagging__link <? if ($pageCount == $curentPage) echo "active" ?>"><? echo $totalCount; ?></a></li>
 							<?
 								}
 							?>
