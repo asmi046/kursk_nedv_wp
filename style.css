@@ -18,7 +18,7 @@ Version: 1.0.1
 *:before,
 *:after {
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  -webkit-box-sizing: border-box; 
   box-sizing: border-box; }
 
 :focus,
@@ -1035,24 +1035,24 @@ body.ie .ibg img {
   bottom: 10px; }
 
 .mob-menu {
+  overflow: hidden;
   position: fixed;
   top: 78px;
   right: -50%;
-  width: 50%;
+  width: 34.6%;
   height: 100%;
   background: #fff;
   padding: 35px 35px 100px 35px;
   overflow: auto;
   -webkit-box-shadow: 0px 3px 5px 0px black;
   box-shadow: 0px 3px 5px 0px black;
-  -webkit-transition: right 0.8s;
-  -o-transition: right 0.8s;
-  -webkit-transition: right 1s;
-  -o-transition: right 1s;
-  transition: right 1s;
+  -webkit-transition: right 0.5s;
+  -o-transition: right 0.5s;
+  transition: right 0.5s;
   z-index: 100; }
 
 .mob-menu.active {
+  overflow: visible;
   right: 0%; }
 
 .mob-menu__list {
@@ -3256,7 +3256,10 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 
 @media (max-width: 1050px) {
   .sell-pass-info__text {
-    margin-right: 10px; } }
+    margin-right: 10px; } 
+  .mob-menu {
+    width: 41%;}
+}
 
 @media (max-width: 1040px) {
   .footer__menu {
@@ -3449,6 +3452,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     margin-bottom: 45px}
   .reviews__col {
     padding: 0px 5px 0 5px;}
+  .mob-menu {
+    width: 50%;}
 }
 
 @media (max-width: 768px) {
@@ -4001,10 +4006,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 @media (max-width: 700px) {
   .mob-menu {
     width: 100%;
-    right: -100%;
-    -webkit-transition: right 0.8s;
-    -o-transition: right 0.8s;
-    transition: right 0.8s; }
+    right: -100%; }
   .info__form-block-col:last-child .info__form-block-inp {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
