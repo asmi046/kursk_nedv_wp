@@ -1,5 +1,4 @@
-<form method = "GET" action="#" class="info__form-block">
-
+<form method = "GET" action="<?echo bloginfo("url")."/vtorichnaya"; ?>" class="info__form-block">
 	<div class="info__form-block-col">
 		<div class="info__form-block-sel form-block__item">
 			<p class="info__form-block-sub">Количество комнат</p>

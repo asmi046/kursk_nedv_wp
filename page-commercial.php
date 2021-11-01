@@ -27,7 +27,41 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>
+	<?
+		$countInPage = 6;
+		$curentPage = get_query_var("onpage");
+		$curentPage = !empty($curentPage)?$curentPage:1;
 
+		$ofset = ($curentPage - 1) * $countInPage;
+
+		global $wpdb;
+
+		$raion = empty($_REQUEST["raion"])?"%":$_REQUEST["raion"];
+		$rooms = empty($_REQUEST["rooms"])?"%":$_REQUEST["rooms"];
+
+		$areaot = empty($_REQUEST["areaot"])?PHP_INT_MIN:$_REQUEST["areaot"];
+		$areado = empty($_REQUEST["areado"])?PHP_INT_MAX:$_REQUEST["areado"];
+
+		$priceot = empty($_REQUEST["priceot"])?PHP_INT_MIN:$_REQUEST["priceot"];
+		$pricedo = empty($_REQUEST["pricedo"])?PHP_INT_MAX:$_REQUEST["pricedo"];
+
+		$etazgey = empty($_REQUEST["etazgei"])?"%":$_REQUEST["etazgei"];
+		$sparam = "AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
+
+		
+
+
+		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE  (`type` = 'Коммерческая' OR `type` = 'Земля (коммерческая)') ".$sparam." LIMIT ".$ofset.", ".$countInPage );
+		$objectUl = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE  (`type` = 'Коммерческая' OR `type` = 'Земля (коммерческая)') ".$sparam.";"  );
+
+		$totalCount = count($objectUl);
+
+		$pageCount = intdiv($totalCount, $countInPage);
+			if ($totalCount % $countInPage > 0)
+				$pageCount++;
+
+		$mapPin = array();
+	?>
 	<section id="product-info" class="product-info recurring">
 		<div class="container">
 
@@ -46,11 +80,7 @@ get_header(); ?>
 					<div class="product-info__wrap-card d-flex">
 						
                         <?
-                            global $wpdb;
 
-                            $object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE  `type` = 'Коммерческая' OR `type` = 'Земля (коммерческая)'" );
-
-							$mapPin = array();
 
                             foreach ($object as $elem) {
                                 get_template_part('template-parts/objec', 'elem', ["elem" => $elem]);
@@ -67,13 +97,9 @@ get_header(); ?>
 						console.log(mapPin)
 					</script>
 					
-					<div class="pagging">
-						<ul class="pagging-list">
-							<li><a href="" class="pagging__link active">1</a></li>
-							<li><a href="" class="pagging__link">2</a></li>
-							<li><a href="" class="pagging__link">3</a></li>
-						</ul>
-					</div>
+					<?php 
+						$param = array("curentpage" => $curentPage, 'pagecount' => $pageCount, "prefix" => "kommercheskaya");
+						get_template_part('template-parts/pagination','all', $param);?>
 
 				</div>
 

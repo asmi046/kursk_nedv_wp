@@ -101,44 +101,9 @@ get_header(); ?>
 						let mapPin = <?echo json_encode($mapPin);?>;
 					</script>
 					
-					<div class="pagging">
-						<ul class="pagging-list">
-							<?
-								$start = 1;
-								$end = $pageCount;
-
-								$prefix = "vtorichnaya";
-
-								if ($curentPage >= 5)
-								{
-									$start = $curentPage - 2;
-									$end = ($curentPage + 2 < $pageCount)?$curentPage + 2:$pageCount;	
-								}
-
-								$query = !empty($_GET)?"?".http_build_query($_GET):"";
-
-								if ($start > 1) {
-							?>
-								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/".$query ?>" class="pagging__link <? if ($pageCount == $curentPage) echo "active" ?>">1</a></li>
-								<li class = "empty">...</li>
-							<?
-								}
-
-								for ($i = $start; $i<=$end; $i++) {
-							?>
-								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/".$i."/".$query ?>" class="pagging__link <? if ($i == $curentPage) echo "active" ?>"><? echo $i; ?></a></li>
-							<?
-								}
-
-								if ($end+3 < $pageCount) {
-							?>
-								<li class = "empty">...</li>
-								<li><a href="<?echo get_bloginfo("url")."/".$prefix."/".$pageCount."/".$query ?>" class="pagging__link <? if ($pageCount == $curentPage) echo "active" ?>"><? echo $totalCount; ?></a></li>
-							<?
-								}
-							?>
-						</ul>
-					</div>
+					<?php 
+					$param = array("curentpage" => $curentPage, 'pagecount' => $pageCount, "prefix" => "vtorichnaya");
+					get_template_part('template-parts/pagination','all', $param);?> 
 
 				</div>
 

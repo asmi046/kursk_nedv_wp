@@ -580,6 +580,9 @@ function do_rewrite(){
 	add_rewrite_rule( '^(obekt)/([^/]*)/?', 'index.php?pagename=$matches[1]&objnedv=$matches[2]', 'top' );
 	
 	add_rewrite_rule( '^(vtorichnaya)/([^/]*)/?', 'index.php?pagename=$matches[1]&onpage=$matches[2]', 'top' );
+	add_rewrite_rule( '^(novostrojki)/([^/]*)/?', 'index.php?pagename=$matches[1]&onpage=$matches[2]', 'top' );
+	add_rewrite_rule( '^(doma-uchastki-dachi)/([^/]*)/?', 'index.php?pagename=$matches[1]&onpage=$matches[2]', 'top' );
+	add_rewrite_rule( '^(kommercheskaya)/([^/]*)/?', 'index.php?pagename=$matches[1]&onpage=$matches[2]', 'top' );
 	
 
 	// скажем WP, что есть новые параметры запроса
