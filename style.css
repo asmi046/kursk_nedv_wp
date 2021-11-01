@@ -1119,10 +1119,20 @@ body.ie .ibg img {
       font-size: 24px;
       font-weight: 700;
       margin-bottom: 30px; }
+  .footer__menu_average li:first-child {
+      font-size: 16px;
+      margin-bottom: 20px;}
     .footer__menu li:last-child {
       margin-bottom: 0; }
     .footer__menu li a {
       color: #fff; }
+  .footer__menu-title {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 30px;
+  }
   .footer__contact .header__callback {
     margin-bottom: 32.5px; }
   .footer__contact .header__callback a {
@@ -1161,6 +1171,8 @@ body.ie .ibg img {
 
 .footer__menu {
   margin-right: 25px; }
+.footer__menu_double {
+  margin-bottom: 0 !important;}
 
 .category-info {
   padding: 55px 0 !important;
@@ -3715,12 +3727,16 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     padding: 20px 10px !important; }
   .footer__menu {
     margin-bottom: 25px; }
+  .footer__menu-title,
   .footer__menu li:first-child {
     font-size: 18px;
     margin-bottom: 15px; }
   .footer__menu li {
     font-size: 14px;
     margin-bottom: 10px; }
+  .footer__menu_average li:first-child {
+    font-size: 14px;
+    margin-bottom: 10px;}
   .footer__row {
     margin-bottom: 25px; }
   .footer__policy {
