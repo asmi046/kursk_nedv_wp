@@ -1179,7 +1179,7 @@ body.ie .ibg img {
   background-image: url("img/category-bg.jpg") !important; }
 
 #breadcrumbs {
-  margin-bottom: 8px; }
+  margin-bottom: 35px; }
 
 #breadcrumbs ul {
   display: -webkit-box;
@@ -3132,7 +3132,9 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   border: 1px solid red;
 }
 
-
+.pyatnitsky-info .nuar_blk {
+  background-color: #00000065;
+}
 
 
 
@@ -3786,7 +3788,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     line-height: 1;
     margin-bottom: 20px; }
   #breadcrumbs {
-    margin-bottom: 10px; }
+    margin-bottom: 25px; }
   #breadcrumbs span {
     font-size: 12px;
     margin-left: 3px; }
@@ -4358,7 +4360,14 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     height: 328px; }
   .callback-widget {
     width: 60px;
-    height: 60px; } }
+    height: 60px; } 
+  .product-info__row {
+    flex-wrap: wrap-reverse;}
+  .product-info__column-map {
+    margin-bottom: 35px !important;}
+  .product-info__column {
+    margin-bottom: 0;}
+}
 
 @media (max-width: 460px) {
   .header__callback {

@@ -187,13 +187,72 @@ get_header(); ?>
 
 	<section id="general-plan" class="general-plan">
 		<div class="container">
-			<h2>Генеральный план поселка</h2>
-			<div class="general-plan__map map" id="map"></div>
-			<?php get_template_part('template-parts/map-script');?> 
-		</div>
-	</section>
+			<h2>Расположение поселка</h2>
+			<div class="general-plan__map map" id="map">
+				<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 
-	<?php get_template_part('template-parts/consult-form-section');?> 
+				<script>
+					ymaps.ready(init);
+
+					function init() {
+						var myMap = new ymaps.Map("map", {
+					// Координаты центра карты
+					center: [<?php echo carbon_get_theme_option('map_point') ?>],
+					// Масштаб карты
+					zoom: 13,
+					// Выключаем все управление картой
+					controls: []
+				});
+
+						var myGeoObjects = [];
+
+				// Указываем координаты метки
+				myGeoObjects = new ymaps.Placemark([<?php echo carbon_get_theme_option('map_point') ?>], {
+					// hintContent: '<div class="map-hint">Авто профи, Курск, ул.Комарова, 16</div>',
+					balloonContent: '<div class="map-hint"><?php echo carbon_get_theme_option('text_map') ?>',
+				}, {
+					iconLayout: 'default#image',
+					// Путь до нашей картинки
+					iconImageHref: '<?php bloginfo("template_url"); ?>/img/icons/map-marker.svg',
+					// Размеры иконки
+					iconImageSize: [26, 32],
+					// Смещение верхнего угла относительно основания иконки
+					iconImageOffset: [-25, -100]
+				});
+
+				myGeoObjects2 = new ymaps.Placemark([<?php echo carbon_get_theme_option('map_point_2') ?>], {
+					// hintContent: '<div class="map-hint">Авто профи, Курск, ул.Комарова, 16</div>',
+					balloonContent: '<div class="map-hint">Отдел продаж ("Курская недвижимость")',
+				}, {
+					iconLayout: 'default#image',
+					// Путь до нашей картинки
+					iconImageHref: '<?php bloginfo("template_url"); ?>/img/icons/map-marker.svg',
+					// Размеры иконки
+					iconImageSize: [26, 32],
+					// Смещение верхнего угла относительно основания иконки
+					iconImageOffset: [-25, -100]
+				});
+
+				var clusterer = new ymaps.Clusterer({
+					clusterDisableClickZoom: false,
+					clusterOpenBalloonOnClick: false,
+				});
+
+				clusterer.add(myGeoObjects);
+				clusterer.add(myGeoObjects2);
+				myMap.geoObjects.add(clusterer);
+				// Отключим zoom
+				myMap.behaviors.disable('scrollZoom');
+
+			}
+		</script>
+	</div>
+<!-- 			<div class="general-plan__map map" id="map"></div>
+	<?php get_template_part('template-parts/map-script');?>  -->
+</div>
+</section>
+
+<?php get_template_part('template-parts/consult-form-section');?> 
 
 </main>
 
