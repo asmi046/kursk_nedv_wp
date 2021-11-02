@@ -3114,6 +3114,22 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   margin-bottom: 25px;
 }
 
+.form__error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.input._focus {
+  background: grey;
+}
+
+.input._error {
+  border: 1px solid red;
+}
+
+
+
+
 
 
 @media (max-width: 1450px) {
