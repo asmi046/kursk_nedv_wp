@@ -25,15 +25,16 @@ get_header(); ?>
 			<h1><? the_title();?></h1>  
 
 			<ul class="contacts__address">
-				<li>Курск,</li>
-				<li>Курская обл., 305000</li>
-				<li>ул. Ватутина, 20</li>
+				<li><strong><?php echo carbon_get_theme_option('as_company'); ?></strong></li>
+				<li><strong>Адрес: </strong> <?php echo carbon_get_theme_option('as_address'); ?></li>
+				<li><strong>Режим работы: </strong> <?php echo carbon_get_theme_option('as_schedule'); ?></li>
+				<li><strong>e-mail: </strong> <a href = "mailto:<?php echo carbon_get_theme_option('as_email'); ?>"><?php echo carbon_get_theme_option('as_email'); ?></a></li>
 			</ul>
 
 			<ul class="contacts__contacts-block">
 				<? $tel = carbon_get_theme_option("as_phone_1"); if (!empty($tel)){?><li><a href="tel:<? echo preg_replace('/[^0-9]/', '', $tel); ?>" class="contacts__contacts-item-phone"><? echo $tel; ?></a></li><?}?> 
-				<? $mail = carbon_get_theme_option("as_email"); if (!empty($mail)){?><li><a href="mailto:<? echo $mail; ?>"
-					class="contacts__contacts-item-email"><? echo $mail; ?></a></li><?}?>
+				<? $tel = carbon_get_theme_option("as_phone_2"); if (!empty($tel)){?><li><a href="tel:<? echo preg_replace('/[^0-9]/', '', $tel); ?>" class="contacts__contacts-item-phone"><? echo $tel; ?></a></li><?}?> 
+				
 				</ul>
 
 				<div class="contacts__soc-block soc-block-icon">
@@ -44,7 +45,7 @@ get_header(); ?>
 				</div>
 
 				<div class="contacts__map map" id="map"></div>
-				<?php get_template_part('template-parts/map-script');?> 
+				<?php get_template_part('template-parts/map-script', "contact", ["mapPinOne" => carbon_get_theme_option('map_point'), "name" => carbon_get_theme_option('as_company')]);?> 
 
 			</div>
 		</section>

@@ -8,7 +8,7 @@
     "clear_r": "ssh u0829746@37.140.192.77 \"rm www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/*.*\"",
     "send_r": "scp -C *.php *.png *.css u0829746@37.140.192.77:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
     "send_ms": "scp -C *.css u0829746@37.140.192.77:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
-    "send_one": "scp -C page-cat.php u0829746@37.140.192.77:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
+    "send_one": "scp -C page-about.php u0829746@37.140.192.77:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
     "send_one1": "scp -C page-obj.php u0829746@37.140.192.77:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
     "send_one2": "scp -C page-novostroyki.php u0829746@37.140.192.77:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
     "send_one3": "scp -C page-commercial.php u0829746@37.140.192.77:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
