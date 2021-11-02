@@ -1,7 +1,6 @@
-// Файлы Java Script -----------------------------------------------------------------------------------------------------
+// Файлы Java Script ======================================================================================================
 
-// возвращает куки с указанным name,
-// или undefined, если ничего не найдено
+// возвращает куки с указанным name, или undefined, если ничего не найдено
 function getCookie(name) {
 	let matches = document.cookie.match(new RegExp(
 		"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
@@ -94,36 +93,6 @@ function add_tocart(elem, countElem) {
 }
 //------------------------------------------------------------------------------------------------------------
 
-// Отправка на печать -------------------------------------------------------------------------------------------------------------
-function printit() {
-	if (window.print) {
-		window.print();
-	} else {
-		var WebBrowser =
-			'<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
-		document.body.insertAdjacentHTML("beforeEnd", WebBrowser);
-		WebBrowser1.ExecWB(6, 2); //Use a 1 vs. a 2 for a prompting dialog box WebBrowser1.outerHTML = "";
-	}
-}
-
-// Отправка на генерацию PDF -------------------------------------------------------------------------------------------------------------
-function generatePDF() {
-	const element = document.getElementById('body');
-	const opt = {
-		margin: 1,
-		filename: 'file.pdf',
-		image: { type: 'jpeg', quality: 0.98 },
-		html2canvas: { scale: 1 },
-		jsPDF: { unit: 'in', format: 'a2', orientation: 'portrait' }
-	};
-
-	// New Promise-based usage:
-	html2pdf().set(opt).from(element).save();
-}
-
-{/* <a href="#" class="card-wrap-properties-links-link" onclick="generatePDF();">Скачать страницу в PDF</p></a> */ }
-// ----------------------------------------------------------------------------------------------------------------------------------------
-
 const iconMenu = document.querySelector(".icon-menu");
 const body = document.querySelector("body");
 const menuBody = document.querySelector(".mob-menu");
@@ -131,7 +100,7 @@ const menuListItemElems = document.querySelector(".mob-menu__list");
 const mobsearch = document.querySelector(".mob-search");
 const headsearch = document.querySelector(".header__search");
 
-//BURGER
+//BURGER -----------------------------------------------------------
 if (iconMenu) {
 	iconMenu.addEventListener("click", function () {
 		iconMenu.classList.toggle("active");
@@ -140,7 +109,7 @@ if (iconMenu) {
 	});
 }
 
-// Закрытие моб меню при клике на якорную ссылку
+// Закрытие моб меню при клике на якорную ссылку -------------------
 if (menuListItemElems) {
 	menuListItemElems.addEventListener("click", function () {
 		iconMenu.classList.toggle("active");
@@ -149,7 +118,7 @@ if (menuListItemElems) {
 	});
 }
 
-// Закрытие моб меню при клике вне области меню 
+// Закрытие моб меню при клике вне области меню ------------------------------------
 window.addEventListener('click', e => { // при клике в любом месте окна браузера
 	const target = e.target // находим элемент, на котором был клик
 	if (!target.closest('.icon-menu') && !target.closest('.mob-menu') && !target.closest('.mob-search') && !target.closest('.header__search') && !target.closest('._popup-link') && !target.closest('.popup')) { // если этот элемент или его родительские элементы не окно навигации и не кнопка
@@ -159,45 +128,45 @@ window.addEventListener('click', e => { // при клике в любом ме�
 	}
 })
 
-// Плавная прокрутка
-const smotScrollElems = document.querySelectorAll('a[href^="#"]:not(a[href="#"])');
+// Плавная прокрутка -------------------------
+// const smotScrollElems = document.querySelectorAll('a[href^="#"]:not(a[href="#"])');
 
-smotScrollElems.forEach(link => {
-	link.addEventListener('click', (event) => {
-		event.preventDefault()
-		console.log(event);
+// smotScrollElems.forEach(link => {
+// 	link.addEventListener('click', (event) => {
+// 		event.preventDefault()
+// 		console.log(event);
 
-		const id = link.getAttribute('href').substring(1)
-		console.log('id : ', id);
+// 		const id = link.getAttribute('href').substring(1)
+// 		console.log('id : ', id);
 
-		document.getElementById(id).scrollIntoView({
-			behavior: 'smooth'
-		});
-	})
-});
+// 		document.getElementById(id).scrollIntoView({
+// 			behavior: 'smooth'
+// 		});
+// 	})
+// });
 
 
 // CRM --------------------------------------------------------------------------------------------------------------------------------------
-sendZobj.addEventListener('click', (e) => { 
-	e.preventDefault();
+// sendZobj.addEventListener('click', (e) => { 
+// 	e.preventDefault();
 
-	let requestURL = "//xn--46-6kcaio0anxtsby.xn--p1ai/modules/m_boxreg.php?get_xml=site&token=FTUYGg45r74r__rhtg75ueVGH4t3___43f&iii="+formCallbackName.value+"&tel1="+formCallbackTel.value+"&realty_id="+formLot.value;
-	const xhr = new XMLHttpRequest();
-	xhr.open("get", requestURL);
-	xhr.onload = () => {
-		console.log("Ok");
-	}
+// 	let requestURL = "//xn--46-6kcaio0anxtsby.xn--p1ai/modules/m_boxreg.php?get_xml=site&token=FTUYGg45r74r__rhtg75ueVGH4t3___43f&iii="+formCallbackName.value+"&tel1="+formCallbackTel.value+"&realty_id="+formLot.value;
+// 	const xhr = new XMLHttpRequest();
+// 	xhr.open("get", requestURL);
+// 	xhr.onload = () => {
+// 		console.log("Ok");
+// 	}
 
-	xhr.onerror = () => {
-		console.log("error");
-	}
+// 	xhr.onerror = () => {
+// 		console.log("error"); 
+// 	}
 
-	xhr.send();
-});
+// 	xhr.send();
+// });
 // CRM END--------------------------------------------------------------------------------------------------------------------------------------
 
 
-//BodyLock для Popup на JS
+//BodyLock для Popup на JS -----------------------
 function body_lock(delay) {
 	let body = document.querySelector("body");
 	if (body.classList.contains('lock')) {
@@ -243,7 +212,7 @@ function body_lock_add(delay) {
 	}
 }
 
-// Popup JS
+// Popup JS --------------------------------------------------
 let unlock = true;
 let popup_link = document.querySelectorAll('._popup-link');
 let popups = document.querySelectorAll('.popup');
@@ -322,9 +291,9 @@ document.addEventListener('keydown', function (e) {
 		popup_close();
 	}
 });
+// ------------------------------------------------------------------------
 
-
-//Tabs
+//Tabs --------------------------------------------------------------------
 // let tabs = document.querySelectorAll("._tabs");
 // for (let index = 0; index < tabs.length; index++) {
 // 	let tab = tabs[index];
@@ -344,9 +313,9 @@ document.addEventListener('keydown', function (e) {
 // 		});
 // 	}
 // }
+// -----------------------------------------------------------------
 
-
-// SPOLLERS
+// SPOLLERS --------------------------------------------------------
 /*
 Для родителя слойлеров пишем атрибут data-spollers
 Для заголовков слойлеров пишем атрибут data-spoller
@@ -472,9 +441,9 @@ if (spollersArray.length > 0) {
 		}
 	}
 }
+// -------------------------------------------------------------------------------
 
-
-//SlideToggle
+//SlideToggle --------------------------------------------------------------------
 let _slideUp = (target, duration = 500) => {
 	if (!target.classList.contains('_slide')) {
 		target.classList.add('_slide');
@@ -539,11 +508,276 @@ let _slideToggle = (target, duration = 500) => {
 		return _slideUp(target, duration);
 	}
 }
-// Файлы Java Script End -----------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------
+
+// Маска, Валидация, Отправщик ------------------------------------------
+
+document.addEventListener("DOMContentLoaded", () => {
+let unisend_form = document.getElementsByClassName("universal_send_form")[0]; 
+let unisend_btn = unisend_form.getElementsByClassName("u_send")[0];
+if (unisend_btn !== undefined) 
+	unisend_btn.onclick = (e) => {
+		let error = form_validate(unisend_form);
+ 		if (error == 0) {
+			e.stopPropagation()
+			console.log(unisend_form.getElementsByClassName("form_msg")[0])
+
+			var xhr = new XMLHttpRequest()
+
+			var params = new URLSearchParams()
+			params.append('action', 'sendphone')
+			params.append('nonce', allAjax.nonce)
+			params.append('name', unisend_form.getElementsByTagName("name")[0])
+			params.append('tel', unisend_form.getElementsByTagName("tel")[0])
+
+			xhr.onload = function(e) {
+				// unisend_form.getElementsByClassName("form__line")[0].style.display="none";
+				// unisend_form.getElementsByClassName("popup__policy")[0].style.display="none";
+				// unisend_form.getElementsByClassName("popup__form-btn")[0].style.display="none";
+				// unisend_form.getElementsByClassName("form_msg")[0].style.display="block"; 
+				window.location.href = "https://forestsea.ru/stranica-blagodarnosti/";
+			}
+
+			xhr.onerror = function () { 
+				error(xhr, xhr.status); 
+			};
+
+			xhr.open('POST', allAjax.ajaxurl, true);
+			xhr.send(params);
+	 } else {
+				let form_error = unisend_form.querySelectorAll('._error');
+				if (form_error && unisend_form.classList.contains('_goto-error')) {
+					_goto(form_error[0], 1000, 50);
+				}
+				e.preventDefault();
+			}
+	} 
+});
+
+function email_test(input) {
+	return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
+}
+
+function form_validate(form) {
+	let error = 0;
+	let form_req = form.querySelectorAll('._req');
+	if (form_req.length > 0) {
+		for (let index = 0; index < form_req.length; index++) {
+			const el = form_req[index];
+			if (!_is_hidden(el)) {
+				error += form_validate_input(el);
+			}
+		}
+	}
+	return error;
+}
+function form_validate_input(input) {
+	let error = 0;
+	let input_g_value = input.getAttribute('data-value');
+
+	if (input.getAttribute("name") == "email" || input.classList.contains("_email")) {
+		if (input.value != input_g_value) {
+			let em = input.value.replace(" ", "");
+			input.value = em;
+		}
+		if (email_test(input) || input.value == input_g_value) {
+			form_add_error(input);
+			error++;
+		} else {
+			form_remove_error(input);
+		}
+	} else if (input.getAttribute("type") == "checkbox" && input.checked == false) {
+		form_add_error(input);
+		error++;
+	} else {
+		if (input.value == '' || input.value == input_g_value) {
+			form_add_error(input);
+			error++;
+		} else {
+			form_remove_error(input);
+		}
+	}
+	return error;
+}
+function form_add_error(input) {
+	input.classList.add('_error');
+	input.parentElement.classList.add('_error');
+
+	let input_error = input.parentElement.querySelector('.form__error');
+	if (input_error) {
+		input.parentElement.removeChild(input_error);
+	}
+	let input_error_text = input.getAttribute('data-error');
+	if (input_error_text && input_error_text != '') {
+		input.parentElement.insertAdjacentHTML('beforeend', '<div class="form__error">' + input_error_text + '</div>');
+	}
+}
+function form_remove_error(input) {
+	input.classList.remove('_error');
+	input.parentElement.classList.remove('_error');
+
+	let input_error = input.parentElement.querySelector('.form__error');
+	if (input_error) {
+		input.parentElement.removeChild(input_error);
+	}
+}
+function form_clean(form) {
+	let inputs = form.querySelectorAll('input,textarea');
+	for (let index = 0; index < inputs.length; index++) {
+		const el = inputs[index];
+		el.parentElement.classList.remove('_focus');
+		el.classList.remove('_focus');
+		el.value = el.getAttribute('data-value');
+	}
+	let checkboxes = form.querySelectorAll('.checkbox__input');
+	if (checkboxes.length > 0) {
+		for (let index = 0; index < checkboxes.length; index++) {
+			const checkbox = checkboxes[index];
+			checkbox.checked = false;
+		}
+	}
+	let selects = form.querySelectorAll('select');
+	if (selects.length > 0) {
+		for (let index = 0; index < selects.length; index++) {
+			const select = selects[index];
+			const select_default_value = select.getAttribute('data-default');
+			select.value = select_default_value;
+			select_item(select);
+		}
+	}
+}
+
+//Placeholers
+let inputs = document.querySelectorAll('input[data-value],textarea[data-value]');
+inputs_init(inputs);
+
+function inputs_init(inputs) {
+	if (inputs.length > 0) {
+		for (let index = 0; index < inputs.length; index++) {
+			const input = inputs[index];
+			const input_g_value = input.getAttribute('data-value');
+			input_placeholder_add(input);
+			if (input.value != '' && input.value != input_g_value) {
+				input_focus_add(input);
+			}
+			input.addEventListener('focus', function (e) {
+				if (input.value == input_g_value) {
+					input_focus_add(input);
+					input.value = '';
+				}
+				if (input.getAttribute('data-type') === "pass") {
+					if (input.parentElement.querySelector('._viewpass')) {
+						if (!input.parentElement.querySelector('._viewpass').classList.contains('_active')) {
+							input.setAttribute('type', 'password');
+						}
+					} else {
+						input.setAttribute('type', 'password');
+					}
+				}
+				if (input.classList.contains('_date')) {
+					/*
+					input.classList.add('_mask');
+					Inputmask("99.99.9999", {
+						//"placeholder": '',
+						clearIncomplete: true,
+						clearMaskOnLostFocus: true,
+						onincomplete: function () {
+							input_clear_mask(input, input_g_value);
+						}
+					}).mask(input);
+					*/
+				}
+				if (input.classList.contains('_phone')) {
+					//'+7(999) 999 9999'
+					//'+38(999) 999 9999'
+					//'+375(99)999-99-99'
+					input.classList.add('_mask');
+					Inputmask("+7(999) 999 9999", {
+						//"placeholder": '',
+						clearIncomplete: true,
+						clearMaskOnLostFocus: true,
+						onincomplete: function () {
+							input_clear_mask(input, input_g_value);
+						}
+					}).mask(input);
+				}
+				if (input.classList.contains('_digital')) {
+					input.classList.add('_mask');
+					Inputmask("9{1,}", {
+						"placeholder": '',
+						clearIncomplete: true,
+						clearMaskOnLostFocus: true,
+						onincomplete: function () {
+							input_clear_mask(input, input_g_value);
+						}
+					}).mask(input);
+				}
+				form_remove_error(input);
+			});
+			input.addEventListener('blur', function (e) {
+				if (input.value == '') {
+					input.value = input_g_value;
+					input_focus_remove(input);
+					if (input.classList.contains('_mask')) {
+						input_clear_mask(input, input_g_value);
+					}
+					if (input.getAttribute('data-type') === "pass") {
+						input.setAttribute('type', 'text');
+					}
+				}
+			});
+			if (input.classList.contains('_date')) {
+				const calendarItem = datepicker(input, {
+					customDays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+					customMonths: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+					overlayButton: 'Применить',
+					overlayPlaceholder: 'Год (4 цифры)',
+					startDay: 1,
+					formatter: (input, date, instance) => {
+						const value = date.toLocaleDateString()
+						input.value = value
+					},
+					onSelect: function (input, instance, date) {
+						input_focus_add(input.el);
+					}
+				});
+				const dataFrom = input.getAttribute('data-from');
+				const dataTo = input.getAttribute('data-to');
+				if (dataFrom) {
+					calendarItem.setMin(new Date(dataFrom));
+				}
+				if (dataTo) {
+					calendarItem.setMax(new Date(dataTo));
+				}
+			}
+		}
+	}
+}
+function input_placeholder_add(input) {
+	const input_g_value = input.getAttribute('data-value');
+	if (input.value == '' && input_g_value != '') {
+		input.value = input_g_value;
+	}
+}
+function input_focus_add(input) {
+	input.classList.add('_focus');
+	input.parentElement.classList.add('_focus');
+}
+function input_focus_remove(input) {
+	input.classList.remove('_focus');
+	input.parentElement.classList.remove('_focus');
+}
+function input_clear_mask(input, input_g_value) {
+	input.inputmask.remove();
+	input.value = input_g_value;
+	input_focus_remove(input);
+}
+
+// Файлы Java Script End =====================================================================================================
 
 $ = jQuery;
 
-// Файлы jQuery---------------------------------------------------------------------------------------------------------------
+// Файлы jQuery ==============================================================================================================
 
 // Slider Актуальные предложения
 $('.topical__slider').slick({
@@ -665,49 +899,49 @@ $('.apartment__slider').slick({
 });
 
 // Маска телефона
-var inputmask_phone = { "mask": "+9(999)999-99-99" };
-jQuery("input[type=tel]").inputmask(inputmask_phone);
+// var inputmask_phone = { "mask": "+9(999)999-99-99" };
+// jQuery("input[type=tel]").inputmask(inputmask_phone);
 
 
 //Валидация + Отправщик
-$('.consultBtn').click(function (e) {
+// $('.consultBtn').click(function (e) {
 
-	e.preventDefault();
-	const name = $("#form-consult-name").val();
-	const tel = $("#form-consult-tel").val();
+// 	e.preventDefault();
+// 	const name = $("#form-consult-name").val();
+// 	const tel = $("#form-consult-tel").val();
 
-	if (jQuery("#form-consult-tel").val() == "") { 
-		jQuery("#form-consult-tel").css("border", "1px solid red");
-		return;
-	}
+// 	if (jQuery("#form-consult-tel").val() == "") { 
+// 		jQuery("#form-consult-tel").css("border", "1px solid red");
+// 		return;
+// 	} 
 
-	// if (jQuery("#sig-inp-e").val() == ""){
-	// 	jQuery("#sig-inp-e").css("border","1px solid red");
-	// 	return;
-	// }
+// 	// if (jQuery("#sig-inp-e").val() == ""){
+// 	// 	jQuery("#sig-inp-e").css("border","1px solid red");
+// 	// 	return;
+// 	// } 
 
-	else {
-		var jqXHR = jQuery.post(
-			allAjax.ajaxurl,
-			{
-				action: 'sendphone',
-				nonce: allAjax.nonce,
-				name: name,
-				tel: tel,
-			}
-		);
+// 	else {
+// 		var jqXHR = jQuery.post(
+// 			allAjax.ajaxurl,
+// 			{
+// 				action: 'sendphone',
+// 				nonce: allAjax.nonce,
+// 				name: name,
+// 				tel: tel,
+// 			}
+// 		);
 
-		jqXHR.done(function (responce) {
-			jQuery(".consult-form__form .headen_form_blk").hide();
-			jQuery('.consult-form__form .SendetMsg').show();
-		});
+// 		jqXHR.done(function (responce) {
+// 			jQuery(".consult-form__form .headen_form_blk").hide();
+// 			jQuery('.consult-form__form .SendetMsg').show();
+// 		});
 
-		jqXHR.fail(function (responce) {
-			alert("Произошла ошибка. Попробуйте позднее.");
-		});
+// 		jqXHR.fail(function (responce) {
+// 			alert("Произошла ошибка. Попробуйте позднее.");
+// 		});
 
-	}
-});
+// 	}
+// });
 
 
 // Табы

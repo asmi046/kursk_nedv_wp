@@ -25,6 +25,6 @@ $etagnost = $args['elem']->floor.(empty($args['elem']->floors)?"":" / ".$args['e
 	</div>
 	<div class="hot-deals__card-btn d-flex">
 		<a href="<?bloginfo("url")?>/obekt/<?echo $args['elem']->row_id;?>" class="hot-deals__card-link">Подробнее</a>
-		<a href="#callback" class="hot-deals__card-link _popup-link">Оставить заявку</a>
-	</div>
+		<a href="#object" class="hot-deals__card-link _popup-link">Оставить заявку</a>
+	</div> 
 </div>

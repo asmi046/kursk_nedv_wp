@@ -15,11 +15,52 @@
 					<div class="headen_form_blk">
 						<p>Оставьте заявку и мы свяжемся с вами в течении 15 минут</p>
 						<form action="#" class="popup__form">
-							<input type="text" name="name" placeholder="Имя" id="formCallbackName" class="popup__form-input input">
+							<div class="form__line">  
+								<input id="form-callback-name" autocomplete="off" type="text" name="form[]" data-error="Заполните поля" data-value="Имя"
+								class="popup__form-input input">
+								<input id="form-callback-tel" autocomplete="off" type="text" name="form[]" data-error="Заполните поля" data-value="Телефон*"
+								class="popup__form-input input _phone _req _mask">
+							</div>
+<!-- 							<input type="text" name="name" placeholder="Имя" id="formCallbackName" class="popup__form-input input">
 							<input type="tel" name="tel" placeholder="Телефон*" id="formCallbackTel" class="popup__form-input input">
-							<input type="hidden" name="lot" id="formLot" value = "">
+							<input type="hidden" name="lot" id="formLot" value = ""> -->
+<!-- 							<p>Заполняя данную форму вы соглашаетесь с <a href="<?php echo get_permalink(452); ?>">политикой конфиденциальности</a></p>
+							<button id = "sendZobj" class="popup__form-btn newButton btn">Отправить заявку</button> -->
 							<p>Заполняя данную форму вы соглашаетесь с <a href="<?php echo get_permalink(452); ?>">политикой конфиденциальности</a></p>
-							<button id = "sendZobj" class="popup__form-btn newButton btn">Отправить заявку</button>
+							<button type="button" class="popup__form_btn form-btn callbackBtn btn">Отправить заявку</button>
+						</form>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <a href="#callback" class="header__popup-link _popup-link">ЗАКАЗАТЬ ЗВОНОК</a> -->
+<!-- ==================================================================================================================================== -->
+
+<!-- Popup-JS Консультация по объекту -->
+<div class="popup popup_object">
+	<div class="popup__content">
+		<div class="popup__body">
+			<div class="popup__close"></div>
+			<div class="popup__item d-flex">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/popup.jpg" alt="">
+				<div class="popup__form-block">
+					<h2>Консультация по объекту ""</h2>
+					<div class="SendetMsg" style="display:none;">
+						Ваше сообщение успешно отправлено.
+					</div>
+					<div class="headen_form_blk">
+						<p>Оставьте заявку и мы свяжемся с вами в течении 15 минут</p>
+						<form action="#" class="popup__form">
+							<div class="form__line"> 
+								<input id="form-object-name" autocomplete="off" type="text" name="form[]" data-error="Заполните поля" data-value="Имя"
+								class="popup__form-input input">
+								<input id="form-object-tel" autocomplete="off" type="text" name="form[]" data-error="Заполните поля" data-value="Телефон*"
+								class="popup__form-input input _phone _req">
+							</div>
+							<p>Заполняя данную форму вы соглашаетесь с <a href="<?php echo get_permalink(452); ?>">политикой конфиденциальности</a></p>
+							<button class="popup__form-btn objectBtn btn">Отправить заявку</button>
 						</form>
 					</div>
 				</div>
