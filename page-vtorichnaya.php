@@ -49,12 +49,13 @@ get_header(); ?>
 
 
 		$etazgey = empty($_REQUEST["etazgei"])?"%":$_REQUEST["etazgei"];
-		$sparam = "AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
+	 	$sparam = "AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
 
-		//echo "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage;
-	
+		echo  "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage;
+
 		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage );
 		$objectUl = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam.";" );
+		
 		
 
 		$totalCount = count($objectUl);
