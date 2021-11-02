@@ -16,6 +16,8 @@ get_header(); ?>
     $object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `row_id` = '".$obj_nedv_id."'" );
     $object = $object[0]; 
 
+
+
     $images = $wpdb->get_results( "SELECT * FROM `kn_obj_img` WHERE `row_id` = '".$obj_nedv_id."'" );
 
     $adres = $object->obl;
@@ -64,10 +66,17 @@ get_header(); ?>
 				<span class = "bkFinal"><? echo $sitename;?></span>
 			</p> 
 
+
+			<?
+				// echo "<pre>";
+				// 	print_r($object);
+				// echo "</pre>";
+			?>
+
 			<div class="apartment__gallery d-flex">
 				<div class="apartment__slider">
 					<? 
-                     
+
                     $i = 0;
                     foreach ($images as $img)  {?>
                         <div class="apartment__slider-img">
@@ -87,71 +96,9 @@ get_header(); ?>
                     ?>
 
 				</div>
-				<div class="apartment__charact">
-					<h3>Характеристики <?echo $obj_nedv_id?></h3>
-					<div class="info__charact">
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Код объекта</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">5949905</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Общая площадь</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">57.8 м²</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Ремонт</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">Современный ремонт</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Год постройки</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">2007</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Этаж/Этажность</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">7 из 11</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Стены</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">Кирпичные</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Площадь кухни</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">19.9 м²</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Комнатность</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">1</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Высота потолков</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">2.71 м</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Кухня-гостиная</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">Да</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Санузел</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">Совмещенный</div>
-						</div>
-						<div class="info__charact-row d-flex">
-							<div class="info__charact-name">Балкон</div>
-							<div class="info__charact-line"></div>
-							<div class="info__charact-desc">Лоджия</div>
-						</div>
-					</div>
-				</div>
+				
+
+				<?php get_template_part('template-parts/obj', 'param', ["obj" => $object]);?>
 			</div>
 
 			<div class="apartment__info-block d-flex">
@@ -166,24 +113,17 @@ get_header(); ?>
 				</div>
 			</div>
 
-			<div class="apartment__descp">
-				<h3>Описание</h3>
-				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos delectus error minima numquam, dolorum ratione porro exercitationem, consequuntur incidunt accusamus quidem sed placeat, fugit nulla corporis laboriosam modi aperiam animi.
-					Eos cumque beatae quae unde neque dignissimos officia quibusdam aut non ab inventore, sunt accusamus illum laudantium quo exercitationem at, itaque, perferendis et sed nobis hic molestias nihil obcaecati! Voluptates.
-				</p>
-				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos delectus error minima numquam, dolorum ratione porro exercitationem, consequuntur incidunt accusamus quidem sed placeat, fugit nulla corporis laboriosam modi aperiam animi.
-					Eos cumque beatae quae unde neque dignissimos officia quibusdam aut non ab inventore, sunt accusamus illum laudantium quo exercitationem at, itaque, perferendis et sed nobis hic molestias nihil obcaecati! Voluptates.
-				</p>
-				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos delectus error minima numquam, dolorum ratione porro exercitationem, consequuntur incidunt accusamus quidem sed placeat, fugit nulla corporis laboriosam modi aperiam animi.
-					Eos cumque beatae quae unde neque dignissimos officia quibusdam aut non ab inventore, sunt accusamus illum laudantium quo exercitationem at, itaque, perferendis et sed nobis hic molestias nihil obcaecati! Voluptates.
-				</p>
-			</div>
+			<? 
+				if (!empty($object->description) ) {
+			?>
+				<div class="apartment__descp">
+					<h3>Описание</h3>
+					<? echo  apply_filters( 'the_content', $object->description); ?>
+				</div>
+			<? } ?>
 
 			<div class="apartment__map map" id="map"></div>
-			<?php get_template_part('template-parts/map-script');?> 
+			<?php get_template_part('template-parts/map-script', 'one', ["mapPinOne" => $object->geocode, "name" => $sitename]);?> 
 
 		</div>
 	</section>
