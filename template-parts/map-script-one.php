@@ -12,7 +12,7 @@
         // Масштаб карты
         zoom: 12.3,
         // Выключаем все управление картой
-        controls: []
+        controls: ['fullscreenControl', 'zoomControl']
     }); 
 
       var myGeoObjects = [];
@@ -34,14 +34,14 @@
       myGeoObjects.push(pin);
 
     var clusterer = new ymaps.Clusterer({
-    	clusterDisableClickZoom: false,
-    	clusterOpenBalloonOnClick: false,
+    	// clusterDisableClickZoom: false,
+    	//clusterOpenBalloonOnClick: false,
     });
     
     clusterer.add(myGeoObjects);
     myMap.geoObjects.add(clusterer);
-    // Отключим zoom
-    myMap.behaviors.disable('scrollZoom');
+    // // Отключим zoom
+    // myMap.behaviors.disable('scrollZoom');
 
 }
 </script>

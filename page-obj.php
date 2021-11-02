@@ -27,7 +27,7 @@ get_header(); ?>
 	if (!empty($object->street)) $adres .= " ".$object->street;
 	if (!empty($object->dom_number)) $adres .= " ".$object->dom_number;
 
-    $sitename = empty($object->site_name)?$object->type." ".$object->street:$object->site_name;
+    $sitename = empty($object->site_name)?$object->type." ул. ".$object->street:$object->site_name;
 ?>
 <main class="page page-recurring">
 
@@ -108,8 +108,8 @@ get_header(); ?>
 				</div>
 				<div class="apartment__info-charact">
 					<div class="apartment__info-price rub price_formator"><?echo $object->price;?>  </div>
-					<div class="apartment__info-price-square"> <span class="rub">87 370 </span> /м²</div>
-					<div class="apartment__info-price-buyer">Стоимость услуг для покупателя <br> <span class="rub">79 500 </span></div>
+					<div class="apartment__info-price-square "> <span class = "price_formator"><? echo round($object->price / $object->area1); ?></span> <span class="rub "> </span>/м²</div>
+					<!-- <div class="apartment__info-price-buyer">Стоимость услуг для покупателя <br> <span class="rub">79 500 </span></div> -->
 				</div>
 			</div>
 
