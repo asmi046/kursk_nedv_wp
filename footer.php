@@ -5,8 +5,11 @@
 					
 					<?php wp_nav_menu( array('theme_location' => 'menu_2','menu_class' => 'footer__menu',
 					'container_class' => 'mob-menu__list','container' => false )); ?> 
-					<?php wp_nav_menu( array('theme_location' => 'menu_3','menu_class' => 'footer__menu',
-					'container_class' => 'mob-menu__list','container' => false )); ?> 
+					<div class="footer__menu footer__menu_double">
+						<h3 class="footer__menu-title">Актуальные предложения</h3>
+						<?php wp_nav_menu( array('theme_location' => 'menu_3','menu_class' => 'footer__menu footer__menu_average',
+						'container_class' => 'mob-menu__list','container' => false )); ?> 
+					</div>
 					<?php wp_nav_menu( array('theme_location' => 'menu_1','menu_class' => 'footer__menu',
 					'container_class' => 'mob-menu__list','container' => false )); ?> 
 
@@ -22,7 +25,7 @@
 								<a href="<?php echo carbon_get_theme_option('as_telegr'); ?>" class="soc-block-icon-link soc-icon-3"></a>
 								<a href="<?php echo carbon_get_theme_option('as_whatsapp'); ?>" class="soc-block-icon-link soc-icon-4"></a>
 							</div>
-							<p>Мы в соцсетях</p>
+							<p>Мы в соцсетях</p> 
 						</div>
 					</div>
 

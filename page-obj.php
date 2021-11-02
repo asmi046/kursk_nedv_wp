@@ -34,11 +34,35 @@ get_header(); ?>
 
 	<section id="apartment" class="apartment recurring">
 		<div class="container">
-			<?php
-			if ( function_exists('yoast_breadcrumb') ) {
-				yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );  
-			}
-			?> 
+			<p id="breadcrumbs">
+				<a href = "<?bloginfo("url");?>">Главная</a> 
+				<span class = "bkSep">/</span>
+				
+				<?
+					$catUrl = get_permalink(51);
+					$catAncor = "Вторичная";
+
+					if (($object->type  == 'Новостройка')) {
+						$catUrl = get_permalink(57);
+						$catAncor = "Новостройки";
+					}
+
+					if (($object->type  == 'Земля (коммерческая)') || ($object->type  == 'Коммерческая') ) {
+						$catUrl = get_permalink(61);
+						$catAncor = "Коммерческая";
+					}
+
+					if (($object->type  == 'Земельный участок') || ($object->type  == 'Дом') || ($object->type  == 'Дача') || ($object->type  == 'Гараж')) {
+						$catUrl = get_permalink(59);
+						$catAncor = "Дома, участки, дачи";
+					}
+				?>
+
+				<a href = "<? echo $catUrl; ?>"><? echo $catAncor; ?></a>
+
+				<span class = "bkSep">/</span> 
+				<span class = "bkFinal"><? echo $sitename;?></span>
+			</p> 
 
 			<div class="apartment__gallery d-flex">
 				<div class="apartment__slider">

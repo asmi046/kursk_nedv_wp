@@ -18,7 +18,7 @@ Version: 1.0.1
 *:before,
 *:after {
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  -webkit-box-sizing: border-box; 
   box-sizing: border-box; }
 
 :focus,
@@ -1035,24 +1035,24 @@ body.ie .ibg img {
   bottom: 10px; }
 
 .mob-menu {
+  overflow: hidden;
   position: fixed;
   top: 78px;
   right: -50%;
-  width: 50%;
+  width: 34.6%;
   height: 100%;
   background: #fff;
   padding: 35px 35px 100px 35px;
   overflow: auto;
   -webkit-box-shadow: 0px 3px 5px 0px black;
   box-shadow: 0px 3px 5px 0px black;
-  -webkit-transition: right 0.8s;
-  -o-transition: right 0.8s;
-  -webkit-transition: right 1s;
-  -o-transition: right 1s;
-  transition: right 1s;
+  -webkit-transition: right 0.5s;
+  -o-transition: right 0.5s;
+  transition: right 0.5s;
   z-index: 100; }
 
 .mob-menu.active {
+  overflow: visible;
   right: 0%; }
 
 .mob-menu__list {
@@ -1063,7 +1063,7 @@ body.ie .ibg img {
 
 .mob-menu li a {
   display: inline-block;
-  font-size: 20px;
+  font-size: 16px;
   padding-bottom: 13px; }
 
 .mob-callback__phone {
@@ -1119,10 +1119,20 @@ body.ie .ibg img {
       font-size: 24px;
       font-weight: 700;
       margin-bottom: 30px; }
+  .footer__menu_average li:first-child {
+      font-size: 16px;
+      margin-bottom: 20px;}
     .footer__menu li:last-child {
       margin-bottom: 0; }
     .footer__menu li a {
       color: #fff; }
+  .footer__menu-title {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 30px;
+  }
   .footer__contact .header__callback {
     margin-bottom: 32.5px; }
   .footer__contact .header__callback a {
@@ -1161,6 +1171,8 @@ body.ie .ibg img {
 
 .footer__menu {
   margin-right: 25px; }
+.footer__menu_double {
+  margin-bottom: 0 !important;}
 
 .category-info {
   padding: 55px 0 !important;
@@ -1266,6 +1278,7 @@ body.ie .ibg img {
   display: -webkit-flex;
   display: flex;
   font-size: 0; }
+
   .pagging-list li {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1280,12 +1293,30 @@ body.ie .ibg img {
     -ms-flex: 0 0 36px;
     flex: 0 0 36px;
     height: 36px;
-    border-radius: 50%;
-    border: 1.6px solid #E8E8E8;
-    margin-right: 12px; }
+  
+    margin-right: 7px; 
+    font-size: 14px; 
+  }
+
+  .pagging-list li.empty { 
+    flex: 0 0 20px;
+  }
+
+.pagging__link.active{
+  background-color: #003C8C;
+  color:white;
+  
+}
 
 .pagging__link {
-  font-size: 18px; }
+  font-size: 14px; 
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 33px;
+  border: 1.6px solid #E8E8E8;
+  border-radius: 50%;
+}
 
 .contacts {
   padding-bottom: 30px; }
@@ -3072,10 +3103,16 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 }
 
 .mob-menu__title {
+  font-size: 22px;
   margin-bottom: 10px;
 }
 
-
+.category-info-object {
+  padding-top: 25px !important;
+}
+.category-info-object h1 {
+  margin-bottom: 25px;
+}
 
 
 
@@ -3231,7 +3268,10 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 
 @media (max-width: 1050px) {
   .sell-pass-info__text {
-    margin-right: 10px; } }
+    margin-right: 10px; } 
+  .mob-menu {
+    width: 41%;}
+}
 
 @media (max-width: 1040px) {
   .footer__menu {
@@ -3424,6 +3464,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     margin-bottom: 45px}
   .reviews__col {
     padding: 0px 5px 0 5px;}
+  .mob-menu {
+    width: 50%;}
 }
 
 @media (max-width: 768px) {
@@ -3685,12 +3727,16 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     padding: 20px 10px !important; }
   .footer__menu {
     margin-bottom: 25px; }
+  .footer__menu-title,
   .footer__menu li:first-child {
     font-size: 18px;
     margin-bottom: 15px; }
   .footer__menu li {
     font-size: 14px;
     margin-bottom: 10px; }
+  .footer__menu_average li:first-child {
+    font-size: 14px;
+    margin-bottom: 10px;}
   .footer__row {
     margin-bottom: 25px; }
   .footer__policy {
@@ -3976,10 +4022,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 @media (max-width: 700px) {
   .mob-menu {
     width: 100%;
-    right: -100%;
-    -webkit-transition: right 0.8s;
-    -o-transition: right 0.8s;
-    transition: right 0.8s; }
+    right: -100%; }
   .info__form-block-col:last-child .info__form-block-inp {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;

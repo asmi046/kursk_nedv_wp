@@ -18,7 +18,6 @@
 							<input type="text" name="name" placeholder="Имя" id="formCallbackName" class="popup__form-input input">
 							<input type="tel" name="tel" placeholder="Телефон*" id="formCallbackTel" class="popup__form-input input">
 							<input type="hidden" name="lot" id="formLot" value = "">
-							
 							<p>Заполняя данную форму вы соглашаетесь с <a href="<?php echo get_permalink(452); ?>">политикой конфиденциальности</a></p>
 							<button id = "sendZobj" class="popup__form-btn newButton btn">Отправить заявку</button>
 						</form>
@@ -29,7 +28,7 @@
 	</div>
 </div>
 <!-- <a href="#callback" class="header__popup-link _popup-link">ЗАКАЗАТЬ ЗВОНОК</a> -->
-<!-- Popup-JS Оставить заявку End -->
+<!-- ==================================================================================================================================== -->
 
 <div style="display: none;">
 	<div class="box-modal" id="messgeModal">

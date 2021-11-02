@@ -14,13 +14,11 @@ get_header(); ?>
 	<a href="#callback" class="callback-widget blink _popup-link"></a>
 	<a href="tel:<? echo preg_replace('/[^0-9]/', '', $tel = carbon_get_theme_option("as_phone_1")); ?>" class="callback-widget callback-widget-mob blink"></a>
 	
-	<section class="info category-info">
+	<section class="info category-info category-info-object"> 
 		<div class="nuar_blk"></div>
 		<div class="container">
+			<h1><? the_title();?></h1>
 			<div class="info__block-tabs block__tabs tabs">
-				<nav class="block__nav block__nav_title">
-					<div class="block__navitem building-icon-01 tab__navitem active"><? the_title();?></div>
-				</nav>
 				<div class="block__items">
 					<div class="block__item tab__item active">
 						<?php get_template_part('template-parts/vtorichnaya-form-block');?> 
@@ -35,9 +33,28 @@ get_header(); ?>
 		$curentPage = get_query_var("onpage");
 		$curentPage = !empty($curentPage)?$curentPage:1;
 
+		$ofset = ($curentPage - 1) * $countInPage;
+
 		global $wpdb;
-		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира' LIMIT 6" );
-		$objectUl = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира'" );
+
+		$raion = empty($_REQUEST["raion"])?"%":$_REQUEST["raion"];
+		$rooms = empty($_REQUEST["rooms"])?"%":$_REQUEST["rooms"];
+		
+		$areaot = empty($_REQUEST["areaot"])?PHP_INT_MIN:$_REQUEST["areaot"];
+		$areado = empty($_REQUEST["areado"])?PHP_INT_MAX:$_REQUEST["areado"];
+		
+		$priceot = empty($_REQUEST["priceot"])?PHP_INT_MIN:$_REQUEST["priceot"];
+		$pricedo = empty($_REQUEST["pricedo"])?PHP_INT_MAX:$_REQUEST["pricedo"];
+
+
+
+		$etazgey = empty($_REQUEST["etazgei"])?"%":$_REQUEST["etazgei"];
+		$sparam = "AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
+
+		//echo "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage;
+	
+		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage );
+		$objectUl = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam.";" );
 		
 
 		$totalCount = count($objectUl);
@@ -57,7 +74,7 @@ get_header(); ?>
 
 			?> 
 
-			<h1><?php single_cat_title( '', true );?></h1> 
+			<h2><?php single_cat_title( '', true );?></h2> 
 
 			<div class="product-info__row d-flex">
 
@@ -81,21 +98,12 @@ get_header(); ?>
 					</div>
 
 					<script>
-						//let mapPin = <?echo json_encode($mapPin);?>;
-						//console.log(mapPin)
+						let mapPin = <?echo json_encode($mapPin);?>;
 					</script>
 					
-					<div class="pagging">
-						<ul class="pagging-list">
-							<?
-								for ($i = 0; $i<6; $i++) {
-							?>
-								<li><a href="" class="pagging__link <? if ($i == $curentPage) echo "active" ?>"><? echo $i; ?></a></li>
-							<?
-								}
-							?>
-						</ul>
-					</div>
+					<?php 
+					$param = array("curentpage" => $curentPage, 'pagecount' => $pageCount, "prefix" => "vtorichnaya");
+					get_template_part('template-parts/pagination','all', $param);?> 
 
 				</div>
 
