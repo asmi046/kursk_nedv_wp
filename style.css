@@ -2989,6 +2989,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 .apartment__slider {
   flex:  0 1 860px;
   max-height: 530px;
+  background: #f5f5f5;
   overflow: hidden;
   margin-right: 15px;
 }
@@ -3136,10 +3137,6 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 
 .pyatnitsky-info .nuar_blk {
   background-color: #00000065;
-}
-
-.apartment__slider {
-  background: #f5f5f5;
 }
 
 .apartment__slider .slick-dots {

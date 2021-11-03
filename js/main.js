@@ -881,6 +881,7 @@ $('.apartment__slider').slick({
 	autoplay: true,
 	autoplaySpeed: 2000,
 	adaptiveHeight: true,
+	waitForAnimate: false,
 	// variableWidth: true,
 	responsive: [
 		{
