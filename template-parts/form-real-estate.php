@@ -1,14 +1,11 @@
 <div class="sell-pass-info__form-block">
-	<p>Тип недвижимости</p>
+	<p></p>
 	<form action="#" class="sell-pass-info__form">
-		<select class="sell-pass-info__form-select">
-			<option value="1" selected="selected">Квартира</option>
-			<option value="2">Дом</option>
-			<option value="3">Участок</option>
-			<option value="4">Дача</option>
-		</select>
-		<input type="tel" placeholder="Телефон" class="sell-pass-info__form-input input">
+		<div class="form__line">
+			<input id="form-sell-pass-name" autocomplete="off" type="text" name="form[]" data-error="Заполните поля" data-value="Имя" class="sell-pass-info__form-input input">
+			<input id="form-sell-pass-tel" autocomplete="off" type="text" name="form[]" data-error="Заполните поля" data-value="Телефон*" class="sell-pass-info__form-input input _phone _req _mask">
+		</div>
 		<button class="sell-pass-info__form-btn btn">Получить бесплатную консультацию</button>
 	</form>
-	<p>* Отправляя заявку, вы соглашаетесь на обработку персональных данных</p>
+	<p>* Отправляя заявку, вы соглашаетесь на обработку персональных данных</p> 
 </div>
