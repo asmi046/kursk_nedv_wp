@@ -23,13 +23,15 @@ get_header(); ?>
 			?> 
 
 			<div class="apartment__gallery d-flex">
-				<div class="apartment__slider">
+				<div class="apartment__slider"> 
 					<div class="apartment__slider-img">
+						<div class="apartment__slider-img-cover"></div>
 						<img src="<?php echo get_template_directory_uri();?>/img/offers/01.jpg" alt="">
 					</div>
 					<div class="apartment__slider-img">
+						<div class="apartment__slider-img-cover"></div>
 						<img src="<?php echo get_template_directory_uri();?>/img/offers/02.jpg" alt="">
-					</div>
+					</div> 
 				</div>
 				<div class="apartment__charact">
 					<h3>Характеристики</h3>

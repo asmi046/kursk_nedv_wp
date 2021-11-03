@@ -80,6 +80,7 @@ get_header(); ?>
                     $i = 0;
                     foreach ($images as $img)  {?>
                         <div class="apartment__slider-img">
+                        	<div class="apartment__slider-img-cover" style="background-image: url(<?php echo $img->img_lnk;?>);"></div>
                             <img src="<?php echo $img->img_lnk;?>" alt="<?echo $sitename;?> фото № <?echo $i?>">
                         </div>
                     <?
@@ -89,6 +90,7 @@ get_header(); ?>
                      if (empty($images)) {
                     ?>
                         <div class="apartment__slider-img">
+                        	<div class="apartment__slider-img-cover" style="background-image: url(<?php echo $img->img_lnk;?>);"></div>
                             <img src="<?php echo get_bloginfo("template_url")?>/img/no-photo.jpg" alt="<?echo $sitename;?>">
                         </div>    
                     <?

@@ -873,8 +873,9 @@ $('.slider__hot-deals').slick({
 // Slider Квартира
 $('.apartment__slider').slick({
 	arrows: false,
-	dots: false,
+	dots: true,
 	infinite: true,
+	fade: true,
 	speed: 2000,
 	slidesToShow: 1,
 	autoplay: true,
