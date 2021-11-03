@@ -25,7 +25,7 @@
 		</div>
 	</section> 
 
-	<section id="topical" class="topical">
+	<section id="topical" class="topical"> 
 		<div class="container">
 			<h2>Актуальные предложения</h2>
 			<div class="topical__slider topical__row d-flex">
