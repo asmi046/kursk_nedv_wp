@@ -1,11 +1,18 @@
 <div class="sell-pass-info__form-block">
 	<p></p>
-	<form action="#" class="sell-pass-info__form">
-		<div class="form__line">
-			<input id="form-sell-pass-name" autocomplete="off" type="text" name="form[]" data-error="Заполните поля" data-value="Имя" class="sell-pass-info__form-input input">
-			<input id="form-sell-pass-tel" autocomplete="off" type="text" name="form[]" data-error="Заполните поля" data-value="Телефон*" class="sell-pass-info__form-input input _phone _req _mask">
+	<div class="universal_form">
+		<div class="SendetMsg" style="display:none;">
+			Ваше сообщение успешно отправлено.
 		</div>
-		<button class="sell-pass-info__form-btn btn">Получить бесплатную консультацию</button>
-	</form>
-	<p>* Отправляя заявку, вы соглашаетесь на обработку персональных данных</p> 
+		<div class="headen_form_blk">
+			<form action="#" class="sell-pass-info__form universal_send_form">
+				<div class="form__line">
+					<input autocomplete="off" type="text" name="name" data-error="Заполните поля" data-value="Имя*" class="sell-pass-info__form-input input _req">
+					<input autocomplete="off" type="text" name="tel" data-error="Заполните поля" data-value="Телефон*" class="sell-pass-info__form-input input _phone _req">
+				</div>
+				<button type="button" class="sell-pass-info__form-btn form-btn u_send btn">Получить бесплатную консультацию</button>
+			</form> 
+			<p>* Отправляя заявку, вы соглашаетесь на обработку персональных данных</p> 
+		</div>
+	</div>
 </div>
