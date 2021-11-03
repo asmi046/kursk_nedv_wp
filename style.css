@@ -2982,7 +2982,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 
 .apartment__gallery {
   justify-content: space-between;
-  margin-bottom: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
 }
 
 .apartment__slider {
@@ -3046,9 +3047,10 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 
 .apartment__info-block {
   justify-content: space-between;
+  flex:  0 1 100%;
   padding: 10px 30px;
   background: #EBEBEB;
-  margin-bottom: 35px;
+  margin-top: 25px;
 }
 
 .apartment__info-descp {
@@ -4119,6 +4121,11 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   .advant__item-line::before {
     width: 100%; } }
 
+@media (max-width: 640px) {
+  .apartment__slider {
+    flex: 0 1 48%;}
+}
+
 @media (max-width: 630px) {
   .header__soc-block {
     margin-right: 20px; } }
@@ -4210,6 +4217,11 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     margin-bottom: 15px}
   .apartment__slider .slick-track {
     height: 530px !important;}
+  .apartment__info-block {
+    order: 2;
+    margin-top: 0;}
+  .apartment__charact {
+    order: 3;}
 }
 
 @media (max-width: 600px) {

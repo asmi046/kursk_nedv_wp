@@ -98,17 +98,16 @@ get_header(); ?>
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="apartment__info-block d-flex">
-				<div class="apartment__info-descp">
-					<h1><? the_title();?></h1>  
-					<p class="apartment__subtitle">Южный мкр, ул. Депутатская, д. 80 к2 (1.6 км до центра)</p>
-				</div>
-				<div class="apartment__info-charact">
-					<div class="apartment__info-price rub">5 050 000 </div>
-					<div class="apartment__info-price-square"> <span class="rub">87 370 </span> /м²</div>
-					<div class="apartment__info-price-buyer">Стоимость услуг для покупателя <br> <span class="rub">79 500 </span></div>
+				<div class="apartment__info-block d-flex">
+					<div class="apartment__info-descp">
+						<h1><? the_title();?></h1>  
+						<p class="apartment__subtitle">Южный мкр, ул. Депутатская, д. 80 к2 (1.6 км до центра)</p>
+					</div>
+					<div class="apartment__info-charact">
+						<div class="apartment__info-price rub">5 050 000 </div>
+						<div class="apartment__info-price-square"> <span class="rub">87 370 </span> /м²</div>
+						<div class="apartment__info-price-buyer">Стоимость услуг для покупателя <br> <span class="rub">79 500 </span></div>
+					</div>
 				</div>
 			</div>
 
