@@ -11,7 +11,7 @@
 		<div class="nuar_blk"></div> 
 		<div class="container">
 
-			<h1><?php echo carbon_get_theme_option('about_home_title'); ?></h1>
+			<h1><?php echo carbon_get_theme_option('about_home_title'); ?></h1> 
 
 			<div class="info__item d-flex">
 				<a href="#" class="info__item-link">Купить</a>

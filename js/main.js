@@ -10,10 +10,10 @@ const headsearch = document.querySelector(".header__search");
 //BURGER -----------------------------------------------------------
 if (iconMenu) {
 	iconMenu.addEventListener("click", function () {
-		iconMenu.classList.toggle("active");
+		iconMenu.classList.toggle("active"); 
 		body.classList.toggle("lock");
 		menuBody.classList.toggle("active");
-	});
+	}); 
 }
 
 // Закрытие моб меню при клике на якорную ссылку -------------------
@@ -274,16 +274,17 @@ document.addEventListener("DOMContentLoaded", () => {
 let universal_form = document.getElementsByClassName("universal_form")[0]; 
 let unisend_form = document.getElementsByClassName("universal_send_form")[0]; 
 let unisend_btn = unisend_form.getElementsByClassName("u_send")[0];
+
 if (unisend_btn !== undefined) 
 	unisend_btn.onclick = (e) => {
 		let error = form_validate(unisend_form);
  		if (error == 0) {
 			e.stopPropagation()
-			// console.log(unisend_form.getElementsByClassName("form_msg")[0])
+			// console.log(unisend_form.getElementsByClassName("u_send")[0])
 
 			var xhr = new XMLHttpRequest()
 
-			var params = new URLSearchParams()
+			var params = new URLSearchParams() 
 			params.append('action', 'sendphone')
 			params.append('nonce', allAjax.nonce)
 			params.append('name', unisend_form.getElementsByTagName("name")[0])

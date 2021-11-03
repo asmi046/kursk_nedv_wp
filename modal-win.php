@@ -13,7 +13,7 @@
 						Ваше сообщение успешно отправлено.
 					</div>
 					<div class="headen_form_blk">
-						<p>Оставьте заявку и мы свяжемся с вами в течении 15 минут</p> 
+						<p>Оставьте заявку и мы свяжемся с вами в течении 15 минут</p>  
 						<form action="#" class="popup__form universal_send_form">
 							<div class="form__line">
 								<input autocomplete="off" type="text" name="name" data-error="Заполните поля" data-value="Имя*" class="popup__form-input input _req">

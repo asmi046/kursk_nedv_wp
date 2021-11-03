@@ -15,7 +15,7 @@ Version: 1.0.1
   border: 0px; } 
 
 *,
-*:before,
+*:before, 
 *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box; 
@@ -2363,6 +2363,7 @@ body.ie .ibg img {
   overflow: hidden; }
 
 .hot-deals__card-img {
+  display: flex;
   -webkit-box-flex: 0;
   -ms-flex: 0 1 413px;
   flex: 0 1 413px;
