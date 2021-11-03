@@ -90,8 +90,15 @@
 			<h2>Горячие предложения</h2>
 
 			<div class="slider__hot-deals hot-deals__row d-flex">
-
-				<div class="hot-deals__card">
+				<?
+					$hotObject = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `photo` != '' AND `klient_status` = 'Горячий' LIMIT 0, 10" );
+				
+					foreach ($hotObject as $elem) {
+						get_template_part('template-parts/objec', 'elem', ["elem" => $elem]);
+					}
+				?>
+			
+				<!-- <div class="hot-deals__card">
 					<div class="hot-deals__card-img">
 						<img src="<?php echo get_template_directory_uri();?>/img/hot-deals/01.jpg" alt="">
 					</div>
@@ -161,7 +168,7 @@
 						<a href="#" class="hot-deals__card-link">Подробнее</a>
 						<a href="#" class="hot-deals__card-link">Оставить заявку</a>
 					</div>
-				</div>
+				</div> -->
 
 			</div>
 
