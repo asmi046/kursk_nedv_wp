@@ -44,7 +44,7 @@
 			<div class="popup__item d-flex">
 				<img src="<?php echo get_template_directory_uri(); ?>/img/popup.jpg" alt="">
 				<div class="popup__form-block universal_form">
-					<h2>Консультация по объекту ""</h2>
+					<h2>Интересует <span class = "obj_in_win_name"></span></h2>
 					<div class="SendetMsg" style="display:none;">
 						Ваше сообщение успешно отправлено.
 					</div>
@@ -52,6 +52,8 @@
 						<p>Оставьте заявку и мы свяжемся с вами в течении 15 минут</p> 
 						<form action="#" class="popup__form universal_send_form">
 							<div class="form__line">
+								<input type="hidden" name="objname" value = "" id = "form_param_obj_name">
+								<input type="hidden" name="obj" value = "" id = "form_param_obj_id">
 								<input autocomplete="off" type="text" name="name" data-error="Заполните поля" data-value="Имя*" class="popup__form-input input _req">
 								<input autocomplete="off" type="text" name="tel" data-error="Заполните поля" data-value="Телефон*" class="popup__form-input input _phone _req">
 							</div>

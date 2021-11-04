@@ -144,8 +144,8 @@ function my_assets()
 
 	// Подключение стилей 
 
-	$style_version = "1.0.2";
-	$scrypt_version = "1.0.2";
+	$style_version = "1.0.20";
+	$scrypt_version = "1.0.20";
 
 	// wp_enqueue_style("style-modal", get_template_directory_uri() . "/css/jquery.arcticmodal-0.3.css", array(), $style_version, 'all'); //Модальные окна (стили)
 	// wp_enqueue_style("style-lightbox", get_template_directory_uri() . "/css/lightbox.min.css", array(), $style_version, 'all'); //Лайтбокс (стили)
@@ -393,8 +393,16 @@ function sendphone()
 			'content-type: text/html',
 		);
 
+		$mcontent = '<strong>Имя:</strong> ' . $_REQUEST["name"] . 
+		' <br/> <strong>Телефон:</strong> ' . $_REQUEST["tel"];
+
+		if (!empty($_REQUEST["obj"])) {
+			$mcontent .= '<strong>Имя обекта:</strong> '.$_REQUEST["objname"]."</br>";
+			$mcontent .= '<strong>ID обекта:</strong> '.$_REQUEST["obj"]."</br>";
+		}
+
 		add_filter('wp_mail_content_type', create_function('', 'return "text/html";'));
-		if (wp_mail(carbon_get_theme_option('as_email_send'), 'Заказ Консультации', '<strong>Имя:</strong> ' . $_REQUEST["name"] . ' <br/> <strong>Телефон:</strong> ' . $_REQUEST["tel"], $headers))
+		if (wp_mail(carbon_get_theme_option('as_email_send'), 'Заказ Консультации', $mcontent, $headers))
 			wp_die("<span style = 'color:green;'>Мы свяжемся с Вами в ближайшее время.</span>");
 		else wp_die("<span style = 'color:red;'>Сервис недоступен попробуйте позднее.</span>");
 	} else {

@@ -297,45 +297,84 @@ let _slideToggle = (target, duration = 500) => {
 document.addEventListener("DOMContentLoaded", () => {
 let universal_form = document.getElementsByClassName("universal_form")[0]; 
 let unisend_form = document.getElementsByClassName("universal_send_form")[0]; 
-let unisend_btn = unisend_form.getElementsByClassName("u_send")[0];
+let unisend_btn = unisend_form.getElementsByClassName("u_send");
 
 if (unisend_btn !== undefined) 
-	unisend_btn.onclick = (e) => {
-		let error = form_validate(unisend_form);
- 		if (error == 0) {
-			e.stopPropagation()
-			// console.log(unisend_form.getElementsByClassName("u_send")[0])
+Array.from(unisend_btn).forEach((element) => {
+		element.onclick = (e) => {
+			let error = form_validate(unisend_form);
+			if (error == 0) {
+				e.stopPropagation()
+			
+				var xhr = new XMLHttpRequest()
 
-			var xhr = new XMLHttpRequest()
+				var params = new URLSearchParams() 
+				params.append('action', 'sendphone')
+				params.append('nonce', allAjax.nonce)
+				params.append('name', unisend_form.getElementsByTagName("name")[0])
+				params.append('tel', unisend_form.getElementsByTagName("tel")[0])
+				params.append('objname', unisend_form.getElementsByTagName("objname")[0])
+				params.append('obj', unisend_form.getElementsByTagName("obj")[0])
 
-			var params = new URLSearchParams() 
-			params.append('action', 'sendphone')
-			params.append('nonce', allAjax.nonce)
-			params.append('name', unisend_form.getElementsByTagName("name")[0])
-			params.append('tel', unisend_form.getElementsByTagName("tel")[0])
-
-			xhr.onload = function(e) {
-				universal_form.getElementsByClassName("headen_form_blk")[0].style.display="none";
-				// unisend_form.getElementsByClassName("popup__policy")[0].style.display="none";
-				// unisend_form.getElementsByClassName("popup__form-btn")[0].style.display="none";
-				universal_form.getElementsByClassName("SendetMsg")[0].style.display="block"; 
-				// window.location.href = "https://forestsea.ru/stranica-blagodarnosti/";
-			}
-
-			xhr.onerror = function () { 
-				error(xhr, xhr.status); 
-			};
-
-			xhr.open('POST', allAjax.ajaxurl, true);
-			xhr.send(params);
-	 } else {
-				let form_error = unisend_form.querySelectorAll('._error');
-				if (form_error && unisend_form.classList.contains('_goto-error')) {
-					_goto(form_error[0], 1000, 50);
+				xhr.onload = function(e) {
+					universal_form.getElementsByClassName("headen_form_blk")[0].style.display="none";
+					universal_form.getElementsByClassName("SendetMsg")[0].style.display="block"; 
 				}
-				e.preventDefault();
-			}
-	} 
+
+				xhr.onerror = function () { 
+					error(xhr, xhr.status); 
+				};
+
+				xhr.open('POST', allAjax.ajaxurl, true);
+				xhr.send(params);
+		} else {
+					let form_error = unisend_form.querySelectorAll('._error');
+					if (form_error && unisend_form.classList.contains('_goto-error')) {
+						_goto(form_error[0], 1000, 50);
+					}
+					e.preventDefault();
+				}
+		} 
+})
+
+	// unisend_btn.onclick = (e) => {
+	// 	let error = form_validate(unisend_form);
+ 	// 	if (error == 0) {
+	// 		e.stopPropagation()
+	// 		// console.log(unisend_form.getElementsByClassName("u_send")[0])
+
+	// 		var xhr = new XMLHttpRequest()
+
+	// 		var params = new URLSearchParams() 
+	// 		params.append('action', 'sendphone')
+	// 		params.append('nonce', allAjax.nonce)
+	// 		params.append('name', unisend_form.getElementsByTagName("name")[0])
+	// 		params.append('tel', unisend_form.getElementsByTagName("tel")[0])
+	// 		params.append('objname', unisend_form.getElementsByTagName("objname")[0])
+	// 		params.append('obj', unisend_form.getElementsByTagName("obj")[0])
+
+	// 		xhr.onload = function(e) {
+	// 			universal_form.getElementsByClassName("headen_form_blk")[0].style.display="none";
+	// 			// unisend_form.getElementsByClassName("popup__policy")[0].style.display="none";
+	// 			// unisend_form.getElementsByClassName("popup__form-btn")[0].style.display="none";
+	// 			universal_form.getElementsByClassName("SendetMsg")[0].style.display="block"; 
+	// 			// window.location.href = "https://forestsea.ru/stranica-blagodarnosti/";
+	// 		}
+
+	// 		xhr.onerror = function () { 
+	// 			error(xhr, xhr.status); 
+	// 		};
+
+	// 		xhr.open('POST', allAjax.ajaxurl, true);
+	// 		xhr.send(params);
+	//  } else {
+	// 			let form_error = unisend_form.querySelectorAll('._error');
+	// 			if (form_error && unisend_form.classList.contains('_goto-error')) {
+	// 				_goto(form_error[0], 1000, 50);
+	// 			}
+	// 			e.preventDefault();
+	// 		}
+	// } 
 });
 
 
@@ -453,8 +492,9 @@ for (let index = 0; index < popup_link.length; index++) {
 	el.addEventListener('click', function (e) {
 		if (unlock) {
 			let item = el.getAttribute('href').replace('#', '');
-			let video = el.getAttribute('data-video');
-			popup_open(item, video);
+			let name = el.getAttribute('data-objectname');
+			let obj = el.getAttribute('data-object');
+			popup_open(item, name, obj);
 		}
 		e.preventDefault();
 	})
@@ -467,16 +507,18 @@ for (let index = 0; index < popups.length; index++) {
 		}
 	});
 }
-function popup_open(item, video = '') {
+function popup_open(item, name = '', obj = '' ) {
 	let activePopup = document.querySelectorAll('.popup._active');
 	if (activePopup.length > 0) {
 		popup_close('', false);
 	}
 	let curent_popup = document.querySelector('.popup_' + item);
 	if (curent_popup && unlock) {
-		if (video != '' && video != null) {
-			let popup_video = document.querySelector('.popup_video');
-			popup_video.querySelector('.popup__video').innerHTML = '<iframe src="https://www.youtube.com/embed/' + video + '?autoplay=1"  allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+		if (name != '' && name != null) {
+			let popup_name = document.querySelector('.obj_in_win_name');
+			popup_name.innerHTML = name;
+			document.getElementById("form_param_obj_name").value  = name;
+			document.getElementById("form_param_obj_id").value  = obj;
 		}
 		if (!document.querySelector('.menu__body._active')) {
 			body_lock_add(500);
