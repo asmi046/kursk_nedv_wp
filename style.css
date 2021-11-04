@@ -1176,6 +1176,14 @@ body.ie .ibg img {
   color: #464545;
   margin-left: 8px; }
 
+.bkFinal {
+  margin-left: 0;
+}
+
+.bkSep {
+  margin-right: 8px;
+}
+
 #breadcrumbs span:first-child {
   margin-left: 0; }
 
@@ -3143,7 +3151,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   background: #fff;
 }
 .apartment__slider .slick-dots li.slick-active button {
-  background: grey;
+  background: #003C8C;
 }
 .apartment__slider .slick-dots button {
   margin-right: 8px;
@@ -3821,6 +3829,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   #breadcrumbs span {
     font-size: 12px;
     margin-left: 3px; }
+    
+
   #breadcrumbs span a {
     font-size: 12px;
     margin-right: 3px; }

@@ -86,7 +86,13 @@ get_header(); ?>
                                 get_template_part('template-parts/objec', 'elem', ["elem" => $elem]);
 								
 								if (!empty($elem->geocode))
-								$mapPin[] = ["coord" => $elem->geocode, "name" => empty($elem->site_name)?$elem->type." ".$elem->street:$elem->site_name];
+								$mapPin[] = [
+									"coord" => $elem->geocode, 
+									"name" => empty($elem->site_name)?$elem->type." ".$elem->street:$elem->site_name,
+									"area" => $elem->area1,
+									"img" => $elem->photo,
+									"lnk" => get_bloginfo("url")."/obekt/".$elem->row_id,
+								];
 							}
                         ?>
 
