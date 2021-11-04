@@ -156,6 +156,10 @@ h4 {
 .form__column {
   padding: 0px 15px; }
 
+  .blueLnk {
+  color:#003C8C
+}
+
 .btn {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -1239,7 +1243,7 @@ body.ie .ibg img {
   overflow: hidden; }
 
 .product-info__map {
-  max-height: 1500px; }
+  max-height: 82vh; }
 
 /*Убираем лишние элементы с карты*/
 .ymaps-2-1-79-copyright,

@@ -1,3 +1,27 @@
+// возвращает куки с указанным name,
+// или undefined, если ничего не найдено
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
+
+
+function number_format() {
+    let elements = document.querySelectorAll('.price_formator');
+    for (let elem of elements) {
+        elem.dataset.realPrice = elem.innerHTML;
+        elem.innerHTML = Number(elem.innerHTML).toLocaleString('ru-RU');
+    }
+}
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    number_format();
+});
+
 // Файлы Java Script ======================================================================================================
 
 const iconMenu = document.querySelector(".icon-menu");

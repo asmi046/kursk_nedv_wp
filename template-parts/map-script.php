@@ -10,7 +10,7 @@
         // Масштаб карты
         zoom: 12.3,
         // Выключаем все управление картой
-        controls: []
+        controls: ['fullscreenControl', 'zoomControl']
     }); 
 
       var myGeoObjects = [];
@@ -46,7 +46,7 @@
     clusterer.add(myGeoObjects);
     myMap.geoObjects.add(clusterer);
     // Отключим zoom
-    myMap.behaviors.disable('scrollZoom');
+    // myMap.behaviors.disable('scrollZoom');
 
 }
 </script>
