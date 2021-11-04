@@ -792,8 +792,9 @@ $('.topical__slider').slick({
 	arrows: true,
 	dots: false,
 	infinite: true,
-	speed: 1000,
+	speed: 1800,
 	slidesToShow: 2,
+	slidesToScroll: 2,
 	autoplay: true,
 	autoplaySpeed: 1800,
 	adaptiveHeight: true,
@@ -826,6 +827,7 @@ $('.slider-reviews').slick({
 	autoplaySpeed: 1800,
 	adaptiveHeight: true,
 	waitForAnimate: true,
+	slidesToScroll: 3,
 	// variableWidth: true,
 	responsive: [
 		{
@@ -855,12 +857,14 @@ $('.slider__hot-deals').slick({
 	arrows: true,
 	dots: false,
 	infinite: true,
-	speed: 1000,
+	speed: 1800,
 	slidesToShow: 3,
-	autoplay: false,
+	slidesToScroll: 3,
+	autoplay: true,
 	autoplaySpeed: 1800,
 	variableWidth: true,
 	adaptiveHeight: true,
+	// waitForAnimate: false,
 	responsive: [
 		{
 			breakpoint: 770,
