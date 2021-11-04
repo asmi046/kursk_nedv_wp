@@ -25,6 +25,7 @@
 			</div>
 			<?
 			$teamIndex++; 
+			if ($teamIndex == 4) break;
 		}
 	}
 	?>

@@ -72,7 +72,7 @@
 								<p class="reviews__date"><? echo $item['data_reviews']; ?></p>
 								<span class="reviews__like"></span>
 								<p class="reviews__descp"><? echo $item['descp_reviews']; ?></p>
-								<a href="<? echo $item['link_reviews']; ?>" class="reviews__btn">Читать отзыв в Vk</a>
+								<a href="<? echo $item['link_reviews']; ?>" class="reviews__btn">Читать в источнике</a>
 							</div>
 						</div>
 						<?
@@ -97,78 +97,6 @@
 						get_template_part('template-parts/objec', 'elem', ["elem" => $elem]);
 					}
 				?>
-			
-				<!-- <div class="hot-deals__card">
-					<div class="hot-deals__card-img">
-						<img src="<?php echo get_template_directory_uri();?>/img/hot-deals/01.jpg" alt="">
-					</div>
-					<div class="hot-deals__card-descp">
-						<p class="hot-deals__card-price rub">2 500 000 </p>
-						<div class="hot-deals__card-charect d-flex">
-							<p class="hot-deals__card-housing">2-х комнатная квартира </p>
-							<p class="hot-deals__card-amount">44 м² | 5 / 5 эт.</p>
-						</div>
-						<p class="hot-deals__card-address">ул. Новая д. 34</p>
-					</div>
-					<div class="hot-deals__card-btn d-flex">
-						<a href="#" class="hot-deals__card-link">Подробнее</a>
-						<a href="#" class="hot-deals__card-link">Оставить заявку</a>
-					</div>
-				</div>
-
-				<div class="hot-deals__card">
-					<div class="hot-deals__card-img">
-						<img src="<?php echo get_template_directory_uri();?>/img/hot-deals/02.jpg" alt="">
-					</div>
-					<div class="hot-deals__card-descp">
-						<p class="hot-deals__card-price rub">6 000 000 </p>
-						<div class="hot-deals__card-charect d-flex">
-							<p class="hot-deals__card-housing">3-х комнатная квартира </p>
-							<p class="hot-deals__card-amount">75 м² | 5 / 5 эт.</p>
-						</div>
-						<p class="hot-deals__card-address">ул. Новая д. 34</p>
-					</div>
-					<div class="hot-deals__card-btn d-flex">
-						<a href="#" class="hot-deals__card-link">Подробнее</a>
-						<a href="#" class="hot-deals__card-link">Оставить заявку</a>
-					</div>
-				</div>
-
-				<div class="hot-deals__card">
-					<div class="hot-deals__card-img">
-						<img src="<?php echo get_template_directory_uri();?>/img/hot-deals/03.jpg" alt="">
-					</div>
-					<div class="hot-deals__card-descp">
-						<p class="hot-deals__card-price rub">4 300 000 </p>
-						<div class="hot-deals__card-charect d-flex">
-							<p class="hot-deals__card-housing">3-х комнатная квартира </p>
-							<p class="hot-deals__card-amount">54 м² | 5 / 5 эт.</p>
-						</div>
-						<p class="hot-deals__card-address">ул. Новая д. 34</p>
-					</div>
-					<div class="hot-deals__card-btn d-flex">
-						<a href="#" class="hot-deals__card-link">Подробнее</a>
-						<a href="#" class="hot-deals__card-link">Оставить заявку</a>
-					</div>
-				</div>
-
-				<div class="hot-deals__card">
-					<div class="hot-deals__card-img">
-						<img src="<?php echo get_template_directory_uri();?>/img/hot-deals/04.jpg" alt="">
-					</div>
-					<div class="hot-deals__card-descp">
-						<p class="hot-deals__card-price rub">2 100 000 </p>
-						<div class="hot-deals__card-charect d-flex">
-							<p class="hot-deals__card-housing">2-х комнатная квартира </p>
-							<p class="hot-deals__card-amount">44 м² | 5 / 5 эт.</p>
-						</div>
-						<p class="hot-deals__card-address">ул. Новая д. 34</p>
-					</div>
-					<div class="hot-deals__card-btn d-flex">
-						<a href="#" class="hot-deals__card-link">Подробнее</a>
-						<a href="#" class="hot-deals__card-link">Оставить заявку</a>
-					</div>
-				</div> -->
 
 			</div>
 
