@@ -857,7 +857,7 @@ $('.slider__hot-deals').slick({
 	infinite: true,
 	speed: 1000,
 	slidesToShow: 3,
-	autoplay: true,
+	autoplay: false,
 	autoplaySpeed: 1800,
 	variableWidth: true,
 	adaptiveHeight: true,
