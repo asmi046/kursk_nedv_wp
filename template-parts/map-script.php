@@ -19,8 +19,13 @@
     
     for (let i = 0; i<mapPin.length; i++ )
     { 
+      let content = 
+      '<img width = "50" src = "'+ mapPin[i].img +'"/><br/>'+
+      '<strong>'+mapPin[i].name+'</strong>'+
+      '<p>'+mapPin[i].area+' м²<p>'+
+      '<a class = "blueLnk" href = "'+mapPin[i].lnk+'">Подробнее...</a>';
       let pin = new ymaps.Placemark([parseFloat(mapPin[i].coord.split(",")[1]), parseFloat(mapPin[i].coord.split(",")[0])], {
-    								balloonContent: mapPin[i].name, 
+    								balloonContent: content, 
                   },
                   {
     								iconLayout: 'default#image',
