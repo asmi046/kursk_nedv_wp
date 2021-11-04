@@ -8,7 +8,7 @@
         // Координаты центра карты
         center:[<?php echo carbon_get_theme_option('map_point') ?>],
         // Масштаб карты
-        zoom: 12.3,
+        zoom: 9.3,
         // Выключаем все управление картой
         controls: ['fullscreenControl', 'zoomControl']
     }); 

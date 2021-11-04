@@ -46,7 +46,11 @@ get_header(); ?>
 		$pricedo = empty($_REQUEST["pricedo"])?PHP_INT_MAX:$_REQUEST["pricedo"];
 		
 		$etazgey = empty($_REQUEST["etazgei"])?"%":$_REQUEST["etazgei"];
-		$sparam = "AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
+		
+		$searcstr = empty($_REQUEST["searcstr"])?"%":"%".$_REQUEST["searcstr"]."%";
+
+		$etazgey = empty($_REQUEST["etazgei"])?"%":$_REQUEST["etazgei"];
+		$sparam = "AND (`description` LIKE '".$searcstr."') AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
 								
 										
 								

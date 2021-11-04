@@ -58,7 +58,7 @@
 
 	<div class="info__form-block-col">
 		<div class="info__form-block-inp info__form-block-inp_bottom">
-			<input type="text" placeholder="Район, улица, дом" class="input">
+			<input value = "<? echo $_REQUEST["searcstr"]; ?>" name = "searcstr" type="text" placeholder="Район, улица, дом" class="input">
 		</div>
 		<button name = "doserch" type = "submit" class="info__form-block-inp-btn btn">Применить</button>
 	</div>

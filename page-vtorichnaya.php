@@ -45,13 +45,15 @@ get_header(); ?>
 		
 		$priceot = empty($_REQUEST["priceot"])?PHP_INT_MIN:$_REQUEST["priceot"];
 		$pricedo = empty($_REQUEST["pricedo"])?PHP_INT_MAX:$_REQUEST["pricedo"];
+		
+		$searcstr = empty($_REQUEST["searcstr"])?"%":"%".$_REQUEST["searcstr"]."%";
 
 
 
 		$etazgey = empty($_REQUEST["etazgei"])?"%":$_REQUEST["etazgei"];
-	 	$sparam = "AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
+	 	$sparam = "AND (`description` LIKE '".$searcstr."') AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
 
-		// echo  "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage;
+		//  echo  "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage;
 		
 		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage );
 		
