@@ -18,7 +18,7 @@ Version: 1.0.1
 *:before, 
 *:after {
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box; 
+  -webkit-box-sizing: border-box;  
   box-sizing: border-box; }
 
 :focus,
@@ -931,10 +931,12 @@ body.ie .ibg img {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 213px;
   flex: 0 0 213px; }
-  .header__callback a {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 33.6px; }
+.header__callback a {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 33.6px; }
+.header__callback a:hover {
+  text-decoration: underline;}
 
 .header__popup-link {
   font-size: 14px !important;
@@ -1192,7 +1194,9 @@ body.ie .ibg img {
   font-weight: 300;
   line-height: 23px;
   margin-right: 8px;
-  color: #464545; }
+  color: #003C8C;}
+#breadcrumbs span a:hover {
+  text-decoration: underline;}
 
 .product-info {
   padding-bottom: 67px; }
@@ -1319,7 +1323,10 @@ body.ie .ibg img {
 
 .contacts__contacts-item-phone {
   font-size: 28px;
-  line-height: 48px; }
+  line-height: 48px; 
+  color: #003C8C;}
+.contacts__contacts-item-phone:hover {
+  text-decoration: underline;}
 
 .contacts__contacts-item-email {
   font-size: 20px;
