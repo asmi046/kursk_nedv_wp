@@ -11,20 +11,22 @@ $sitename = empty($args['elem']->site_name)?$args['elem']->type." ".$args['elem'
 $metazg = $args['elem']->area1.(empty($args['elem']->area2)?"":" / ".$args['elem']->area2);
 $etagnost = $args['elem']->floor.(empty($args['elem']->floors)?"":" / ".$args['elem']->floors);
 ?>
-<div class="hot-deals__card">	
-	<a href="<?bloginfo("url")?>/obekt/<?echo $args['elem']->row_id;?>" class="hot-deals__card-img" data-lot = "<?echo $args['elem']->lot;?>" data-crmid = "<?echo $args['elem']->row_id;?>">
-		<img src="<?php echo (empty($args['elem']->photo))?get_bloginfo("template_url")."/img/no-photo.jpg":$args['elem']->photo;?>" alt="">
-	</a> 
-	<div class="hot-deals__card-descp">  
-		<p class="hot-deals__card-price rub price_formator"><?echo $args['elem']->price;?> </p>
-		<div class="hot-deals__card-charect d-flex">
-			<p class="hot-deals__card-housing"><?echo $sitename;?></p>
-			<p class="hot-deals__card-amount"><?echo $metazg; ?> м² | <?echo $etagnost; ?> эт.</p>
+<div class="hot-deals__column">
+	<div class="hot-deals__card">	
+		<a href="<?bloginfo("url")?>/obekt/<?echo $args['elem']->row_id;?>" class="hot-deals__card-img" data-lot = "<?echo $args['elem']->lot;?>" data-crmid = "<?echo $args['elem']->row_id;?>">
+			<img src="<?php echo (empty($args['elem']->photo))?get_bloginfo("template_url")."/img/no-photo.jpg":$args['elem']->photo;?>" alt="">
+		</a> 
+		<div class="hot-deals__card-descp">  
+			<p class="hot-deals__card-price rub price_formator"><?echo $args['elem']->price;?> </p>
+			<div class="hot-deals__card-charect d-flex">
+				<p class="hot-deals__card-housing"><?echo $sitename;?></p>
+				<p class="hot-deals__card-amount"><?echo $metazg; ?> м² | <?echo $etagnost; ?> эт.</p>
+			</div>
+			<p class="hot-deals__card-address"><?echo $adres; ?></p>  
 		</div>
-		<p class="hot-deals__card-address"><?echo $adres; ?></p> 
+		<div class="hot-deals__card-btn d-flex">
+			<a href="<?bloginfo("url")?>/obekt/<?echo $args['elem']->row_id;?>" class="hot-deals__card-link">Подробнее</a>
+			<a href="#object" data-objectname = "<?echo $sitename;?>" data-object = "<?echo $args['elem']->row_id; ?>" class="hot-deals__card-link _popup-link">Оставить заявку</a>
+		</div> 
 	</div>
-	<div class="hot-deals__card-btn d-flex">
-		<a href="<?bloginfo("url")?>/obekt/<?echo $args['elem']->row_id;?>" class="hot-deals__card-link">Подробнее</a>
-		<a href="#object" data-objectname = "<?echo $sitename;?>" data-object = "<?echo $args['elem']->row_id; ?>" class="hot-deals__card-link _popup-link">Оставить заявку</a>
-	</div> 
 </div>
