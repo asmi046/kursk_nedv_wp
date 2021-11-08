@@ -19,7 +19,7 @@ $etagnost = $args['elem']->floor.(empty($args['elem']->floors)?"":" / ".$args['e
 		<div class="hot-deals__card-descp">  
 			<p class="hot-deals__card-price rub price_formator"><?echo $args['elem']->price;?> </p>
 			<div class="hot-deals__card-charect d-flex">
-				<p class="hot-deals__card-housing"><?echo $sitename;?></p>
+				<p class="hot-deals__card-housing">ул. <?echo $args['elem']->street;?> (<?echo $args['elem']->type;?>)</p>
 				<p class="hot-deals__card-amount"><?echo $metazg; ?> м² | <?echo $etagnost; ?> эт.</p>
 			</div>
 			<p class="hot-deals__card-address"><?echo $adres; ?></p>  

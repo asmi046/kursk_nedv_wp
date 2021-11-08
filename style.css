@@ -1259,7 +1259,7 @@ body.ie .ibg img {
 
 .hot-deals__column {
   display: flex;
-  flex: 0 1 33.33%;
+  flex: 0 1 24.9%;
   padding: 0 10px;
   margin-bottom: 27px;
   overflow: hidden;
@@ -3274,7 +3274,12 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     -ms-flex-pack: start;
     justify-content: flex-start; }
   .promgranit-about__descp-icons {
-    margin-top: 10px; } }
+    margin-top: 10px; } 
+  .product-info__wrap-card {
+    margin: 0 -10px;}
+  .hot-deals__column {
+    padding: 0 5px;}
+}
 
 @media (max-width: 1200px) {
   .topical__position {
@@ -3332,6 +3337,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     margin-bottom: 10px;}
   .apartment__info-descp h1 {
     font-size: 38px;}
+  .hot-deals__column {
+    flex: 0 1 33.333%;}
 }
 
 @media (max-width: 1150px) {
