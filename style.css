@@ -3187,8 +3187,10 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   filter: blur(13px);
   opacity: .4;}
 
-
-
+@media (max-width: 1500px) {
+  .floor-plan__img img {
+    max-width: 60%;}
+}
 
 @media (max-width: 1450px) {
   .container {
@@ -3976,7 +3978,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     background-size: 85%;
     margin-right: 3px; }
   .floor-plan__img img {
-    max-width: 80%; }
+    max-width: 100%; }
   .promgranit-info .nuar_blk {
     display: block; }
   .interior {
