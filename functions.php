@@ -378,6 +378,36 @@ function aj_fnc()
 
 // }
 
+// Отправщик в CRM----------------------------------------------------------------------------
+
+function to_crm_msg($name, $tel, $objname, $obj) {
+
+	//xn--46-6kcaio0anxtsby.xn--p1ai/modules/m_boxreg.php?get_xml=site&token=FTUYGg45r74r__rhtg75ueVGH4t3___43f&iii="+formCallbackName.value+"&tel1="+formCallbackTel.value+"&realty_id="+formLot.value
+	
+
+	$url = "//xn--46-6kcaio0anxtsby.xn--p1ai/modules/m_boxreg.php?get_xml=site&token=FTUYGg45r74r__rhtg75ueVGH4t3___43f&iii=".$name."&tel1=".$tel."&realty_id=".$obj;
+
+	$curl = curl_init();
+	curl_setopt($curl, CURLOPT_URL, $url);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	// curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+	curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+	// curl_setopt($curl, CURLOPT_SSLVERSION, 3);
+	// curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
+	// curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+	$str = curl_exec($curl);
+
+	if($str === false)
+	{
+   	 	echo 'Ошибка curl: ' . curl_error($curl);
+	}
+
+	curl_close($curl);
+
+	return json_decode($str);
+
+}
 
 // Отправка Получите бесплатную консультацию
 add_action('wp_ajax_sendphone', 'sendphone');
@@ -397,12 +427,14 @@ function sendphone()
 		);
 
 		$mcontent = '<strong>Имя:</strong> ' . $_REQUEST["name"] . 
-		' <br/> <strong>Телефон:</strong> ' . $_REQUEST["tel"];
+		' <br/> <strong>Телефон:</strong> ' . $_REQUEST["tel"]."<br/>";
 
 		if (!empty($_REQUEST["obj"])) {
-			$mcontent .= '<strong>Имя обекта:</strong> '.$_REQUEST["objname"]."</br>";
-			$mcontent .= '<strong>ID обекта:</strong> '.$_REQUEST["obj"]."</br>";
+			$mcontent .= '<strong>Имя обекта:</strong> '.$_REQUEST["objname"]."<br/>";
+			$mcontent .= '<strong>ID обекта:</strong> '.$_REQUEST["obj"]."<br/>";
 		}
+
+		$mcontent .= '<strong>Отправка в CRM:</strong> '.to_crm_msg($_REQUEST["name"], $_REQUEST["tel"], $_REQUEST["objname"], $_REQUEST["obj"]);
 
 		add_filter('wp_mail_content_type', create_function('', 'return "text/html";'));
 		if (wp_mail(carbon_get_theme_option('as_email_send'), 'Заказ Консультации', $mcontent, $headers))

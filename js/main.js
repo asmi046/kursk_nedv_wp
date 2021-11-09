@@ -274,6 +274,21 @@ let _slideToggle = (target, duration = 500) => {
 
 
 // CRM --------------------------------------------------------------------------------------------------------------------------------------
+function to_crm(name = '', tel = '', obj='') {
+	let requestURL = "//xn--46-6kcaio0anxtsby.xn--p1ai/modules/m_boxreg.php?get_xml=site&token=FTUYGg45r74r__rhtg75ueVGH4t3___43f&iii="+name+"&tel1="+tel+"&realty_id="+obj;
+		const xhr = new XMLHttpRequest();
+		xhr.open("get", requestURL);
+		xhr.onload = () => {
+			console.log("Ok");
+		}
+	
+		xhr.onerror = () => {
+			console.log("error"); 
+		}
+	
+		xhr.send();
+}
+
 // sendZobj.addEventListener('click', (e) => { 
 // 	e.preventDefault();
 
@@ -290,7 +305,10 @@ let _slideToggle = (target, duration = 500) => {
 
 // 	xhr.send();
 // });
+
 // CRM END--------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 // Отправщик ----------------------------------------------------------------------------
@@ -322,12 +340,13 @@ if (universal_form !== undefined)
 							params.append('tel', unisend_form.getElementsByClassName("_tel")[0].value)
 							let objname = unisend_form.getElementsByClassName("_objname");
 							params.append('objname', (objname.length == 0)?"":objname[0].value)
-							let obj = unisend_form.getElementsByClassName("_objname");
-							params.append('obj', (obj.length == 0)?"":obj.value)
+							let obj = unisend_form.getElementsByClassName("_obj");
+							params.append('obj', (obj.length == 0)?"":obj[0].value)
 			
 							xhr.onload = function(e) {
 								element.getElementsByClassName("headen_form_blk")[0].style.display="none";
 								element.getElementsByClassName("SendetMsg")[0].style.display="block"; 
+								to_crm(unisend_form.getElementsByClassName("_name")[0].value, unisend_form.getElementsByClassName("_tel")[0].value, obj[0].value);
 							}
 			
 							xhr.onerror = function () { 
