@@ -1,0 +1,149 @@
+.histo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.histo form {
+    width: 50%;
+}
+
+.histo .historyElems {
+    display:flex;
+    margin-left: 20px;
+}
+
+.histo .historyElems .historyElem{
+    margin:  0 10px;
+    line-height: 30px;
+}
+
+.histo .historyElems .historyElem::before { 
+    content: "";
+    width: 30px;
+    height: 30px;
+    
+    border-radius: 3px;
+    float: left;
+    margin-right: 10px;
+}
+
+.etazi {
+    margin-top: 20px;
+}
+
+.etazg {
+    min-height: 80px;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    width:100%;
+    flex-wrap: wrap;
+}
+
+.etagn_number {
+    line-height: 80px;
+    width: 5%;
+    min-height: 80px;
+    text-align: center;
+}
+
+.kvartiri {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.kvartira {
+    box-shadow: 2px 1px 6px rgb(0 0 0 / 20%);
+    min-width: 130px;
+    height: 60px;
+    border-radius: 5px;
+    margin: 10px 10px;
+    font-size: 11px;
+}
+
+.kvartira .kinfo{
+    width: 100%;
+    padding: 3px 4px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.kvartira .kinfo .knumber{ 
+    background-color: #63cba5;
+    padding: 3px;
+    color: white;
+    font-weight: 700;
+    border-radius: 3px;
+}
+
+.kvartira .kinfo .karea{ 
+    padding: 3px;
+}
+
+.histo .historyElems .historyElem.prodana::before,
+.kvartira.prodana {
+    background-color: #ff927a;
+}
+
+.histo .historyElems .historyElem.svobodna::before,
+.kvartira.svobodna {
+    background-color: #daf0ba;
+}
+
+.histo .historyElems .historyElem.rezerv::before,
+.kvartira.rezerv {
+    background-color: #fdf047;
+}
+.histo .historyElems .historyElem.empty::before{
+    border: 1px solid lightgray;
+}
+
+.kprice {
+    width: 100%;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 3px 4px;
+}
+
+.kvartira_edit_info {
+    width:100%;
+    background-color: lightgray;
+    padding: 15px 30px;
+    font-size: 20px;
+    line-height: 22px;
+    border-radius: 5px;
+}
+
+.edit_kv_form {
+    width:100%;
+    margin: 20px 0;
+}
+
+.edit_kv_form .form__select {
+    margin: 10px 0;
+}
+
+.edit_kv_form input {
+    border: 1px solid #A3A3A3;
+    margin: 10px 0;
+}
+
+.edit_kv_form label {
+    width:100%;
+    margin: 3px 0;
+}
+
+@media (max-width: 860px) { 
+    .histo {
+        flex-direction: column;
+    }
+
+    .histo .historyElems,
+    .histo form {
+        width:100%;
+        max-width: 100%;
+        margin: 5px 0;
+    }
+}

@@ -295,47 +295,99 @@ let _slideToggle = (target, duration = 500) => {
 
 // Отправщик ----------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
-let universal_form = document.getElementsByClassName("universal_form")[0]; 
-let unisend_form = document.getElementsByClassName("universal_send_form")[0]; 
-let unisend_btn = unisend_form.getElementsByClassName("u_send");
+let universal_form = document.getElementsByClassName("universal_form"); 
 
-if (unisend_btn !== undefined) 
-Array.from(unisend_btn).forEach((element) => {
-		element.onclick = (e) => {
-			let error = form_validate(unisend_form);
-			if (error == 0) {
-				e.stopPropagation()
+
+if (universal_form !== undefined)
+{
+	Array.from(universal_form).forEach((element, index) => { 
+		let unisend_form = element.getElementsByClassName("universal_send_form")[0]; 
+		let unisend_btn = element.getElementsByClassName("u_send")[0];
+
+		unisend_btn.onclick = (e) => {
+						// console.log(unisend_form);
+						// console.log(unisend_form.getElementsByClassName("_req"));
+						
 			
-				var xhr = new XMLHttpRequest()
+						let error = form_validate(unisend_form);
+						if (error == 0) {
+							e.stopPropagation()
+						
+							var xhr = new XMLHttpRequest()
+			
+							var params = new URLSearchParams() 
+							params.append('action', 'sendphone')
+							params.append('nonce', allAjax.nonce)
+							params.append('name', unisend_form.getElementsByClassName("_name")[0].value)
+							params.append('tel', unisend_form.getElementsByClassName("_tel")[0].value)
+							let objname = unisend_form.getElementsByClassName("_objname");
+							params.append('objname', (objname.length == 0)?"":objname[0].value)
+							let obj = unisend_form.getElementsByClassName("_objname");
+							params.append('obj', (obj.length == 0)?"":obj.value)
+			
+							xhr.onload = function(e) {
+								element.getElementsByClassName("headen_form_blk")[0].style.display="none";
+								element.getElementsByClassName("SendetMsg")[0].style.display="block"; 
+							}
+			
+							xhr.onerror = function () { 
+								error(xhr, xhr.status); 
+							};
+			
+							xhr.open('POST', allAjax.ajaxurl, true);
+							xhr.send(params);
+					} else {
+								let form_error = unisend_form.querySelectorAll('._error');
+								if (form_error && unisend_form.classList.contains('_goto-error')) {
+									_goto(form_error[0], 1000, 50);
+								}
+								e.preventDefault();
+							}
+					} 
 
-				var params = new URLSearchParams() 
-				params.append('action', 'sendphone')
-				params.append('nonce', allAjax.nonce)
-				params.append('name', unisend_form.getElementsByTagName("name")[0])
-				params.append('tel', unisend_form.getElementsByTagName("tel")[0])
-				params.append('objname', unisend_form.getElementsByTagName("objname")[0])
-				params.append('obj', unisend_form.getElementsByTagName("obj")[0])
+	});
+} 
 
-				xhr.onload = function(e) {
-					universal_form.getElementsByClassName("headen_form_blk")[0].style.display="none";
-					universal_form.getElementsByClassName("SendetMsg")[0].style.display="block"; 
-				}
+// Array.from(unisend_btn).forEach((element, index) => {
+// 		element.onclick = (e) => {
+// 			console.log("ddd");
+// 			let universal_form = document.getElementsByClassName("universal_form")[index]; 
+// 			let unisend_form = document.getElementsByClassName("universal_send_form")[index]; 
 
-				xhr.onerror = function () { 
-					error(xhr, xhr.status); 
-				};
+// 			let error = form_validate(unisend_form);
+// 			if (error == 0) {
+// 				e.stopPropagation()
+			
+// 				var xhr = new XMLHttpRequest()
 
-				xhr.open('POST', allAjax.ajaxurl, true);
-				xhr.send(params);
-		} else {
-					let form_error = unisend_form.querySelectorAll('._error');
-					if (form_error && unisend_form.classList.contains('_goto-error')) {
-						_goto(form_error[0], 1000, 50);
-					}
-					e.preventDefault();
-				}
-		} 
-})
+// 				var params = new URLSearchParams() 
+// 				params.append('action', 'sendphone')
+// 				params.append('nonce', allAjax.nonce)
+// 				params.append('name', unisend_form.getElementsByTagName("name")[0])
+// 				params.append('tel', unisend_form.getElementsByTagName("tel")[0])
+// 				params.append('objname', unisend_form.getElementsByTagName("objname")[0])
+// 				params.append('obj', unisend_form.getElementsByTagName("obj")[0])
+
+// 				xhr.onload = function(e) {
+// 					universal_form.getElementsByClassName("headen_form_blk")[0].style.display="none";
+// 					universal_form.getElementsByClassName("SendetMsg")[0].style.display="block"; 
+// 				}
+
+// 				xhr.onerror = function () { 
+// 					error(xhr, xhr.status); 
+// 				};
+
+// 				xhr.open('POST', allAjax.ajaxurl, true);
+// 				xhr.send(params);
+// 		} else {
+// 					let form_error = unisend_form.querySelectorAll('._error');
+// 					if (form_error && unisend_form.classList.contains('_goto-error')) {
+// 						_goto(form_error[0], 1000, 50);
+// 					}
+// 					e.preventDefault();
+// 				}
+// 		} 
+// })
 
 	// unisend_btn.onclick = (e) => {
 	// 	let error = form_validate(unisend_form);

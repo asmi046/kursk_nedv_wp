@@ -16,8 +16,8 @@
 						<p>Оставьте заявку и мы свяжемся с вами в течении 15 минут</p>  
 						<form action="#" class="popup__form universal_send_form">
 							<div class="form__line">
-								<input autocomplete="off" type="text" name="name" data-error="Заполните поля" data-value="Имя*" class="popup__form-input input _req">
-								<input autocomplete="off" type="text" name="tel" data-error="Заполните поля" data-value="Телефон*" class="popup__form-input input _phone _req">
+								<input autocomplete="off" type="text" name="name" data-error="Заполните поля" data-value="Имя*" class="popup__form-input input _req _name">
+								<input autocomplete="off" type="text" name="tel" data-error="Заполните поля" data-value="Телефон*" class="popup__form-input input _phone _req _tel">
 							</div>
 <!-- 							<input type="text" name="name" placeholder="Имя" id="formCallbackName" class="popup__form-input input">
 							<input type="tel" name="tel" placeholder="Телефон*" id="formCallbackTel" class="popup__form-input input">
@@ -52,10 +52,10 @@
 						<p>Оставьте заявку и мы свяжемся с вами в течении 15 минут</p> 
 						<form action="#" class="popup__form universal_send_form">
 							<div class="form__line">
-								<input type="hidden" name="objname" value = "" id = "form_param_obj_name">
-								<input type="hidden" name="obj" value = "" id = "form_param_obj_id">
-								<input autocomplete="off" type="text" name="name" data-error="Заполните поля" data-value="Имя*" class="popup__form-input input _req">
-								<input autocomplete="off" type="text" name="tel" data-error="Заполните поля" data-value="Телефон*" class="popup__form-input input _phone _req">
+								<input type="hidden" name="objname" value = "" id = "form_param_obj_name" class = "_objname">
+								<input type="hidden" name="obj" value = "" id = "form_param_obj_id" class = "_obj">
+								<input autocomplete="off" type="text" name="name" data-error="Заполните поля" data-value="Имя*" class="popup__form-input input _req _name">
+								<input autocomplete="off" type="text" name="tel" data-error="Заполните поля" data-value="Телефон*" class="popup__form-input input _phone _req _tel">
 							</div>
 							<p>Заполняя данную форму вы соглашаетесь с <a href="<?php echo get_permalink(452); ?>">политикой конфиденциальности</a></p>
 							<button type="button" class="popup__form_btn form-btn u_send btn">Отправить заявку</button>
