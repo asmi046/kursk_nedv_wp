@@ -18,7 +18,7 @@ get_header(); ?>
 		<div class="nuar_blk"></div>
 		<div class="container">
 
-			<div class="sell-pass-info__row d-flex">
+			<div class="sell-pass-info__row d-flex"> 
 				<div class="sell-pass-info__text">
 					<h1><?php the_title();?></h1>
 					<p>
@@ -45,9 +45,9 @@ get_header(); ?>
 
 			<div class="promgranit-about__row d-flex">
 
-				<div class="promgranit-about__img">
-					<img src="<?php echo get_template_directory_uri();?>/img/promgranit-about-img.jpg" alt="">
-				</div>
+				<a href="https://youtu.be/G45b4uC8utg" data-rel="media" class="promgranit-about__img fancybox">
+					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/G45b4uC8utg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</a>
 
 				<div class="promgranit-about__descp d-flex">
 

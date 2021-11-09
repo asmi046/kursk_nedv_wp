@@ -4267,6 +4267,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     order: 3;}
   .hot-deals__column {
     flex: 0 0 60%;}
+  .promgranit-about__img {
+    height: 355px;}
 }
 
 @media (max-width: 600px) {
@@ -4429,6 +4431,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     height: 330px !important;}
   .hot-deals__column {
     flex: 0 0 75%;}
+    .promgranit-about__img {
+    height: 260px;}
 }
 
 @media (max-width: 480px) {
@@ -4535,6 +4539,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     height: 250px !important;}
   .hot-deals__column {
     flex: 0 0 90%;}
+  .promgranit-about__img {
+    height: 220px;}
 }
 
 @media (max-width: 380px) {
@@ -4581,7 +4587,10 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   .how-work__actions .actions-item-text {
     padding: 5px 15px 5px 10px; }
   .promgranit-about__descp-icons-item {
-    padding: 5px; } }
+    padding: 5px; } 
+  .promgranit-about__img {
+    height: 180px;}
+}
 
 
 
