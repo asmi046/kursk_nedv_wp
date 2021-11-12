@@ -14,13 +14,13 @@
 			<h1><?php echo carbon_get_theme_option('about_home_title'); ?></h1> 
 
 			<div class="info__item d-flex">
-				<a href="#" class="info__item-link">Купить</a>
-				<a href="<?php echo get_permalink(26);?>" class="info__item-link">Продать</a>
+				<a href="<? bloginfo("url"); ?>" class="info__item-link">Купить</a>  
+				<a href="<?php echo get_permalink(26);?>" class="info__item-link">Продать</a> 
 				<a href="<?php echo get_permalink(24);?>" class="info__item-link">Сдать</a>
-				<a href="<?php echo get_permalink(26);?>" class="info__item-link">Снять</a> 
+				<a href="<?php echo get_permalink(26);?>" class="info__item-link">Снять</a>  
 			</div>
 
-			<?php get_template_part('template-parts/tabs-form-block');?>
+			<?php get_template_part('template-parts/tabs-form-block');?> 
 
 		</div>
 	</section> 

@@ -2,9 +2,9 @@
 	<div class="header__container container">
 
 		<div class="header__row d-flex">
-			<a href="http://xn----dtbfdhlbja1aetpolqc1p.xn--p1ai" class="header__logo logo-icon"></a>
+			<a href="<? bloginfo("url"); ?>" class="header__logo logo-icon"></a>
 
-			<div class="header__nav-block">
+			<div class="header__nav-block"> 
 
 				<div class="header__soc-block">
 					<div class="header__soc-block-icon soc-block-icon">
