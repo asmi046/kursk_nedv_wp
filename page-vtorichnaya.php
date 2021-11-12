@@ -18,9 +18,10 @@ get_header(); ?>
 		<div class="nuar_blk"></div>
 		<div class="container">
 			<h1><? the_title();?></h1>
-			<div class="info__block-tabs block__tabs tabs">
+			<div class="info__block-tabs">
+				<?php get_template_part('template-parts/obj-tabs-block');?> 
 				<div class="block__items">
-					<div class="block__item tab__item active">
+					<div class="tab__item active"> 
 						<?php get_template_part('template-parts/vtorichnaya-form-block');?> 
 					</div>
 				</div>
@@ -29,42 +30,42 @@ get_header(); ?>
 	</section>
 
 	<? 
-		$countInPage = 20;
-		$curentPage = get_query_var("onpage");
-		$curentPage = !empty($curentPage)?$curentPage:1;
+	$countInPage = 20;
+	$curentPage = get_query_var("onpage");
+	$curentPage = !empty($curentPage)?$curentPage:1;
 
-		$ofset = ($curentPage - 1) * $countInPage;
+	$ofset = ($curentPage - 1) * $countInPage;
 
-		global $wpdb;
+	global $wpdb;
 
-		$raion = empty($_REQUEST["raion"])?"%":$_REQUEST["raion"];
-		$rooms = empty($_REQUEST["rooms"])?"%":$_REQUEST["rooms"];
-		
-		$areaot = empty($_REQUEST["areaot"])?PHP_INT_MIN:$_REQUEST["areaot"];
-		$areado = empty($_REQUEST["areado"])?PHP_INT_MAX:$_REQUEST["areado"];
-		
-		$priceot = empty($_REQUEST["priceot"])?PHP_INT_MIN:$_REQUEST["priceot"];
-		$pricedo = empty($_REQUEST["pricedo"])?PHP_INT_MAX:$_REQUEST["pricedo"];
-		
-		$searcstr = empty($_REQUEST["searcstr"])?"%":"%".$_REQUEST["searcstr"]."%";
+	$raion = empty($_REQUEST["raion"])?"%":$_REQUEST["raion"];
+	$rooms = empty($_REQUEST["rooms"])?"%":$_REQUEST["rooms"];
+
+	$areaot = empty($_REQUEST["areaot"])?PHP_INT_MIN:$_REQUEST["areaot"];
+	$areado = empty($_REQUEST["areado"])?PHP_INT_MAX:$_REQUEST["areado"];
+
+	$priceot = empty($_REQUEST["priceot"])?PHP_INT_MIN:$_REQUEST["priceot"];
+	$pricedo = empty($_REQUEST["pricedo"])?PHP_INT_MAX:$_REQUEST["pricedo"];
+
+	$searcstr = empty($_REQUEST["searcstr"])?"%":"%".$_REQUEST["searcstr"]."%";
 
 
 
-		$etazgey = empty($_REQUEST["etazgei"])?"%":$_REQUEST["etazgei"];
-	 	$sparam = "AND (`description` LIKE '".$searcstr."') AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
+	$etazgey = empty($_REQUEST["etazgei"])?"%":$_REQUEST["etazgei"];
+	$sparam = "AND (`description` LIKE '".$searcstr."') AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
 
 		//  echo  "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage;
-		
-		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage );
-		
-		$objectUl = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam.";" );
-		
-	
-		$totalCount = count($objectUl);
 
-		$pageCount = intdiv($totalCount, $countInPage);
-		if ($totalCount % $countInPage > 0)
-			$pageCount++;
+	$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam." LIMIT ".$ofset.", ".$countInPage );
+
+	$objectUl = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Комната' OR `type` = 'Комната' OR `type` = 'Квартира') ".$sparam.";" );
+
+	
+	$totalCount = count($objectUl);
+
+	$pageCount = intdiv($totalCount, $countInPage);
+	if ($totalCount % $countInPage > 0)
+		$pageCount++;
 	?>
 
 	<section id="product-info" class="product-info recurring">
@@ -101,30 +102,30 @@ get_header(); ?>
 									"img" => $elem->photo,
 									"lnk" => get_bloginfo("url")."/obekt/".$elem->row_id,
 								];
-						}
-						?>
+							}
+							?>
+
+						</div>
+
+						<script>
+							let mapPin = <?echo json_encode($mapPin);?>;
+						</script>
+
+						<?php 
+						$param = array("curentpage" => $curentPage, 'pagecount' => $pageCount, "prefix" => "vtorichnaya");
+						get_template_part('template-parts/pagination','all', $param);?> 
 
 					</div>
 
-					<script>
-						let mapPin = <?echo json_encode($mapPin);?>;
-					</script>
-					
-					<?php 
-					$param = array("curentpage" => $curentPage, 'pagecount' => $pageCount, "prefix" => "vtorichnaya");
-					get_template_part('template-parts/pagination','all', $param);?> 
+					<div class="product-info__column product-info__column-map">
+						<div class="product-info__map map" id="map"></div>
+						<?php get_template_part('template-parts/map-script');?> 
+					</div>
 
-				</div>
-
-				<div class="product-info__column product-info__column-map">
-					<div class="product-info__map map" id="map"></div>
-					<?php get_template_part('template-parts/map-script');?> 
 				</div>
 
 			</div>
+		</section>
+	</main>
 
-		</div>
-	</section>
-</main>
-
-<?php get_footer(); ?>   
+	<?php get_footer(); ?>   

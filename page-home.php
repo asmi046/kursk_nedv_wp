@@ -14,19 +14,21 @@ get_header(); ?>
 	<a href="#callback" class="callback-widget blink _popup-link"></a>
 	<a href="tel:<? echo preg_replace('/[^0-9]/', '', $tel = carbon_get_theme_option("as_phone_1")); ?>" class="callback-widget callback-widget-mob blink"></a>
 	
-	<section class="info category-info category-info-object">
+	<section class="info category-info category-info-object"> 
 		<div class="nuar_blk"></div>
 		<div class="container">
 			<h1><? the_title();?></h1>
-			<div class="info__block-tabs block__tabs tabs">
+			<div class="info__block-tabs">
+				<?php get_template_part('template-parts/obj-tabs-block');?> 
 				<div class="block__items">
-					<div class="block__item tab__item active">
+					<div class="tab__item active"> 
 						<?php get_template_part('template-parts/home-form-block');?> 
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	
 	<?
 		$countInPage = 20;
 		$curentPage = get_query_var("onpage");
