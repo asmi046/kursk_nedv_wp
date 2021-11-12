@@ -1253,15 +1253,15 @@ body.ie .ibg img {
   justify-content: space-between;*/
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin: 0 -15px;
+  margin: 0 -5px;
   margin-bottom: 78px;
 }
 
 .hot-deals__column {
   display: flex;
-  flex: 0 1 24.9%;
-  padding: 0 10px;
-  margin-bottom: 27px;
+  flex: 0 1 20%;
+  padding: 0 2.5px;
+  margin-bottom: 20px;
   overflow: hidden;
 }
 
@@ -2450,6 +2450,13 @@ body.ie .ibg img {
 .hot-deals__card-link:last-child {
   border-right: none; }
 
+.hot-deals__card-link_blue {
+  color: #003C8C;
+}
+
+.product-info__wrap-card .hot-deals__card .hot-deals__card-link {
+  font-size: 13px;
+}
 
 
 .slider__hot-deals .slick-arrow {
@@ -3266,7 +3273,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   .product-info__wrap-card .hot-deals__card .hot-deals__card-descp {
     padding: 25px 15px; }
   .product-info__wrap-card .hot-deals__card .hot-deals__card-link {
-    font-size: 14px; }
+    font-size: 12px; }
   .promgranit-about__img {
     height: auto; }
   .promgranit-about__descp {
@@ -3339,6 +3346,8 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
     font-size: 38px;}
   .hot-deals__column {
     flex: 0 1 33.333%;}
+  .product-info__wrap-card .hot-deals__card .hot-deals__card-link {
+    font-size: 14px; }
 }
 
 @media (max-width: 1150px) {
