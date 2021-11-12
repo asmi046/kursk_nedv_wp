@@ -28,7 +28,7 @@ get_header(); ?>
 		</div>
 	</section>
 	<?
-		$countInPage = 6;
+		$countInPage = 20;
 		$curentPage = get_query_var("onpage");
 		$curentPage = !empty($curentPage)?$curentPage:1;
 
