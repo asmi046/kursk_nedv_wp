@@ -125,15 +125,38 @@
     margin: 10px 0;
 }
 
+.chess_login input,
 .edit_kv_form input {
     border: 1px solid #A3A3A3;
     margin: 10px 0;
+    min-height: 36px;
+    padding: 0 15px;
 }
 
 .edit_kv_form label {
     width:100%;
     margin: 3px 0;
 }
+
+.chess_login {
+    display: flex;
+    max-width: 320px;
+    padding: 20px;
+    flex-direction: column;
+    -webkit-box-shadow: 0px 1px 10px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 1px 10px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 1px 10px 0px rgba(34, 60, 80, 0.2);
+}
+
+.chess_login h2{ 
+    font-size: 22px;
+    line-height: 24px;
+}
+
+.chess_login .btn{ 
+    width:100%
+}
+
 
 @media (max-width: 860px) { 
     .histo {
