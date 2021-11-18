@@ -27,11 +27,13 @@ get_header(); ?>
 				<?php the_content();?>
                     
                     <?
-                        if (empty($_COOKIE["chlogin"])) 
+                        if (empty($_COOKIE["login"])) 
                             get_template_part('template-parts/chess-login-form');
-                        else
+                        else {
+                            get_template_part('template-parts/chess-control');
                             get_template_part('template-parts/chess-input');
-                    ?>
+						}
+					?>
                 
                 <?php endwhile;?>
 			<?php endif; ?>

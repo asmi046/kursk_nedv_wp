@@ -1,7 +1,7 @@
 <?php 
 
 /*
-Template Name: Страница Редактирование квартиры
+Template Name: Страница Статистика по квартирам
 Template Post Type: page
 */
 
@@ -30,9 +30,10 @@ get_header(); ?>
                             get_template_part('template-parts/chess-login-form');
                         else {
                             get_template_part('template-parts/chess-control');
-                            get_template_part('template-parts/schess-edit');
+                            get_template_part('template-parts/chess-stat');
 						}
 					?>
+                    
                 <?php endwhile;?>
 			<?php endif; ?>
 			

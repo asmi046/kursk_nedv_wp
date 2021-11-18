@@ -172,7 +172,7 @@ function my_assets()
 
 	wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array(), $scrypt_version, true); // Подключение основного скрипта в самом конце
 	wp_enqueue_script('chess', get_template_directory_uri() . '/js/chess.js', array(), $scrypt_version, true); // Шахматка
-	
+
 
 
 	wp_localize_script('main', 'allAjax', array(
@@ -637,4 +637,133 @@ function do_rewrite(){
 		$vars[] = 'onpage';
 		return $vars;
 	} );
+}
+
+
+// ------Шахматка
+
+add_action('wp_ajax_shlogin', 'shlogin');
+add_action('wp_ajax_nopriv_shlogin', 'shlogin');
+
+function shlogin()
+{
+	if (empty($_REQUEST['nonce'])) {
+		wp_die('0');
+	}
+
+	if (check_ajax_referer('NEHERTUTLAZIT', 'nonce', false)) {
+		global $wpdb;
+		$rez = $wpdb->get_results('SELECT * FROM `kn_ches_login` WHERE `pass` = "'.$_REQUEST["pass"].'" AND `login` ="'.$_REQUEST["login"].'"');
+
+		if (empty($rez)) {
+			wp_die('Логин / Пароль не верен!', '', 403);	
+		} else {
+			wp_die(json_encode($rez));
+		}
+	} else {
+		wp_die('НО-НО-НО!', '', 403);
+	}
+}
+
+add_action('wp_ajax_torezerv', 'torezerv');
+add_action('wp_ajax_nopriv_torezerv', 'torezerv');
+
+function torezerv()
+{
+	if (empty($_REQUEST['nonce'])) {
+		wp_die('0');
+	}
+
+	if (check_ajax_referer('NEHERTUTLAZIT', 'nonce', false)) {
+		global $wpdb;
+		$chec_phone = $wpdb->get_results('SELECT * FROM `kn_ches_home` WHERE `klient_phone` = "'.$_REQUEST["klient_tel"].'"');
+		if (!empty($chec_phone)) {
+			wp_die('Резерв по данному номеру телефона уже существует!', '', 403);
+		}
+
+		$update_rez = $wpdb->update('kn_ches_home',  
+		[ 
+			'rezerv_price' => $_REQUEST["rezerv_price"],
+			'rezerv_data' => date("Y-m-d"),
+			'status' => "Резерв",
+			'klient_phone' => $_REQUEST["klient_tel"],
+			'klient_name' => $_REQUEST["klient_name"],
+			'manager_name' => $_REQUEST["manager_name"],
+			'manager_login' => $_REQUEST["manager_login"],
+			'manager_phone' => $_REQUEST["manager_phone"],
+		], ['id' => $_REQUEST["kv_id"]]);
+
+		if (!empty($update_rez)) {
+			wp_die(true);
+		} else {
+			wp_die('При добавлении резерва возникла ошибка! '.$_REQUEST["manager_login"], '', 403);
+		}
+
+	} else {
+		wp_die('НО-НО-НО!', '', 403);
+	}
+}
+
+add_action('wp_ajax_free', 'free');
+add_action('wp_ajax_nopriv_free', 'free');
+
+function free()
+{
+	if (empty($_REQUEST['nonce'])) {
+		wp_die('0');
+	}
+
+	if (check_ajax_referer('NEHERTUTLAZIT', 'nonce', false)) {
+		global $wpdb;
+		
+		$update_rez = $wpdb->update('kn_ches_home',  
+		[ 
+			'rezerv_price' => "",
+			'rezerv_data' => 0,
+			'status' => "Свободна",
+			'klient_phone' => "",
+			'klient_name' => "",
+			'manager_name' => "",
+			'manager_login' => "",
+			'manager_phone' => "",
+		], ['id' => $_REQUEST["kv_id"]]);
+
+		if (!empty($update_rez)) {
+			wp_die(true);
+		} else {
+			wp_die('При обновлении статуса возникла ошибка! '.$_REQUEST["manager_login"], '', 403);
+		}
+
+	} else {
+		wp_die('НО-НО-НО!', '', 403);
+	}
+}
+
+
+add_action('wp_ajax_sale', 'sale');
+add_action('wp_ajax_nopriv_sale', 'sale');
+
+function sale()
+{
+	if (empty($_REQUEST['nonce'])) {
+		wp_die('0');
+	}
+
+	if (check_ajax_referer('NEHERTUTLAZIT', 'nonce', false)) {
+		global $wpdb;
+		
+		$update_rez = $wpdb->update('kn_ches_home',  
+		[ 
+			'status' => "Продана",
+		], ['id' => $_REQUEST["kv_id"]]);
+
+		if (!empty($update_rez)) {
+			wp_die(true);
+		} else {
+			wp_die('При обновлении статуса возникла ошибка! '.$_REQUEST["manager_login"], '', 403);
+		}
+
+	} else {
+		wp_die('НО-НО-НО!', '', 403);
+	}
 }
