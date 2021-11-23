@@ -7,7 +7,7 @@ Template Post Type: page
 
 get_header(); ?>
 
-<?php get_template_part('template-parts/header-section');?>
+<?php get_template_part('template-parts/header-section-free');?>
 
 <main class="page page-recurring">
 

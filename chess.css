@@ -110,9 +110,25 @@
 .kvartira.rezerv {
     background-color: #fdf047!important;
 }
-.histo .historyElems .historyElem.empty::before{
+
+.btn_ruk,
+.kvartira_edit_info.ruk,
+.histo .historyElems .historyElem.ruk::before{
     border: 1px solid lightgray;
+    background-color: white!important;
 }
+
+.btn_ruk {
+    color: black!important;
+}
+
+.btn_uhred,
+.kvartira_edit_info.uhred,
+.histo .historyElems .historyElem.uhred::before,
+.kvartira.uhred {
+    background-color: #66cdaa!important;
+}
+
 
 .kprice {
     width: 100%;
@@ -127,6 +143,19 @@
     font-size: 20px;
     line-height: 25px;
     border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.kvartira_edit_info .kei_blk {
+    flex:1;
+    padding: 10px;
+    min-width: 300px;
+}
+
+.kvartira_edit_info .kei_blk h4{ 
+    margin-bottom: 10px;
 }
 
 .edit_kv_form {

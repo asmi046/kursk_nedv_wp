@@ -642,6 +642,28 @@ function do_rewrite(){
 
 // ------Шахматка
 
+
+function to_log($id_kv, $action, $data) {
+	global $wpdb;
+
+	$k_info = $wpdb->get_results('SELECT * FROM `kn_ches_home` WHERE `id` = '.$id_kv);
+	$k_info = $k_info[0];
+
+	$main_data = $data;
+
+	$main_data["id_kv"] = $id_kv;
+	$main_data["action_manager"] = $_COOKIE["name"];
+	$main_data["action"] = $action;
+	$main_data["home"] = $k_info->home;
+	$main_data["etazg"] = $k_info->etazg;
+	$main_data["area"] = $k_info->area;
+	$main_data["rooms"] = $k_info->rooms;
+
+	$wpdb->insert('kn_ches_log', $main_data);
+
+}
+
+
 add_action('wp_ajax_shlogin', 'shlogin');
 add_action('wp_ajax_nopriv_shlogin', 'shlogin');
 
@@ -676,13 +698,22 @@ function torezerv()
 
 	if (check_ajax_referer('NEHERTUTLAZIT', 'nonce', false)) {
 		global $wpdb;
-		$chec_phone = $wpdb->get_results('SELECT * FROM `kn_ches_home` WHERE `klient_phone` = "'.$_REQUEST["klient_tel"].'"');
-		if (!empty($chec_phone)) {
-			wp_die('Резерв по данному номеру телефона уже существует!', '', 403);
+
+		$prava = $wpdb->get_results('SELECT * FROM `kn_ches_login` WHERE `login` = "'.$_REQUEST["manager_login"].'"');
+
+		$admin = false;
+		if (!empty($prava) && ($prava[0]->status == 1))
+			$admin = true;
+
+		if (!$admin) {	
+			$chec_phone = $wpdb->get_results('SELECT * FROM `kn_ches_home` WHERE `klient_phone` = "'.$_REQUEST["klient_tel"].'"');
+		
+			if (!empty($chec_phone)) {
+				wp_die('Резерв по данному номеру телефона уже существует!', '', 403);
+			}
 		}
 
-		$update_rez = $wpdb->update('kn_ches_home',  
-		[ 
+		$d = [ 
 			'rezerv_price' => $_REQUEST["rezerv_price"],
 			'rezerv_data' => date("Y-m-d"),
 			'status' => "Резерв",
@@ -691,12 +722,17 @@ function torezerv()
 			'manager_name' => $_REQUEST["manager_name"],
 			'manager_login' => $_REQUEST["manager_login"],
 			'manager_phone' => $_REQUEST["manager_phone"],
-		], ['id' => $_REQUEST["kv_id"]]);
+			'info' => $_REQUEST["info"],
+		];
+
+		$update_rez = $wpdb->update('kn_ches_home',  
+		$d, ['id' => $_REQUEST["kv_id"]]);
 
 		if (!empty($update_rez)) {
+			to_log($_REQUEST["kv_id"], "Оформлен резерв", $d);
 			wp_die(true);
 		} else {
-			wp_die('При добавлении резерва возникла ошибка! '.$_REQUEST["manager_login"], '', 403);
+			wp_die('При добавлении резерва возникла ошибка! '.$update_rez, '', 403);
 		}
 
 	} else {
@@ -715,9 +751,7 @@ function free()
 
 	if (check_ajax_referer('NEHERTUTLAZIT', 'nonce', false)) {
 		global $wpdb;
-		
-		$update_rez = $wpdb->update('kn_ches_home',  
-		[ 
+		$d =[ 
 			'rezerv_price' => "",
 			'rezerv_data' => 0,
 			'status' => "Свободна",
@@ -726,9 +760,14 @@ function free()
 			'manager_name' => "",
 			'manager_login' => "",
 			'manager_phone' => "",
-		], ['id' => $_REQUEST["kv_id"]]);
+			'info' => "",
+		];
+
+		$update_rez = $wpdb->update('kn_ches_home',  
+		$d, ['id' => $_REQUEST["kv_id"]]);
 
 		if (!empty($update_rez)) {
+			to_log($_REQUEST["kv_id"], "Резерв снят вручную", $d);
 			wp_die(true);
 		} else {
 			wp_die('При обновлении статуса возникла ошибка! '.$_REQUEST["manager_login"], '', 403);
@@ -751,13 +790,81 @@ function sale()
 
 	if (check_ajax_referer('NEHERTUTLAZIT', 'nonce', false)) {
 		global $wpdb;
-		
-		$update_rez = $wpdb->update('kn_ches_home',  
-		[ 
+		$d = [ 
 			'status' => "Продана",
-		], ['id' => $_REQUEST["kv_id"]]);
+			'scrou' => $_REQUEST["escrou"],
+		];
+
+		$update_rez = $wpdb->update('kn_ches_home',  
+		$d, ['id' => $_REQUEST["kv_id"]]);
 
 		if (!empty($update_rez)) {
+			to_log($_REQUEST["kv_id"], "Квартира продана", $d);
+			wp_die(true);
+		} else {
+			wp_die('При обновлении статуса возникла ошибка! '.$_REQUEST["manager_login"], '', 403);
+		}
+
+	} else {
+		wp_die('НО-НО-НО!', '', 403);
+	}
+}
+
+add_action('wp_ajax_uhred', 'uhred');
+add_action('wp_ajax_nopriv_uhred', 'uhred');
+
+function uhred()
+{
+	if (empty($_REQUEST['nonce'])) {
+		wp_die('0');
+	}
+
+	if (check_ajax_referer('NEHERTUTLAZIT', 'nonce', false)) {
+		global $wpdb;
+		
+		$d = [ 
+			'status' => "Резерв учередителя",
+			'rezerv_data' => date("Y-m-d"),
+			'rezerv_price' => $_REQUEST["rezerv_price"],
+		];
+
+		$update_rez = $wpdb->update('kn_ches_home',  
+		$d, ['id' => $_REQUEST["kv_id"]]);
+
+		if (!empty($update_rez)) {
+			to_log($_REQUEST["kv_id"], "Резерв учередителя", $d);
+			wp_die(true);
+		} else {
+			wp_die('При обновлении статуса возникла ошибка! '.$_REQUEST["manager_login"], '', 403);
+		}
+
+	} else {
+		wp_die('НО-НО-НО!', '', 403);
+	}
+}
+
+add_action('wp_ajax_ruk', 'ruk');
+add_action('wp_ajax_nopriv_ruk', 'ruk');
+
+function ruk()
+{
+	if (empty($_REQUEST['nonce'])) {
+		wp_die('0');
+	}
+
+	if (check_ajax_referer('NEHERTUTLAZIT', 'nonce', false)) {
+		global $wpdb;
+		$d = [ 
+			'status' => "Резерв руководителя",
+			'rezerv_data' => date("Y-m-d"),
+			'rezerv_price' => $_REQUEST["rezerv_price"],
+		];
+
+		$update_rez = $wpdb->update('kn_ches_home',  
+		$d, ['id' => $_REQUEST["kv_id"]]);
+
+		if (!empty($update_rez)) {
+			to_log($_REQUEST["kv_id"], "Резерв руководителя", $d);
 			wp_die(true);
 		} else {
 			wp_die('При обновлении статуса возникла ошибка! '.$_REQUEST["manager_login"], '', 403);

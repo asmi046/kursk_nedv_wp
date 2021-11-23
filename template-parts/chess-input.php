@@ -8,6 +8,7 @@
                 global $wpdb;
                 $home = $wpdb->get_results("SELECT `home` FROM `kn_ches_home` GROUP BY `home`");
                 foreach ($home as $h) {
+                    if (($_COOKIE["login"] === "saninov") && (strpos($h->home, "Клыкова") === false) ) continue;
             ?>
                 <option value="<?echo $h->home; ?>" <? echo ($_REQUEST["homes"] == $h->home)?"selected = 'selected'":"" ?> ><?echo $h->home; ?></option>
             <?
@@ -26,8 +27,11 @@
         <div class="historyElem svobodna">
              Свободна
         </div>
-        <div class="historyElem empty">
-             Заморожен
+        <div class="historyElem ruk">
+             Руководитель
+        </div>
+        <div class="historyElem uhred">
+             Учредитель
         </div>
     </div>
     </div>
@@ -61,12 +65,22 @@
                             
                             if ($h->status === "Резерв") {
                                 $status = "rezerv"; 
-                                $title = "Резерв: ".$h->klient_name." от ".date("d.m.Y",$h->rezerv_data);
+                                $title = "Резерв: ".$h->klient_name." от ".date("d.m.Y", strtotime($h->rezerv_data));
                             }
 
                             if ($h->status === "Свободна") {
                                 $status = "svobodna"; 
                                 $title = "Свободна";
+                            }
+
+                            if ($h->status === "Резерв учередителя") {
+                                $status = "uhred"; 
+                                $title = "Резерв учередителя";
+                            }
+
+                            if ($h->status === "Резерв руководителя") {
+                                $status = "ruk"; 
+                                $title = "Резерв руководителя";
                             }
                     ?>
                         <a href = "<?echo get_permalink(103)?>?kvartira=<?echo $h->id; ?>" class="kvartira <?echo $status; ?>" title = "<?echo $title;?>">
