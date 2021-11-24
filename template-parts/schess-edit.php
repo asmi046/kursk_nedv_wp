@@ -109,6 +109,8 @@
             <label for = "">Эскроу счет при продаже</label>
             <input id = "rform_escro" class = "input" type = "text" name = "klient_escro" placeholder = "Введите № эскроу счета для оформления продажи" value = "" />
 
+
+
             <button type = "submit" id = "prodana_btn" class = "btn btn_prodana">Продана</button>
             <button type = "submit" id = "svobodna_btn" class = "btn btn_svobodna">Свободна</button>
         <?      
@@ -117,7 +119,13 @@
             if (($kinfo->status == "Резерв") && ($_COOKIE["name"] !== $kinfo->manager_name)) {
         ?>
             <h3>Данная квартира в резерве. Оформил(ла): <? echo $kinfo->manager_name; ?> </h3>
-            
+            <?
+                if ( !empty($_COOKIE["adm"])) {
+            ?>
+                <button type = "submit" id = "svobodna_btn" class = "btn btn_svobodna">Снять пометку о продаже</button>
+            <?
+                }
+            ?> 
         <?  
             }
 
