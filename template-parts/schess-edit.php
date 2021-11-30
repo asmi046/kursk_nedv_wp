@@ -106,8 +106,8 @@
         ?>
             <h3>Данная квартира в резерве Вы можете снять этот резерв и назначить статус:</h3>
             
-            <label for = "">Эскроу счет при продаже</label>
-            <input id = "rform_escro" class = "input" type = "text" name = "klient_escro" placeholder = "Введите № эскроу счета для оформления продажи" value = "" />
+            <label for = "">№ ДДУ</label>
+            <input id = "rform_escro" class = "input" type = "text" name = "klient_escro" placeholder = "Введите № ДДУ" value = "" />
 
 
 

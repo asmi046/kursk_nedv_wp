@@ -86,7 +86,9 @@
                         <a href = "<?echo get_permalink(103)?>?kvartira=<?echo $h->id; ?>" class="kvartira <?echo $status; ?>" title = "<?echo $title;?>">
                             <div class="kinfo">
                                 <div class = "knumber">
-                                    № <? echo $h->number; ?>
+                                    № <? echo $h->number;  
+                                    if (!empty($h->number2) ) echo "/".$h->number2;
+                                    ?>
                                 </div>
                                 <div class="karea">
                                     <? echo $h->area; ?>  м² 
