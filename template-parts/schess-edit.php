@@ -106,10 +106,18 @@
         ?>
             <h3>Данная квартира в резерве Вы можете снять этот резерв и назначить статус:</h3>
             
+            <label for = "">Ф.И.О. клиента</label>
+                <input id = "rform_klient_name" class = "input" type = "text" name = "klient_name" placeholder = "Введите имя клиента" value = "<? echo $kinfo->klient_name;?>" />
+            
+                <label for = "">Телефон клиента</label>
+                <input id = "rform_klient_tel" class = "input _phone _tel" data-value="Телефон клиента*" type = "text" name = "klient_tel" placeholder = "Введите телефон клиента" value = "<? echo $kinfo->klient_phone;?>" />
+            
+                <button type = "submit" id = "save_chenge" class = "btn">Сохранить</button>
+                <br/>
+                <br/>
+
             <label for = "">№ ДДУ</label>
             <input id = "rform_escro" class = "input" type = "text" name = "klient_escro" placeholder = "Введите № ДДУ" value = "" />
-
-
 
             <button type = "submit" id = "prodana_btn" class = "btn btn_prodana">Продана</button>
             <button type = "submit" id = "svobodna_btn" class = "btn btn_svobodna">Свободна</button>
@@ -122,6 +130,15 @@
             <?
                 if ( !empty($_COOKIE["adm"])) {
             ?>
+
+                <label for = "">Ф.И.О. клиента</label>
+                <input id = "rform_klient_name" class = "input" type = "text" name = "klient_name" placeholder = "Введите имя клиента" value = "<? echo $kinfo->klient_name;?>" />
+            
+                <label for = "">Телефон клиента</label>
+                <input id = "rform_klient_tel" class = "input _phone _tel" data-value="Телефон клиента*" type = "text" name = "klient_tel" placeholder = "Введите телефон клиента" value = "<? echo $kinfo->klient_phone;?>" />
+            
+                <button type = "submit" id = "save_chenge" class = "btn">Сохранить</button>
+
                 <button type = "submit" id = "svobodna_btn" class = "btn btn_svobodna">Снять пометку о продаже</button>
             <?
                 }

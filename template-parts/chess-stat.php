@@ -69,6 +69,26 @@
     ?>
     <p>Продано: <? echo count($prod);?> квартир, общая площадь:  <? echo round($prod_area[0]->fullarea, 2);?> м²</p>
     
+    <strong>По подезду:</strong>
+            
+    <? 
+        $free = $wpdb->get_results("SELECT * FROM `kn_ches_home` WHERE `home` = '".$h->home."' AND   `status` = 'Свободна'");
+        $free_area = $wpdb->get_results("SELECT SUM(`area`) as `fullarea` FROM `kn_ches_home` WHERE  `home` = '".$h->home."' AND   `status` = 'Свободна'");
+    ?>
+    <p>Свободно: <? echo count($free);?> квартир, общая площадь:  <? echo round($free_area[0]->fullarea, 2);?> м²</p>
+
+    <? 
+        $rezerv = $wpdb->get_results("SELECT * FROM `kn_ches_home` WHERE `home` = '".$h->home."' AND   `status` = 'Резерв'");
+        $rezerv_area = $wpdb->get_results("SELECT SUM(`area`) as `fullarea` FROM `kn_ches_home` WHERE `home` = '".$h->home."' AND   (`status` = 'Резерв' OR `status` = 'Резерв руководителя')");
+    ?>
+    <p>Резерв: <? echo count($rezerv);?> квартир, общая площадь:  <? echo round($rezerv_area[0]->fullarea, 2);?> м²</p>
+
+    <? 
+        $prod = $wpdb->get_results("SELECT * FROM `kn_ches_home` WHERE `home` = '".$h->home."' AND   `status` = 'Продана'");
+        $prod_area = $wpdb->get_results("SELECT SUM(`area`) as `fullarea` FROM `kn_ches_home` WHERE `home` = '".$h->home."' AND   (`status` = 'Продана' OR `status` = 'Резерв учередителя')");
+    ?>
+    <p>Продано: <? echo count($prod);?> квартир, общая площадь:  <? echo round($prod_area[0]->fullarea, 2);?> м²</p>
+    
     <?
         }
     ?>

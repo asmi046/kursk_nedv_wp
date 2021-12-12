@@ -144,8 +144,8 @@ function my_assets()
 
 	// Подключение стилей 
 
-	$style_version = "1.0.20";
-	$scrypt_version = "1.0.20";
+	$style_version = "1.0.201";
+	$scrypt_version = "1.0.201";
 
 	// wp_enqueue_style("style-modal", get_template_directory_uri() . "/css/jquery.arcticmodal-0.3.css", array(), $style_version, 'all'); //Модальные окна (стили)
 	// wp_enqueue_style("style-lightbox", get_template_directory_uri() . "/css/lightbox.min.css", array(), $style_version, 'all'); //Лайтбокс (стили)
@@ -739,6 +739,50 @@ function torezerv()
 		wp_die('НО-НО-НО!', '', 403);
 	}
 }
+
+add_action('wp_ajax_update_rezerv', 'update_rezerv');
+add_action('wp_ajax_nopriv_update_rezerv', 'update_rezerv');
+
+function update_rezerv()
+{
+	if (empty($_REQUEST['nonce'])) {
+		wp_die('0');
+	}
+
+	if (check_ajax_referer('NEHERTUTLAZIT', 'nonce', false)) {
+		global $wpdb;
+
+		$prava = $wpdb->get_results('SELECT * FROM `kn_ches_login` WHERE `login` = "'.$_REQUEST["manager_login"].'"');
+
+		$admin = false;
+		
+		if (!empty($prava) && ($prava[0]->status == 1))
+			$admin = true;
+
+		if (!$admin) {	
+			wp_die('У вас нет прав для редактирования!', '', 403);
+		}
+
+		$d = [ 
+			'klient_phone' => $_REQUEST["klient_tel"],
+			'klient_name' => $_REQUEST["klient_name"],
+		];
+
+		$update_rez = $wpdb->update('kn_ches_home',  
+		$d, ['id' => $_REQUEST["kv_id"]]);
+
+		if (!empty($update_rez)) {
+			to_log($_REQUEST["kv_id"], "Данные обновлены", $d);
+			wp_die(true);
+		} else {
+			wp_die('При обновлении резерва возникла ошибка! '.$update_rez, '', 403);
+		}
+
+	} else {
+		wp_die('НО-НО-НО!', '', 403);
+	}
+}
+
 
 add_action('wp_ajax_free', 'free');
 add_action('wp_ajax_nopriv_free', 'free');
