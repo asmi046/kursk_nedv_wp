@@ -7,7 +7,7 @@ Template Post Type: page
 
 get_header(); ?>
 
-<?php get_template_part('template-parts/header-section');?> 
+<?php get_template_part('template-parts/header-section');?>  
 
 <main class="page page-recurring">
 
@@ -89,7 +89,7 @@ get_header(); ?>
 						</div>
 						<div class="actions-spollers-block__body spollers-block__body">
 							<ul>
-								<li>Ваше объявление увидят арендаторы на сайте etagi.com, а при заказе дополнительных услуг разместим объявление 
+								<li>Ваше объявление увидят арендаторы на нашем сайте, а при заказе дополнительных услуг разместим объявление 
 									ещё на 14 площадках.
 								</li>
 								<li>Найдём для вас надёжных арендаторов и организуем показы квартиры.</li>
