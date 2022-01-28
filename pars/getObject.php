@@ -1,10 +1,10 @@
 <?
 
-// /opt/php/7.1/bin/php www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/pars/getObject.php
+// /opt/php/7.4/bin/php www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/pars/getObject.php
 
-ini_set('include_path', "/var/www/u0829746/data/www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/");
+// ini_set('include_path', "/var/www/u0829746/data/www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/");
 
-require_once("wp-config.php");
+require_once("/var/www/u0829746/data/www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-config.php");
 
 $objUrl = "https://xn--46-6kcaio0anxtsby.xn--p1ai/modules/m_boxreg.php?get_xml=Y&ver=2&prefix=boxreg&token=FTUYGg45r74r__rhtg75ueVGH4t3___43f";
 
@@ -18,7 +18,8 @@ curl_close($crl);
 if ($ret == 200) 
     $xml = simplexml_load_file($objUrl);
 
-global $wpdb;
+    echo DB_NAME;
+
 
 $wpdb->query('TRUNCATE `kn_objnedv`');
 $wpdb->query('TRUNCATE `kn_obj_img`');
