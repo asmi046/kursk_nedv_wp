@@ -24,7 +24,35 @@ get_header(); ?>
 
 			<h1><? the_title();?></h1>  
 
-			
+			<?
+				global $wpdb;
+				$allObj = $wpdb->get_results('SELECT * FROM `kn_objnedv`');
+				$didgest = $wpdb->get_results('SELECT COUNT(*) as count, `type` FROM `kn_objnedv` GROUP BY `type`');
+
+			?>
+				<h3>Всего в базе: <span style = "color:green"><?echo count($allObj); ?></span> объектов</h3>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Тип</th>
+							<th>Колличество</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<?
+							foreach ($didgest as $d) {
+						?>
+							<tr>
+								<td><? echo $d->count ?></td>
+								<td><? echo $d->type ?></td>
+							</tr>
+						<?
+							}
+						?>
+					</tbody>
+				</table>
 			</div>
 		</section>
 

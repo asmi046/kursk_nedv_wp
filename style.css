@@ -526,6 +526,23 @@ textarea.input {
   color: #888;
   z-index: 2;
   font-size: 14px; }
+
+  table {
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    width:100%;
+    border-spacing: 0;
+    
+  }
+
+  
+  td, th{
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    text-align: left;
+    padding: 5px;
+  }
+
   @media (max-width: 767.98px) {
     .form__info {
       width: 50px;
