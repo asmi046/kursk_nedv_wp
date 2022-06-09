@@ -23,6 +23,7 @@ if ($ret == 200)
 
 $wpdb->query('TRUNCATE `kn_objnedv`');
 $wpdb->query('TRUNCATE `kn_obj_img`');
+$wpdb->query('TRUNCATE `kn_agents`');
 
 $index = 0;    
 foreach ($xml->objects->children() as $elem)
@@ -35,6 +36,7 @@ foreach ($xml->objects->children() as $elem)
 
     $insertedArray = array(
         'row_id' => (int)$elem->row_id,
+        'user' => (int)$elem->user_id,
         'lot' => (int)$elem->lot,
         'status_enum' => (string)$elem->status_enum,
         'sys_date_create' => (string)$elem->sys_date_create,
@@ -108,6 +110,23 @@ foreach ($xml->objects->children() as $elem)
     echo $objName = $elem->street." ".$elem->dom_conv;
     echo "\n\r";
     $index++;
+}
+
+$index = 0;    
+foreach ($xml->users->children() as $elem)
+{
+    $attr = $elem->attributes();
+    $wpdb->insert('kn_agents', array (
+        "f" => (string)$attr["f"], 
+        "i" => (string)$attr["i"],
+        "o" => (string)$attr["o"],
+        "post" => (string)$attr["post"],
+        "phone" => (string)$attr["phone"],
+        "email" => (string)$attr["email"],
+        "sys_id" => (int)$attr["id"]
+    ));
+
+    print_r($attr);
 }
 
 ?>

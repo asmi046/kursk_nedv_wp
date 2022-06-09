@@ -119,4 +119,29 @@
 						<? }?>
 						
 					</div>
+
+					<?
+						global $wpdb;
+						$q = "SELECT `kn_agents`.*, `wp_agents_photo`.`photo` FROM `kn_agents` LEFT JOIN `wp_agents_photo` ON `wp_agents_photo`.`f` = `kn_agents`.`f` WHERE `kn_agents`.`sys_id` = ".$args["obj"]->user;
+						$agent = $wpdb->get_results( $q );
+						$agent = $agent[0]; 
+						if (!empty($agent)) {
+						
+					?>
+						
+						<div class="agent_info_wrap">
+							<h3>По всем вопросам:</h3>
+							<div class="agent_info">
+								<div class = "foto_blk">
+									<img src="<? echo $agent->photo;?>" alt="Продажа данного объекта недвижимости: <? echo $agent->f." ".$agent->i." ".$agent->o?>">
+								</div>
+								<div class = "info_blk">
+									<span class = "ag_name"><? echo $agent->f." ".$agent->i." ".$agent->o?></span>
+									<span class = "ag_phone"><a href="tel:<? echo preg_replace('/[^0-9]/', '', $agent->phone); ?>"><?echo $agent->phone?></a></span>
+									<span class = "ag_mail"><a href="mailto:<?echo $agent->email?>"><?echo $agent->email?></a></span>
+								</div>
+							</div>
+						</div>
+					<?}?>
+
 				</div>

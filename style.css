@@ -3238,6 +3238,54 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   filter: blur(13px);
   opacity: .4;}
 
+.agent_info_wrap {
+  margin-top: 20px;
+}
+.agent_info {
+  width: auto;
+  display: flex;
+  min-width: 300px;
+}
+
+.agent_info .foto_blk img{
+  height: 100%;
+  width: auto;
+}
+
+.agent_info .info_blk {
+  display: flex;
+  flex-direction: column;
+}
+
+.agent_info .info_blk .ag_name { 
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.agent_info .info_blk .ag_phone { 
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.agent_info .info_blk a {
+  color:#003C8C;
+}
+
+.agent_info .info_blk a:hover {
+  color:#003C8C;
+}
+
+.agent_info .foto_blk {
+  min-width:80px;
+  min-height:80px;
+  width:80px;
+  height:80px;
+  border-radius: 80px;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+
 @media (max-width: 1500px) {
   .floor-plan__img img {
     max-width: 60%;}
