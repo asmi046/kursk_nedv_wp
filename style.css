@@ -4635,6 +4635,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 
   .info {
     padding: 30px 0 35px 0;
+    background-image: url('img/header-bg-768.jpg');
   }
 
   .info__item-link {
@@ -6117,6 +6118,10 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 
   .promgranit-about__img {
     height: 220px;
+  }
+
+  .info {
+    background-image: url('img/header-bg-414.jpg');
   }
 }
 

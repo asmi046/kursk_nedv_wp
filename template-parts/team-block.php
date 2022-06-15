@@ -11,7 +11,7 @@
 					<span class="team__card-sticker"></span>
 				<? } ?>
 				<div class="team__card-img">
-					<img src="<?php echo wp_get_attachment_image_src($item['img_team'], 'large')[0]; ?>" alt="">
+					<img src="<?php echo wp_get_attachment_image_src($item['img_team'], 'large')[0]; ?>" loading="lazy" alt="<? the_title();?>">
 				</div>
 				<div class="team__card-descp"> 
 					<h4>

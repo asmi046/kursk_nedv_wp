@@ -9,7 +9,7 @@
 
 	<section id="info" class="info">
 		<div class="nuar_blk"></div> 
-		<div class="container">
+		<div class="container"> 
 
 			<h1><?php echo carbon_get_theme_option('about_home_title'); ?></h1> 
 
@@ -38,7 +38,7 @@
 							<div class="topical__position">
 								<p><? echo $item['title_suggest']; ?></p>
 							</div>
-							<img src="<?php echo wp_get_attachment_image_src($item['img_suggest'], 'large')[0]; ?>" alt="">
+							<img src="<?php echo wp_get_attachment_image_src($item['img_suggest'], 'large')[0]; ?>" loading="lazy" alt="<? the_title();?>">
 						</a>
 						<?
 						$suggestIndex++; 
@@ -65,7 +65,7 @@
 							<div class="reviews__card d-flex">
 								<div class="reviews__image-wrap">
 									<div class="reviews__image">
-										<img src="<?php echo wp_get_attachment_image_src($item['img_reviews'], 'large')[0]; ?>" alt="">
+										<img src="<?php echo wp_get_attachment_image_src($item['img_reviews'], 'large')[0]; ?>" loading="lazy" alt="<? the_title();?>">
 									</div>
 								</div>
 								<h4><? echo $item['name_reviews']; ?></h4>
@@ -94,7 +94,7 @@
 					$hotObject = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `photo` != '' AND `klient_status` = 'Горячий' LIMIT 0, 10" );
 				
 					foreach ($hotObject as $elem) {
-						get_template_part('template-parts/objec', 'elem', ["elem" => $elem]);
+						get_template_part('template-parts/objec', 'elem', ["elem" => $elem]); 
 					}
 				?>
 
