@@ -14,7 +14,7 @@ $etagnost = $args['elem']->floor.(empty($args['elem']->floors)?"":" / ".$args['e
 <div class="hot-deals__column">
 	<div class="hot-deals__card">	
 		<a href="<?bloginfo("url")?>/obekt/<?echo $args['elem']->row_id;?>" class="hot-deals__card-img" data-lot = "<?echo $args['elem']->lot;?>" data-crmid = "<?echo $args['elem']->row_id;?>">
-			<img src="<?php echo (empty($args['elem']->photo))?get_bloginfo("template_url")."/img/no-photo.jpg":$args['elem']->photo;?>" alt="">
+			<img src="<?php echo (empty($args['elem']->photo))?get_bloginfo("template_url")."/img/no-photo.jpg":$args['elem']->photo;?>" loading="lazy" alt="">
 		</a> 
 		<a href="<?bloginfo("url")?>/obekt/<?echo $args['elem']->row_id;?>" class="hot-deals__card-descp" data-lot = "<?echo $args['elem']->lot;?>" data-crmid = "<?echo $args['elem']->row_id;?>">  
 			<p class="hot-deals__card-price rub price_formator"><?echo $args['elem']->price;?> </p>

@@ -6,7 +6,7 @@
 		<div class="popup__body">
 			<div class="popup__close"></div>
 			<div class="popup__item d-flex">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/popup.jpg" alt="">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/popup.jpg" loading="lazy" alt="<? the_title();?>">
 				<div class="popup__form-block universal_form">
 					<h2>Заявка на обратный звонок</h2>
 					<div class="SendetMsg" style="display:none;">
@@ -42,7 +42,7 @@
 		<div class="popup__body">
 			<div class="popup__close"></div>
 			<div class="popup__item d-flex">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/popup.jpg" alt="">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/popup.jpg" loading="lazy" alt="<? the_title();?>">
 				<div class="popup__form-block universal_form">
 					<h2>Интересует <span class = "obj_in_win_name"></span></h2>
 					<div class="SendetMsg" style="display:none;">
