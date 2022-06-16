@@ -918,3 +918,76 @@ function ruk()
 		wp_die('НО-НО-НО!', '', 403);
 	}
 }
+
+add_filter('wpseo_title', function($title){
+	if (is_page(63)) {
+		global $wpdb;
+		$obj_nedv_id = get_query_var("objnedv");
+		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `row_id` = '".$obj_nedv_id."'" );
+		$object = $object[0];
+
+		$sitename = empty($object->site_name)?$object->type." ул. ".$object->street:$object->site_name;
+
+		$sitename = $object->deistvie . " - " . $sitename . " - Курская недвижимость";
+
+		$title = $sitename;
+	}            
+	return $title;
+}, 10, 1);
+
+
+add_filter('wpseo_metadesc', function($metadesc){
+	
+	if (is_page(63)) {
+		global $wpdb;
+		$obj_nedv_id = get_query_var("objnedv");
+		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE `row_id` = '".$obj_nedv_id."'" );
+		$object = $object[0];
+
+		$sitename = empty($object->site_name)?$object->type." ул. ".$object->street:$object->site_name;
+
+		$prefix = "Предлагаем";
+		if ($object->deistvie === "Продажа")
+			$prefix = "Агентство Курская недвижимость предлагает к покупке ";
+
+		if ($object->deistvie === "Аренда")
+			$prefix = "Агентство Курская недвижимость предлагает арендовать ";
+
+		$sitename = $prefix . $sitename . ". Наши специалисты помогут с оформлением сделки.";
+		
+		$metadesc = $sitename;
+	}
+	
+	return "$metadesc";
+}, 10, 1);
+
+
+add_filter( 'wpseo_sitemap_page_content', 'add_archive_URL' );
+
+function add_archive_URL() {
+
+		global $wpdb;
+		$q = 'SELECT * FROM `kn_objnedv` ';
+        $allpage = $wpdb->get_results($q);
+		
+		$url = "";
+		$index = 0;
+		foreach ($allpage as $us) {
+			$urlMain = get_the_permalink(63).$us->row_id;
+
+			// $date = get_post_modified_time( 'Y-m-d h:i:s', true, 63);
+			$date = date( 'Y-m-d h:i:s' );
+            $last_mod = YoastSEO()->helpers->date->format( $date );
+
+			$url .= "\t<url>\n";
+			$url .= "\t\t<loc>$urlMain</loc>\n";
+			$url .= "\t\t<lastmod>$last_mod</lastmod>\n";
+			$url .= "\t</url>\n";
+
+			$index++;
+		}
+			
+
+	return $url;
+
+}
