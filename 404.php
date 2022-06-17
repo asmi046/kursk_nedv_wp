@@ -3,14 +3,16 @@
 
 <?php get_template_part('template-parts/header-section');?>
 
-	<main id="primary" class="page site-main">
+	<main id="primary" class="page h404-sec site-main">
 
-	<div class = "content contentInPage centrElem">	 
+	<div class = "content contentInPage centrElem h404-block">	 
 		<div class="container">
 			<h1 class = "h404">404</h1>
-				Запрашиваемая страница не была найдена
+				<p class="h404__subtitle">Запрашиваемая страница не была найдена</p>
 		</div>
 	</div>
+
+	<!-- <?php get_template_part('template-parts/services-section');?> -->
 
 	</main>
 
