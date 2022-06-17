@@ -11,7 +11,7 @@
 		<div class="nuar_blk"></div> 
 		<div class="container"> 
 
-			<h1><?php echo carbon_get_theme_option('about_home_title'); ?></h1> 
+			<h2>Вся недвижимость Курска</h2> 
 
 			<div class="info__item d-flex">
 				<a href="<? bloginfo("url"); ?>" class="info__item-link">Купить</a>  
@@ -24,6 +24,18 @@
 
 		</div>
 	</section> 
+
+	<? $abouttc = carbon_get_theme_option("about_home_subtitle");
+	if (!empty($abouttc)) { ?>
+	<section id="about" class="about"> 
+		<div class="container">
+			<h1 class="about__title"><?php echo carbon_get_theme_option('about_home_title'); ?></h1>
+			<div class="about__subtitle">
+				<? echo $abouttc; ?>
+			</div>
+		</div>
+	</section> 
+	<? } ?>
 
 	<section id="topical" class="topical"> 
 		<div class="container">
