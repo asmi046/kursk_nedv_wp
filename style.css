@@ -3859,7 +3859,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 }
 
 .agent_info {
-  padding: 20px 15px 20px 0;
+  /* padding: 20px 15px 20px 0; */
   width: auto;
   display: flex;
   min-width: 300px;
@@ -3875,11 +3875,13 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 .agent_info .info_blk {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding: 5px 0;
 }
 
 .agent_info .info_blk .ag_name {
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 13px;
 }
 
 .agent_info .info_blk .ag_phone {
@@ -3896,10 +3898,10 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
 }
 
 .agent_info .foto_blk {
-  min-width: 80px;
-  min-height: 80px;
-  width: 80px;
-  height: 80px;
+  min-width: 90px;
+  min-height: 90px;
+  width: 90px;
+  height: 90px;
   /* border-radius: 80px; */
   overflow: hidden;
   margin-right: 20px;
@@ -6173,7 +6175,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><fi
   }
 
   .agent_info .info_blk {
-    padding: 0 10px;
+    padding: 10px;
   }
 }
 
