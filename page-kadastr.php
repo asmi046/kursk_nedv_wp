@@ -1,7 +1,7 @@
 <?php 
 
 /*
-Template Name: Страница - Представительство в суде по вопросам недвижимости в Курске
+Template Name: Страница - Постановка на кадастровый учет и межевание в Курске
 Template Post Type: page
 */
 
@@ -47,39 +47,34 @@ get_header(); ?>
 
 			<h2><?php echo carbon_get_the_post_meta("page_h2_title"); ?></h2>
 
-			<div class="how-work__row d-flex">
+			<div class="uslugi_type1">
+                <div class="usl">
+                    <div class="img">
+                        <img src="<? bloginfo("template_url"); ?>/img/uslugi/kadastr_plan.webp" alt="">
+                    </div>
+                    <div class="title">
+                        <h3>Подготовка межевого <br/>плана</h3>
+                    </div>
+                </div>
 
-				<div class="how-work__actions spollers-block d-flex" data-spollers data-one-spoller>
+                <div class="usl">
+                    <div class="img">
+                        <img src="<? bloginfo("template_url"); ?>/img/uslugi/kadastr_gran.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <h3>Определение границ <br/>участка</h3>
+                    </div>
+                </div>
 
-                <? $file = carbon_get_the_post_meta("complex_all_usl");
-				if ($file) {
-					$Index = 0;
-					foreach ($file as $item) {
-				?>
-                    <div class="actions-spollers-block spollers-block__item">
-						<div class="actions-item d-flex" data-spoller>
-							<div class="actions-item-number"><? echo $Index+1; ?></div>
-							<div class="actions-item-text actions-arrow-icon d-f"><? echo $item['usl_name']; ?></div>
-						</div>
-						<div class="actions-spollers-block__body spollers-block__body">
-                            <? echo $item['usl_text']; ?>
-						</div>
-					</div>
-                
-                <?
-						$Index++; 
-					}
-				}
-				?>
-
-
-				</div>
-
-				<div class="how-work__img">
-					<img src="<? $bg_img = carbon_get_the_post_meta("usl_banner_img"); echo empty($bg_img)?get_bloginfo("template_url")."/img/sell.jpg":$bg_img; ?>" alt="Услсги судепного представительства по недвижимости">
-				</div>
-
-			</div>
+                <div class="usl">
+                    <div class="img">
+                        <img src="<? bloginfo("template_url"); ?>/img/uslugi/kadastr_tech.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <h3>Подготовка технического <br/>плана</h3>
+                    </div>
+                </div>
+            </div>
 
 		</div>
 	</section>

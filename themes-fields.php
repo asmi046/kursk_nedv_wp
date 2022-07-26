@@ -129,7 +129,7 @@ Container::make( 'theme_options', __( 'Настройки темы', 'crb' ) )
   )); 
 
   Container::make('post_meta', 'osn_prop', 'Поля для страницы услуг')
-  ->show_on_template(array('page-sudpred.php'))
+  ->show_on_template(array('page-sudpred.php', 'page-kadastr.php', 'page-ocenka.php', 'page-rieltor.php'))
   ->add_fields(array(
     Field::make( 'image', 'banner_img', 'Банер' )->set_width(100)->set_value_type('url'),
     Field::make( 'text', 'sub_title', __( 'Подзаголовок для страницы' ) )->set_width(100),
@@ -139,6 +139,16 @@ Container::make( 'theme_options', __( 'Настройки темы', 'crb' ) )
     ->add_fields(array(
        Field::make( 'text', 'usl_name', __( 'Название услуги' ) )->set_width(50),
        Field::make( 'text', 'usl_text', __( 'Описание услуги' ) )->set_width(50),
+    )),
+  )); 
+
+  Container::make('post_meta', 'dop_prop', 'Стоимость оценки')
+  ->show_on_template(array('page-ocenka.php'))
+  ->add_fields(array(
+    Field::make( 'complex', 'complex_price_usl', 'Список цен')
+    ->add_fields(array(
+       Field::make( 'text', 'price_usl_name', __( 'Наименование' ) )->set_width(50),
+       Field::make( 'text', 'price_usl_price', __( 'Цена' ) )->set_width(50),
     )),
   )); 
 
