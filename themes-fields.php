@@ -114,7 +114,7 @@ Container::make( 'theme_options', __( 'Настройки темы', 'crb' ) )
           ->set_width(50),
     ) );
 
-    Container::make('post_meta', 'page-files', 'Файлы')
+  Container::make('post_meta', 'page-files', 'Файлы')
   ->show_on_template(array('page-pyatnitsky-forest.php'))
   ->add_fields(array(
     Field::make('complex', 'complex_file_list', 'Добавить файл')
@@ -127,6 +127,21 @@ Container::make( 'theme_options', __( 'Настройки темы', 'crb' ) )
           ->set_width(85),
       )),
   )); 
+
+  Container::make('post_meta', 'osn_prop', 'Поля для страницы услуг')
+  ->show_on_template(array('page-sudpred.php'))
+  ->add_fields(array(
+    Field::make( 'image', 'banner_img', 'Банер' )->set_width(100)->set_value_type('url'),
+    Field::make( 'text', 'sub_title', __( 'Подзаголовок для страницы' ) )->set_width(100),
+    Field::make( 'text', 'page_h2_title', __( 'Заголовок h2 под текстом' ) )->set_width(100),
+    Field::make( 'image', 'usl_banner_img', 'Картинка напротив списка услуг' )->set_width(100)->set_value_type('url'),
+    Field::make( 'complex', 'complex_all_usl', 'Список услуг')
+    ->add_fields(array(
+       Field::make( 'text', 'usl_name', __( 'Название услуги' ) )->set_width(50),
+       Field::make( 'text', 'usl_text', __( 'Описание услуги' ) )->set_width(50),
+    )),
+  )); 
+
   //   Container::make('post_meta', 'ultra_product_cr', 'Характеристики товара')
   //   ->show_on_post_type(array( 'ultra'))
   //     ->add_fields(array(   

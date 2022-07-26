@@ -1722,7 +1722,7 @@ body.ie .ibg img {
 }
 
 .sell-pass-info__text p {
-  max-width: 399px;
+  max-width: 599px;
   width: 100%;
   font-size: 16px;
   line-height: 19.2px;
@@ -1730,7 +1730,7 @@ body.ie .ibg img {
 }
 
 .sell-pass-info__text-sell h1 {
-  max-width: 480px;
+  max-width: 665px;
   width: 100%;
   color: #161615;
 }
@@ -2323,7 +2323,7 @@ body.ie .ibg img {
 }
 
 .recurring h2 {
-  margin-bottom: 28px;
+  margin-bottom: 48px;
 }
 
 .info {
