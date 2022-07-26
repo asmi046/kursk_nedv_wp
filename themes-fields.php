@@ -17,8 +17,8 @@ Container::make( 'theme_options', __( 'Настройки темы', 'crb' ) )
       //   ->set_width(30),
       // Field::make( 'image', 'as_logo_white', 'Логотип в подвале')
       //   ->set_width(30),
-      Field::make('text', 'about_home_title', 'Заголовок на главной')
-      // Field::make('rich_text', 'about_home', 'О нашей компании')
+      Field::make('text', 'about_home_title', 'Заголовок на главной'),
+      Field::make('rich_text', 'about_home_subtitle', 'О нашей компании'),
     ))
     ->add_tab('Актуальные предложения', array(
       Field::make('complex', 'complex_suggest', 'Выводим Актуальные предложения')
