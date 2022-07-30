@@ -15,7 +15,7 @@
 
 					<div class="footer__contact">
 						<div class="header__callback d-flex">
-							<a href="tel:<? echo preg_replace('/[^0-9]/', '', $tel); ?>"><? echo $tel = carbon_get_theme_option("as_phone_1"); ?></a>
+							<a href="tel:+<? $tel = carbon_get_theme_option("as_phone_1"); echo preg_replace('/[^0-9]/', '', $tel); ?>"><? echo $tel; ?></a>
 							<a href="#callback" class="header__popup-link _popup-link">Заказать звонок</a>
 						</div>
 						<div class="footer__soc-block">
