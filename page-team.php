@@ -46,7 +46,7 @@ get_header(); ?>
 									<? echo $item['surname_team']; ?>
 								</h4>
 								<p class="team__card-experience">Стаж работы: <? echo $item['special_team']; ?></p>
-								<a href="tel:<? echo preg_replace('/[^0-9]/', '', $item['phone_team']); ?>" class="team__card-tel"><? echo $item['phone_team']; ?></a>
+								<a href="tel:+<? echo preg_replace('/[^0-9]/', '', $item['phone_team']); ?>" class="team__card-tel"><? echo $item['phone_team']; ?></a>
 								<a href="mailto:<? echo $item['e-mail_team']; ?>" class="team__card-email"><? echo $item['e-mail_team']; ?></a>
 							</div>
 						</div>
