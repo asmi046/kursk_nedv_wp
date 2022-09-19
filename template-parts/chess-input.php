@@ -9,6 +9,7 @@
                 $home = $wpdb->get_results("SELECT `home` FROM `kn_ches_home` GROUP BY `home`");
                 foreach ($home as $h) {
                     if (($_COOKIE["login"] === "saninov") && (strpos($h->home, "Клыкова") === false) ) continue;
+                    if (($_COOKIE["login"] !== "volovina") && ($_COOKIE["login"] !== "asmi046") && ($_COOKIE["login"] !== "skulkova") && (strpos($h->home, "Метрополь") !== false) ) continue;
             ?>
                 <option value="<?echo $h->home; ?>" <? echo ($_REQUEST["homes"] == $h->home)?"selected = 'selected'":"" ?> ><?echo $h->home; ?></option>
             <?
