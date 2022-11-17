@@ -31,7 +31,7 @@
 		<div class="container">
 			<h1 class="about__title"><?php echo carbon_get_theme_option('about_home_title'); ?></h1>
 			<div class="about__subtitle">
-				<? echo $abouttc; ?>
+				<? echo apply_filters( 'the_content', $abouttc); ?>
 			</div>
 		</div>
 	</section> 
