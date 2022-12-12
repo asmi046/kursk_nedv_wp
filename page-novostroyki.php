@@ -54,7 +54,7 @@ get_header(); ?>
 		$searcstr = empty($_REQUEST["searcstr"])?"%":"%".$_REQUEST["searcstr"]."%";
 
 		
-		$sparam = "AND (`description` LIKE '".$searcstr."') AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
+		$sparam = "AND ((`description` LIKE '".$searcstr."') OR (`street` LIKE '".$searcstr."') OR (`dom_number` LIKE '".$searcstr."')) AND (`np_raion` LIKE '".$raion."') AND (`rooms` LIKE '".$rooms."') AND (`floors` LIKE '".$etazgey."') AND (`area1` > ".$areaot.")  AND (`area1` < ".$areado.") AND (`price` > ".$priceot.")  AND (`price` < ".$pricedo.")";
 		
 	
 		$object = $wpdb->get_results( "SELECT * FROM `kn_objnedv` WHERE (`type` = 'Новостройка') ".$sparam." LIMIT ".$ofset.", ".$countInPage );
