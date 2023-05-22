@@ -76,6 +76,9 @@
                 <input id = "rform_id" type = "hidden" name = "manager_login"  value = "<?echo $kinfo->id?>" />
 
         <?
+
+            if ($_COOKIE["login"] === "tat_0516") {
+
             if ( $kinfo->status == "Продана") {
         ?>
             <h3>Данная квартира продана и не может быть отправлена в резерв</h3>
@@ -88,6 +91,7 @@
             ?>      
         <?
             }
+            
             if ( $kinfo->status == "Свободна") {
         ?>
             <button type = "submit" id = "to_rezerv_btn" class = "btn">Зарезервировать</button>
@@ -158,6 +162,8 @@
             ?>  
         <?
             }
+
+        }
         ?>
  
             
