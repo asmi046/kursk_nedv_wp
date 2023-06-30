@@ -84,7 +84,14 @@
                                 $title = "Резерв руководителя";
                             }
                     ?>
-                        <a href = "<?echo get_permalink(103)?>?kvartira=<?echo $h->id; ?>" class="kvartira <?echo $status; ?>" title = "<?echo $title;?>">
+
+                    <?php 
+                        $lnk = get_permalink(103)."?kvartira=".$h->id;
+                        
+                        if ($_COOKIE["login"] === "view")
+                            $lnk = "#";
+                    ?>
+                        <a href = "<? echo $lnk?>" class="kvartira <?echo $status; ?>" title = "<?echo $title;?>">
                             <div class="kinfo">
                                 <div class = "knumber">
                                     № <? echo $h->number;  
