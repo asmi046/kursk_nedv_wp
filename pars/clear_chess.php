@@ -25,7 +25,7 @@ foreach ($houses as $h) {
 
     echo $h->home . " кв.: ".$h->number. " дней: ".$dey_count; 
 
-    if ($dey_count > 7) {
+    if ($dey_count > 14) {
         $update_rez = $wpdb->update('kn_ches_home',  
 		[ 
 			'rezerv_price' => "",
