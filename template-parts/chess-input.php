@@ -1,12 +1,17 @@
 <div class="chesVrapper">
     <div class="histo">
     <form method = "GET">
+<?// echo "SELECT `home`, `city` FROM `kn_ches_home` WHERE 'city' = '" . $_COOKIE["city"] . "'  GROUP BY `home`"; ?>
+
         <select name = "homes" class="form" onchange = "this.form.submit()">
             <option value = "Выбрать" disabled <? echo empty($_REQUEST["homes"])?"selected = 'selected'":"" ?>>Выбрать</option>
             
             <?
                 global $wpdb;
-                $home = $wpdb->get_results("SELECT `home` FROM `kn_ches_home` GROUP BY `home`");
+                if ($_COOKIE["login"] === "asmi046")
+                    $home = $wpdb->get_results("SELECT `home` FROM `kn_ches_home` GROUP BY `home`");
+                else 
+                    $home = $wpdb->get_results("SELECT `home`, `city` FROM `kn_ches_home` WHERE `city` = '" . $_COOKIE["city"] . "'  GROUP BY `home`");
                 foreach ($home as $h) {
                     if (($_COOKIE["login"] === "saninov") && (strpos($h->home, "Клыкова") === false) ) continue;
                     if (($_COOKIE["login"] !== "volovina") && ($_COOKIE["login"] !== "asmi046") && ($_COOKIE["login"] !== "skulkova") && (strpos($h->home, "Метрополь") !== false) ) continue;
@@ -88,7 +93,8 @@
                     <?php 
                         $lnk = get_permalink(103)."?kvartira=".$h->id;
                         
-                        if ($_COOKIE["login"] === "view")
+                        // if ($_COOKIE["login"] === "view")
+                        if (strpos($_COOKIE["login"], "view") !== false)
                             $lnk = "#";
                     ?>
                         <a href = "<? echo $lnk?>" class="kvartira <?echo $status; ?>" title = "<?echo $title;?>">

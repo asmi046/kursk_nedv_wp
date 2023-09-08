@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.cookie = "name="+result[0].fio+"; path=/"
                 document.cookie = "phone="+result[0].phone+"; path=/"
                 document.cookie = "adm="+result[0].status+"; path=/"
+                document.cookie = "city="+result[0].city+"; path=/"
                 location.reload()
             } else {
                 console.log(xhr.status)
@@ -50,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.cookie = "name=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
         document.cookie = "phone=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
         document.cookie = "adm=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+        document.cookie = "city=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
         document.location.href = "https://xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/shahmatka/"
     }
 
