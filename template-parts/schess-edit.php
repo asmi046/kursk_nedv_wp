@@ -77,7 +77,8 @@
 
         <?
 
-            if (($_COOKIE["login"] === "tat_0516") || ($_COOKIE["login"] === "anna_orel")) {
+            // if (($_COOKIE["login"] === "tat_0516") || ($_COOKIE["login"] === "anna_orel")) {
+            if ($_COOKIE["editing"] === "1") {
 
             if ( $kinfo->status == "Продана") {
         ?>

@@ -11,7 +11,7 @@
                 if ($_COOKIE["login"] === "asmi046")
                     $home = $wpdb->get_results("SELECT `home` FROM `kn_ches_home` GROUP BY `home`");
                 else 
-                    $home = $wpdb->get_results("SELECT `home`, `city` FROM `kn_ches_home` WHERE `city` = '" . $_COOKIE["city"] . "'  GROUP BY `home`");
+                    $home = $wpdb->get_results("SELECT `home`, `city` FROM `kn_ches_home` WHERE `city` LIKE '" . $_COOKIE["city"] . "'  GROUP BY `home`");
                 foreach ($home as $h) {
                     if (($_COOKIE["login"] === "saninov") && (strpos($h->home, "Клыкова") === false) ) continue;
                     if (($_COOKIE["login"] !== "volovina") && ($_COOKIE["login"] !== "asmi046") && ($_COOKIE["login"] !== "skulkova") && (strpos($h->home, "Метрополь") !== false) ) continue;
