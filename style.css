@@ -373,6 +373,35 @@ input[type=range] {
   padding: 0px 15px;
 }
 
+.checkbox_label._error {
+  color:red;
+}
+
+.checkbox_label._error a,
+.checkbox_label._error input{
+  border-color:red;
+  color: red;
+}
+
+.checkbox_label {
+  color:white;
+  display: flex;
+}
+
+.checkbox_label a{
+  color:white;
+  text-decoration: underline;
+}
+
+.checkbox_label_white_bg {
+  color: black;
+}
+
+.checkbox_label_white_bg a{
+  color: black;
+}
+
+
 textarea.input {
   resize: none;
   padding: 5px 10px;
@@ -3061,6 +3090,7 @@ body.ie .ibg img {
   max-width: 980px;
   width: 100%;
   margin-bottom: 35px;
+  display: flex;
 }
 
 .consult-form__form-input {
@@ -3500,6 +3530,16 @@ h2.mup_mr {
 
 #usl_page #uslugi_main h2 {
   display: none;
+}
+
+.free_consult {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1!important;
+}
+
+.free_consult input{ 
+  margin: 0 10px 20px 0;
 }
 
 @media (max-width: 600px) {

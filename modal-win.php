@@ -19,12 +19,13 @@
 								<input autocomplete="off" type="text" name="name" data-error="Заполните поля" data-value="Имя*" class="popup__form-input input _req _name">
 								<input autocomplete="off" type="text" name="tel" data-error="Заполните поля" data-value="Телефон*" class="popup__form-input input _phone _req _tel">
 							</div>
-<!-- 							<input type="text" name="name" placeholder="Имя" id="formCallbackName" class="popup__form-input input">
-							<input type="tel" name="tel" placeholder="Телефон*" id="formCallbackTel" class="popup__form-input input">
-							<input type="hidden" name="lot" id="formLot" value = ""> -->
-<!-- 							<p>Заполняя данную форму вы соглашаетесь с <a href="<?php echo get_permalink(452); ?>">политикой конфиденциальности</a></p>
-							<button id = "sendZobj" class="popup__form-btn newButton btn">Отправить заявку</button> -->
-							<p>Заполняя данную форму вы соглашаетесь с <a href="<?php echo get_permalink(452); ?>">политикой конфиденциальности</a></p>
+
+							<label for="f_policy" class="checkbox_label checkbox_label_white_bg">
+								<input type="checkbox" name="policy" id="f_policy" class="_req">
+								<span>Отправляя заявку, вы соглашаетесь на <a href="<?echo get_the_permalink(3);?>">обработку персональных данных</a></span>
+							</label>
+							<br>
+							<br>
 							<button type="button" class="popup__form_btn form-btn u_send btn">Отправить заявку</button>
 						</form>
 					</div> 

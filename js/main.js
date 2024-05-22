@@ -326,7 +326,7 @@ if (universal_form !== undefined)
 						// console.log(unisend_form);
 						// console.log(unisend_form.getElementsByClassName("_req"));
 						
-			
+						e.preventDefault()
 						let error = form_validate(unisend_form);
 						if (error == 0) {
 							e.stopPropagation()
