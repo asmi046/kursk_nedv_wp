@@ -12,10 +12,9 @@
 				<div class="headen_form_blk free_consult">
 					<input type="text" placeholder="Имя*" data-error="Заполните поля" data-value="Имя*" id="form-consult-name" class="consult-form__form-input input _req _name">
 					<input type="tel" name="tel" placeholder="Телефон*" data-error="Заполните поля" data-value="Телефон*" id="form-consult-tel" class="consult-form__form-input input _phone _req _tel">
-					<label for="f_policy" class="checkbox_label">
-						<input checked type="checkbox" name="policy" id="f_policy" class="_req">
-						<span>Отправляя заявку, вы соглашаетесь на <a href="<?echo get_the_permalink(3);?>">обработку персональных данных</a></span>
-					</label>
+					
+					<?php get_template_part('template-parts/policy-ch');?> 
+
 				</div>
 				<div class="SendetMsg" style="display:none;">
 					Ваше сообщение успешно отправлено.
