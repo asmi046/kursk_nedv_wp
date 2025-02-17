@@ -30,6 +30,9 @@ get_header(); ?>
 				if ($team) {
 					$teamIndex = 0;
 					foreach ($team as $item) {
+
+						if ($item['name_team'] === "Бабичев") continue;
+						if ($item['name_team'] === "Горетая") continue;
 						?>
 						<div class="team__card">
 							<?
@@ -55,6 +58,20 @@ get_header(); ?>
 					}
 				}
 				?>
+
+				<div class="team__card">
+					<div class="team__card-img">
+						<img src="<?php echo get_bloginfo("template_url"); ?>/img/shkolovaya.webp" alt="">
+					</div>
+					<div class="team__card-descp"> 
+						<h4>
+							Школовая <br>Елена
+						</h4>
+						<p class="team__card-experience">Стаж работы: 2</p>
+						<a href="tel:+<? echo preg_replace('/[^0-9]/', '', "+7 (919) 219-29-64"); ?>" class="team__card-tel">+7 (919) 219-29-64</a>
+						<a href="mailto:kvartiradom46@mail.ru" class="team__card-email">kvartiradom46@mail.ru</a>
+					</div>
+				</div
 			</div>
 
 		</div>

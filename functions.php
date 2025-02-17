@@ -2,6 +2,7 @@
 
 define("COMPANY_NAME", "КУРСКАЯ НЕДВИЖИМОСТЬ");
 define("MAIL_RESEND", "noreply@ultrakresla.ru");
+error_reporting(0);
 
 //----Подключене carbon fields
 //----Инструкции по подключению полей см. в комментариях themes-fields.php

@@ -98,7 +98,7 @@ get_header(); ?>
 								"name" => empty($elem->site_name)?$elem->type." ".$elem->street:$elem->site_name,
 								"area" => $elem->area1,
 								"img" => $elem->photo,
-								"lnk" => get_bloginfo("url")."/obekt/".$elem->row_id,
+								"lnk" => get_bloginfo("template_url")."/obekt/".$elem->row_id,
 							];	
 						}
 						?>
