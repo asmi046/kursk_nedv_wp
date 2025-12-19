@@ -14,8 +14,7 @@
   <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri();?>/img/favicons/fav.svg" sizes="any">
 
   <meta name="yandex-verification" content="0b4ed7e66d0f80b0" />
-  <meta name="google-site-verification" content="hwHBx382sHNu-DbtVwlk-3oBclM8viG_heFwsLnHEak" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
   <?php wp_head();?>   

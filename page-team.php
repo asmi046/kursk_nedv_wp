@@ -65,7 +65,7 @@ get_header(); ?>
 					</div>
 					<div class="team__card-descp"> 
 						<h4>
-							Школовая <br>Елена
+							Елена <br>Алексеевна
 						</h4>
 						<p class="team__card-experience">Стаж работы: 2</p>
 						<a href="tel:+<? echo preg_replace('/[^0-9]/', '', "+7 (919) 219-29-64"); ?>" class="team__card-tel">+7 (919) 219-29-64</a>

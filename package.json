@@ -7,6 +7,7 @@
     "test": "editorconfig-checker",
     "clear_r": "ssh u0829746@31.31.196.162 \"rm www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/*.*\"",
     "send_r": "scp -C *.php *.png *.css u0829746@31.31.196.162:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
+    "chmode": "ssh u0829746@31.31.196.162 \"cd www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/ && chmod -R 775 carbon-fields\"",
     "send_ms": "scp -C *.css u0829746@31.31.196.162:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
     "send_one": "scp -C page-vtorichnaya.php u0829746@31.31.196.162:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
     "send_one1": "scp -C page-team.php u0829746@31.31.196.162:www/xn----dtbfdhlbja1aetpolqc1p.xn--p1ai/wp-content/themes/kursk_nedv/",
